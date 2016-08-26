@@ -2,17 +2,20 @@
 
 set -e -u -x
 
-ENV=${ENV:-centos7}
-DMNAME=${DMNAME:-dev}
+OS=${OS:-centos7}
+OMEROVER=${OMEROVER:-latest}
 WEBSESSION=${WEBSESSION:-false}
+ICEVER=${ICEVER:-3.6}
+WEBPORT=${WEBPORT:-80}
 
-CNAME=omeroweb_install_test_$ENV
+
+CNAME=omeroweb_install_test_$OS
 
 # start docker container
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
     docker run -d --privileged -p 8888:80 --name $CNAME $CNAME
 else
-    docker run -d --name $CNAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /run omero_install_test_$ENV
+    docker run -d --name $CNAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /run $CNAME
 fi
 
 # check if container is running
