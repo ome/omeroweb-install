@@ -13,6 +13,11 @@ matrix:
       language: docker
       env:
         - OS=centos7 ICE=3.6 OMEROVER=OMERO-DEV-breaking-build WEBSESSION=False
+#    - os: linux
+#      dist: trusty
+#      language: docker
+#      env:
+#        - OS=ubuntu ICE=3.6 OMEROVER=OMERO-DEV-breaking-build WEBSESSION=False
     - os: linux
       dist: trusty
       language: python

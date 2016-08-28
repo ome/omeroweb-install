@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 if [ $(getenforce) != Disabled ]; then
     yum -y install policycoreutils-python
     setsebool -P httpd_read_user_content 1

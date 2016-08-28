@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 ICEVER=${ICEVER:-3.6}
 
 # Ice installation

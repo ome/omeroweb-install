@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 OMEROVER=${OMEROVER:-latest}
 ICEVER=${ICEVER:-3.6}
 

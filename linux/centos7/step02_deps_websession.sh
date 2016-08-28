@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 yum -y install redis python-redis
 
 systemctl enable redis.service

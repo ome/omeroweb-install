@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 #start-install
 apt-get -y install software-properties-common
 add-apt-repository -y ppa:nginx/stable

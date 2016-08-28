@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 set +u
 source ~/omerowebvenv/bin/activate
 set -u

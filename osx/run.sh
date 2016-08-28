@@ -1,6 +1,5 @@
-
 #!/usr/bin/env bash
-# Start up server, perform some simple test, shutdown again.
+# Start up OMERO.web and nginx server
 
 set -e -u -x
 

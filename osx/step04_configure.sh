@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 WEBPORT=${WEBPORT:-80}
 
 set +u

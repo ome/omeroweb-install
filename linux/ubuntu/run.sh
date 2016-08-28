@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e -u -x
+
 WEBSESSION=false
 
 while [[ $# > 1 ]]

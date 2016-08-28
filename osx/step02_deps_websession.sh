@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-# Installs OMERO requirements
+#!/bin/bash
+
+set -e -u -x
 
 # Install redis
 brew install redis

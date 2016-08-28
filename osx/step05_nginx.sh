@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
-# Setup OMERO.web using nginx
+#!/bin/bash
+
+set -e -u -x
 
 brew install nginx

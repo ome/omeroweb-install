@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# create user
+set -e -u -x
 
+# create user
 if [ -z "$(getent passwd omero)" ]; then
     #start-create-user
     useradd -m omero

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 #start-install
 # The following is only required to install
 # latest stable version of nginx

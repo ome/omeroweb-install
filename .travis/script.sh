@@ -7,6 +7,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
             ./test/test_services.sh
             ;;
         ubuntu)
+            #./test/test_services.sh
             ./linux/ubuntu/run.sh
             ;;
     esac

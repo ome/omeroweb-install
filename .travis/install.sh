@@ -7,13 +7,13 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
             ./test/docker-build.sh
             ;;
         ubuntu)
-            ./linux/install.sh
+            #./test/docker-build.sh
+            sudo ./linux/install.sh
             ;;
     esac
 
 else
 
-    # Install some custom requirements on OSX
     ./osx/install.sh
 
 fi

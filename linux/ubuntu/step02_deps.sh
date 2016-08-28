@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 apt-get update
 apt-get -y install \
     unzip \
