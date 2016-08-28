@@ -29,4 +29,3 @@ RUN OMERO_USER=$OMERO_USER OS=$OS \
 EXPOSE 22 80
 
 CMD ["/bin/bash", "-e", "/tmp/omeroweb-install/omeroweb-install-test/ubuntu/run.sh"]
-

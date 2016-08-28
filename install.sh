@@ -8,8 +8,9 @@ OS=${OS:-centos7}
 OMEROVER=${OMEROVER:-latest}
 WEBSESSION=${WEBSESSION:-}
 ICEVER=${ICEVER:-3.6}
+WEBPREFIX=${WEBPREFIX:-}
 WEBPORT=${WEBPORT:-80}
-
+WEBSERVER_CONF=${WEBSERVER_CONF:-nginx}
 
 path=`dirname $0`
 
@@ -33,7 +34,7 @@ fi
 
 if [[ $OMERO_USER = *[!\ ]* ]]; then
     su - ${OMERO_USER}  -c "OMERO_USER=$OMERO_USER ICEVER=$ICEVER OMEROVER=$OMEROVER bash $path/common/virtualenv.sh"
-    su - ${OMERO_USER}  -c "OMERO_USER=$OMERO_USER WEBPORT=$WEBPORT bash $path/common/omeroweb_configure.sh"
+    su - ${OMERO_USER}  -c "WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF OMERO_USER=$OMERO_USER WEBPORT=$WEBPORT bash $path/common/omeroweb_configure.sh"
 else
     bash $path/common/virtualenv.sh
     bash $path/common/omeroweb_configure.sh

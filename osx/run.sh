@@ -11,6 +11,3 @@ set -u
 
 # Start OMERO.web
 $(eval echo ~"${OMERO_USER}")/OMERO.py/bin/omero web start
-
-# Start webserver
-sudo nginx -c $(eval echo ~"${OMERO_USER}")/omeroweb-nginx.conf

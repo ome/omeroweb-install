@@ -22,52 +22,53 @@ prog=omero-web
 
 # Read configuration variable file if it is present
 [ -r /etc/default/$prog ] && . /etc/default/$prog
-# also read the omero config
-[ -r /etc/default/omero ] && . /etc/default/omero
 
+
+OMERO_PY=${OMERO_PY:-/home/omero/OMERO.py}
 OMERO_USER=${OMERO_USER:-omero}
-py_dir="/home/${OMERO_USER}/OMERO.py"
-OMERO_PY=${OMERO_PY:-$py_dir}
 OMERO=${OMERO_PY}/bin/omero
+VENVDIR=${VENVDIR:-/home/omero/omerowebvenv}
 
-start() {	
-	echo -n $"Starting $prog:"
-	su - ${OMERO_USER} -c "${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
-	RETVAL=$?
-	[ "$RETVAL" = 0 ]
+start() {
+    echo -n $"Starting $prog:"
+    su - ${OMERO_USER} -c "source $VENVDIR/bin/activate; ${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
+    sleep 5
+    ls $OMERO_PY/var/log
+    RETVAL=$?
+    [ "$RETVAL" = 0 ]
         echo
 }
 
 stop() {
-	echo -n $"Stopping $prog:"
-	su - ${OMERO_USER} -c "${OMERO} web stop" &> /dev/null && echo -n ' OMERO.web'
-	RETVAL=$?
-	[ "$RETVAL" = 0 ]
+    echo -n $"Stopping $prog:"
+    su - ${OMERO_USER} -c "source $VENVDIR/bin/activate; ${OMERO} web stop" &> /dev/null && echo -n ' OMERO.web'
+    RETVAL=$?
+    [ "$RETVAL" = 0 ]
         echo
 }
 
 status() {
-	echo -n $"Status $prog:"
-	su - ${OMERO_USER} -c "${OMERO} web status"
-	RETVAL=$?
+    echo -n $"Status $prog:"
+    su - ${OMERO_USER} -c "source $VENVDIR/bin/activate; ${OMERO} web status"
+    RETVAL=$?
 }
 
 case "$1" in
-	start)
-		start
-		;;
-	stop)
-		stop
-		;;
-	restart)
-		stop
-		start
-		;;
-	status)
-		status
-		;;
-	*)	
-		echo $"Usage: $0 {start|stop|restart|status}"
-		RETVAL=1
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart|status}"
+        RETVAL=1
 esac
 exit $RETVAL

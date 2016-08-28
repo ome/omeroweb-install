@@ -18,6 +18,6 @@ $(eval echo ~"${OMERO_USER}")/omerowebvenv/bin/omego download --ice $ICEVER --br
 zip=$(ls OMERO.py*.zip)
 zipname=${zip%.zip}
 rm -f $zip
-mv $(find . -name 'OMERO.py*' -type d) OMERO.py
+mv $(find . -name 'OMERO.py*' -type d) $(eval echo ~"${OMERO_USER}")/OMERO.py
 
 pip install -r $(eval echo ~"${OMERO_USER}")/OMERO.py/share/web/requirements-py27-trial.txt
