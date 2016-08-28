@@ -20,10 +20,13 @@ RUN echo 'export container=docker' > /etc/profile.d/docker.sh
 ARG WEBSESSION=false
 ARG ICEVER=3.6
 ARG OS=centos7
+ARG OMERO_USER=omero
 ARG OMEROVER=latest
 ARG WEBPORT=80
 
-RUN OS=$OS OMEROVER=$OMEROVER WEBPORT=$WEBPORT ICEVER=$ICEVER WEBSESSION=$WEBSESSION \
+RUN OMERO_USER=$OMERO_USER OS=$OS \
+    OMEROVER=$OMEROVER WEBPORT=$WEBPORT \
+    ICEVER=$ICEVER WEBSESSION=$WEBSESSION \
     /tmp/omeroweb-install/omeroweb-install-test/install.sh
 
 EXPOSE 22 80

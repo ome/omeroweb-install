@@ -19,27 +19,43 @@ The Linux and OS X scripts should automatically download all required files.
 Running
 -------
 
-for OS [ubuntu, Mac OS X]
+on Mac OS X::
 
-::
+    export OS=osx
+    ./install.sh
+    ./run.sh 
 
-    export OS=OS
-    export OMEROVER=OMEROVER
-    ./$OS/install.sh
-    ./$OS/run.sh
+on Ubuntu::
 
+    export OMERO_USER=omero
+    export OS=ubuntu
+
+    ./install.sh
+    ./run.sh 
+
+on Centos 7::
+
+    export OMERO_USER=omero
+    export OS=centos7
+    ./install.sh 
+
+optional:
+
+custom build::
+
+   export OMEROVER=OMERO-DEV-breaking-build 
 
 Testing in DOCKER
 -----------------
 
-for OS [centos7, ubuntu]
-
-::
+for OS [centos7, ubuntu]::
 
     export OS=OS
     export OMEROVER=OMEROVER
     ./test/docker-build.sh
     ./test/test_services.sh 
+
+Unfortunately no docker container for Mac OS X
 
 Copyright
 ---------

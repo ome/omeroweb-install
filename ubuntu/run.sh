@@ -2,8 +2,6 @@
 
 set -e -u -x
 
-WEBSESSION=false
-
 while [[ $# > 1 ]]
 do
 key="$1"
@@ -21,7 +19,7 @@ shift # past argument or value
 done
 
 service postgresql start
-if [ "$WEBSESSION" = "true" ]; then
+if [[ $WEBSESSION = *[!\ ]* ]]; then
 	service redis start
 fi
 #service crond start # Doesn't work in Docker

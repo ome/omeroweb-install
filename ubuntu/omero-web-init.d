@@ -25,8 +25,9 @@ prog=omero-web
 # also read the omero config
 [ -r /etc/default/omero ] && . /etc/default/omero
 
-OMERO_PY=${OMERO_PY:-/home/omero/OMERO.py}
 OMERO_USER=${OMERO_USER:-omero}
+py_dir="/home/${OMERO_USER}/OMERO.py"
+OMERO_PY=${OMERO_PY:-$py_dir}
 OMERO=${OMERO_PY}/bin/omero
 
 start() {	

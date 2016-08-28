@@ -3,12 +3,14 @@
 
 set -e -u -x
 
+OMERO_USER=${OMERO_USER:-}
+
 set +u
-source ~/omerowebvenv/bin/activate
+source $(eval echo ~"${OMERO_USER}")/omerowebvenv/bin/activate
 set -u
 
 # Start OMERO.web
-~/OMERO.py/bin/omero web start
+$(eval echo ~"${OMERO_USER}")/OMERO.py/bin/omero web start
 
 # Start webserver
-sudo nginx -c ~/omeroweb-nginx.conf
+sudo nginx -c $(eval echo ~"${OMERO_USER}")/omeroweb-nginx.conf
