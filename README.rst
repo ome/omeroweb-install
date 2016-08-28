@@ -23,7 +23,9 @@ for OS [ubuntu, Mac OS X]
 
 ::
 
-    OS=$OS OMEROVER=OMEROVER ./$OS/install.sh
+    export OS=OS
+    export OMEROVER=OMEROVER
+    ./$OS/install.sh
     ./$OS/run.sh
 
 
@@ -34,7 +36,9 @@ for OS [centos7, ubuntu]
 
 ::
 
-    OS=$OS OMEROVER=OMEROVER ./test/docker-build.sh
+    export OS=OS
+    export OMEROVER=OMEROVER
+    ./test/docker-build.sh
     ./test/test_services.sh 
 
 Copyright
