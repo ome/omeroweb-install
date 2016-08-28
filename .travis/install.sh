@@ -7,8 +7,8 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
             ./test/docker-build.sh
             ;;
         ubuntu)
-            #./test/docker-build.sh
-            sudo ./linux/install.sh
+            ./test/docker-build.sh
+            #sudo ./linux/install.sh
             ;;
     esac
 
