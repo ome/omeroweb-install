@@ -4,10 +4,10 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
     case "${OS}" in
         centos7)
-            ./omeroweb/linux/test/docker-build.sh
+            ./omeroweb/test/docker-build.sh
             ;;
         ubuntu)
-            echo $OS
+            ./omeroweb/linux/install.sh
             ;;
     esac
 

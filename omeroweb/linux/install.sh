@@ -33,5 +33,5 @@ bash $path/$OS/step05_nginx.sh
 
 bash $path/$OS/step06_selinux.sh
 
-bash $path/step07_daemon.sh
+bash $path/$OS/step07_daemon.sh
 

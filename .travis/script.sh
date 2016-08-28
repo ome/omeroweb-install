@@ -4,10 +4,10 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
     case "${OS}" in
         centos7)
-            ./omeroweb/linux/test/test_services.sh
+            ./omeroweb/test/test_services.sh
             ;;
         ubuntu)
-            echo $OS
+            ./omeroweb/linux/ubuntu/run.sh
             ;;
     esac
 

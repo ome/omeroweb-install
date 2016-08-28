@@ -1,13 +1,18 @@
 #!/bin/bash
 
-if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
-    brew update
+    case "${OS}" in
+        centos7)
+            sudo apt-get update
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" docker-engine
+            sudo apt-get -y install shunit2
+            ;;
+    esac
 
 else
 
-    sudo apt-get update
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" docker-engine
-    sudo apt-get -y install shunit2
+    brew update
+
 
 fi

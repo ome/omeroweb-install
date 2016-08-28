@@ -15,7 +15,7 @@ path=`dirname $0`
 
 rm -rf $path/omeroweb-install-test
 mkdir $path/omeroweb-install-test
-cp -r $path/../*.sh  $path/../$OS  $path/omeroweb-install-test
+cp -r $path/../linux/*.sh  $path/../linux/$OS  $path/omeroweb-install-test
 (cd $path && zip -r omeroweb-install-test.zip omeroweb-install-test)
 rm -rf $path/omeroweb-install-test
 

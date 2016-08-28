@@ -12,6 +12,8 @@ The Linux and OS X scripts should automatically download all required files.
 Testing in DOCKER
 ==================
 
+    OS = [centos7, ubuntu]
+
     OS=$OS OMEROVER=OMEROVER omeroweb/linux/test/docker-build.sh
 
     omeroweb/linux/test/test_services.sh 
