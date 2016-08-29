@@ -9,7 +9,7 @@ system_site_packages: False
 
 omero_version: "OMERO-DEV-breaking-build"
 
-web_prefix: /omero
+web_prefix: "${WEBPREFIX}"
 web_port: 8080
 web_server_conf: "nginx"
 web_server_name: "localhost"

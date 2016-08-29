@@ -6,8 +6,9 @@ OMERO.web walkthrough installation {{ os }}
 {% include path ignore missing with context %}
 
 
+{% if omero_user %}
 {% include 'common/create_user.sh.j2' ignore missing with context %}
-
+{% endif %}
 
 {% set path = os + '/deps_ice.sh.j2' %}
 {% include path with context %}

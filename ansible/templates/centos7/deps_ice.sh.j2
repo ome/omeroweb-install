@@ -1,5 +1,8 @@
 {% if doc %}
-## Install ZeroC IcePy {{ ice_version }}
+## Install ZeroC IcePy {{ ice_version }} dependences
+{% if ice_version == "3.6" %}
+## IcePy is managed by PyPi and will be installed as a part of OMERO.web requirements
+{% endif %}
 {% else %}
 #!/bin/bash
 
