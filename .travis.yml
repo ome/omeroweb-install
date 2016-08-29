@@ -12,12 +12,12 @@ matrix:
       dist: trusty
       language: docker
       env:
-        - OMERO_USER=omero OS=centos7 ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - OS=centos7 ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
     - os: linux
       dist: trusty
       language: docker
       env:
-        - OMERO_USER=omero OS=ubuntu ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - OS=ubuntu ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
 #    - os: linux
 #      dist: trusty
 #      language: python

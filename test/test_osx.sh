@@ -7,7 +7,7 @@ WEBPREFIX=${WEBPREFIX:-}
 
 path=`dirname $0`
 
-bash $path/../run.sh
+bash $path/../osx/run
 
 sleep 5
 

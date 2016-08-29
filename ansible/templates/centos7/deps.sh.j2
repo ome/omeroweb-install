@@ -1,0 +1,16 @@
+{% if doc %}
+## Install other dependences
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+yum -y install epel-release
+
+yum -y install unzip wget
+
+yum -y install \
+    python-pip \
+    python-virtualenv \
+    libjpeg-devel

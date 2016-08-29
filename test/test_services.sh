@@ -29,6 +29,8 @@ else
   curl -I http://${DOCKER_IP}/webclient/login/
 fi
 
+docker logs $CNAME
+
 # stop and cleanup
-#docker stop $CNAME
-#docker rm $CNAME
+docker stop $CNAME
+docker rm $CNAME

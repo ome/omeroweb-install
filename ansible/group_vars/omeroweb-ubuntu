@@ -1,0 +1,19 @@
+omero_user: "omero"
+omero_user_home_dir: "/home/omero"
+
+selinux: False
+daemon: True
+
+ice_version: "3.6"
+system-site-packages: False
+
+omero_version: "OMERO-DEV-breaking-build"
+
+web_prefix:
+web_port: 80
+web_server_conf: "nginx"
+web_server_name: "localhost"
+
+web_session: True
+
+doc: False

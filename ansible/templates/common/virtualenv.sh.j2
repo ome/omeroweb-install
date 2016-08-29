@@ -1,0 +1,26 @@
+{% if doc %}
+## Generate VirtualEnv
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+OMERO_USER=${OMERO_USER:-{{ omero_user }}}
+OMEROVER=${OMEROVER:-{{ omero_version }}}
+ICEVER=${ICEVER:-{{ ice_version }}}
+{% endif %}
+
+virtualenv {{ omero_user_home_dir }}/omerowebvenv
+set +u
+source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+set -u
+
+pip install omego
+{{ omero_user_home_dir }}/omerowebvenv/bin/omego download --ice {{ ice_version }} --branch {{ omero_version }} py
+
+zip=$(ls OMERO.py*.zip)
+zipname=${zip%.zip}
+rm -f $zip
+mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
+
+pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-trial.txt

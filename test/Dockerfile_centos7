@@ -10,23 +10,21 @@ RUN userdel -r omero && \
 	rm -f /etc/sudoers.d/omero && \
 	echo 'root:omero' | chpasswd
 
-ADD ./omeroweb-install-test.zip /tmp/omeroweb-install/
+ADD ./omeroweb-install-test.zip /tmp
 RUN yum -y install initscripts unzip
-RUN unzip /tmp/omeroweb-install/omeroweb-install-test.zip -d /tmp/omeroweb-install/
+RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 # This is so that scripts can detect whether they're in docker
 RUN echo 'export container=docker' > /etc/profile.d/docker.sh
 
-ARG WEBSESSION=false
 ARG ICEVER=3.6
-ARG OS=centos7
-ARG OMERO_USER=omero
 ARG OMEROVER=latest
 ARG WEBPORT=80
+ARG WEBPREFIX=
+ARG WEBSESSION=
 
-RUN OMERO_USER=$OMERO_USER OS=$OS \
-    OMEROVER=$OMEROVER WEBPORT=$WEBPORT \
-    ICEVER=$ICEVER WEBSESSION=$WEBSESSION \
-    /tmp/omeroweb-install/omeroweb-install-test/install.sh
+RUN ICEVER=$ICEVER OMEROVER=$OMEROVER \
+    WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSESSION=$WEBSESSION \
+    /tmp/omeroweb-install-test/omeroweb-install-centos7
 
 EXPOSE 22 80

@@ -1,0 +1,19 @@
+{% if doc %}
+## Daemon
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+{% if doc %}
+cp {{ os }}/omero-web-systemd.service /etc/systemd/system/omero-web.service
+{% else %}
+cp `dirname $0`/omero-web-systemd.service /etc/systemd/system/omero-web.service
+{% endif %}
+
+if [ ! "${container:-}" = docker ]; then
+    systemctl daemon-reload
+fi
+
+systemctl enable omero-web.service

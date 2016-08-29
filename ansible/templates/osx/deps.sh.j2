@@ -1,0 +1,11 @@
+{% if doc %}
+## Install other dependences
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+brew install python
+
+pip install virtualenv

@@ -1,0 +1,17 @@
+{% if doc %}
+## Daemon
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+{% if doc %}
+cp {{ os }}/omero-web-init.d /etc/init.d/omero-web
+{% else %}
+cp `dirname $0`/omero-web-init.d /etc/init.d/omero-web
+{% endif %}
+chmod a+x /etc/init.d/omero-web
+
+update-rc.d -f omero-web remove
+update-rc.d -f omero-web defaults 98 02

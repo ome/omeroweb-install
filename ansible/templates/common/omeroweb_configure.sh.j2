@@ -1,0 +1,26 @@
+{% if doc %}
+## Configure OMERO.web and generate nginx template
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+OMERO_USER=${OMERO_USER:-{{ omero_user }}}
+WEBPREFIX=${WEBPREFIX:-{{ web_prefix }}}
+WEBPORT=${WEBPORT:-{{ web_port }}}
+WEBSERVER_CONF=${WEBSERVER_CONF:-{{ web_server_conf }}}
+{% endif %}
+
+set +u
+source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+set -u
+
+{% if web_prefix %}
+    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.prefix "{{ web_prefix }}"
+    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.static_url "{{ web_prefix }}/static/"
+{% endif %}
+
+{{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.application_server wsgi-tcp
+{{ omero_user_home_dir }}/OMERO.py/bin/omero web config "{{ web_server_conf }}" --http "{{ web_port }}" --servername "{{ web_server_name }}" > {{ omero_user_home_dir }}/nginx.conf.tmp
+
+cat {{ omero_user_home_dir }}/nginx.conf.tmp

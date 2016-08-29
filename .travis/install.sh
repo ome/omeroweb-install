@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./build ${OS}
+
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
     case "${OS}" in
@@ -14,6 +16,6 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
 else
 
-    ./install.sh
+    ./omeroweb-install-osx
 
 fi

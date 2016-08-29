@@ -1,0 +1,14 @@
+{% if doc %}
+## Start up services
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+set +u
+source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+set -u
+
+# Start OMERO.web
+{{ omero_user_home_dir }}/OMERO.py/bin/omero web start

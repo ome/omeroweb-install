@@ -16,28 +16,38 @@ especially the sections on requirements and installation, before using these scr
 The Linux and OS X scripts should automatically download all required files.
 
 
+Prerequisites
+-------------
+
+::
+
+    pip install ansible
+
+
+Building
+--------
+
+::
+
+    ./build (centos7|ubuntu|osx)
+
+
 Running
 -------
 
 on Mac OS X::
 
-    export OS=osx
-    ./install.sh
-    ./run.sh 
+    ./omeroweb-install-osx
+    ./osx/run
 
 on Ubuntu::
 
-    export OMERO_USER=omero
-    export OS=ubuntu
-
-    ./install.sh
-    ./run.sh 
+    ./omeroweb-install-ubuntu
+    ./ubuntu/run
 
 on Centos 7::
 
-    export OMERO_USER=omero
-    export OS=centos7
-    ./install.sh 
+    ./omeroweb-install-centos7
 
 optional:
 

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+set -e -u -x
+
+OMERO_USER=${OMERO_USER:-{{ omero_user }}}
+
+OMEROVER=${OMEROVER:-{{ omero_version }}}
+WEBSESSION=${WEBSESSION:-{{ web_session }}}
+ICEVER=${ICEVER:-{{ ice_version }}}
+WEBPREFIX=${WEBPREFIX:-{{ web_prefix }}}
+WEBPORT=${WEBPORT:-{{ web_port }}}
+WEBSERVER_CONF=${WEBSERVER_CONF:-{{ web_server_conf }}}
+
+path=`dirname $0`/{{ os }}
+
+{% if omero_user %}
+bash $path/create_user.sh
+{% endif %}
+
+# install ZeroC IcePy
+bash $path/deps_ice.sh
+
+# install other dependences
+bash $path/deps.sh
+
+{% if omero_user %}
+su - {{ omero_user }}  -c "OMERO_USER=$OMERO_USER ICEVER=$ICEVER OMEROVER=$OMEROVER bash $path/virtualenv.sh"
+su - {{ omero_user }}  -c "WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF OMERO_USER=$OMERO_USER WEBPORT=$WEBPORT bash $path/omeroweb_configure.sh"
+{% else %}
+bash $path/virtualenv.sh
+bash $path/omeroweb_configure.sh
+{% endif %}
+
+{% if web_session %}
+if [[ $WEBSESSION = *[!\ ]* ]]; then
+    bash $path/deps_web_session.sh
+    {% if omero_user %}
+    su - {{ omero_user }}  -c "OMERO_USER=$OMERO_USER bash $path/websession_configure.sh"
+    {% else %}
+    bash $path/websession_configure.sh
+    {% endif %}
+fi
+{% endif %}
+
+bash $path/nginx.sh
+
+{% if selinux %}
+bash $path/selinux.sh
+{% endif %}
+
+{% if daemon %}
+bash $path/daemon.sh
+{% endif %}
+

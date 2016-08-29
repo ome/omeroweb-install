@@ -1,0 +1,25 @@
+{% if doc %}
+## Install ZeroC IcePy {{ ice_version }}
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+{% if ice_version == "3.6" %}
+# ZeroC Ice 3.6
+yum -y install gcc gcc-c++ \
+libdb-utils \
+openssl-devel bzip2-devel expat-devel
+
+{% elif ice_version == "3.5" %}
+# ZeroC Ice 3.5
+curl -o /etc/yum.repos.d/zeroc-ice-el7.repo \
+http://download.zeroc.com/Ice/3.5/el7/zeroc-ice-el7.repo
+
+yum -y install ice-python
+
+{% else %}
+echo "No Ice version specified!"
+exit(1)
+{% endif %}

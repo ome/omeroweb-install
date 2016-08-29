@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e -u -x
+
+path=`dirname $0`
+
+# clean
+rm -rf $path/$1 $path/doc/omeroweb-install-$1.txt
+
+# build
+mkdir -p $path/$1
+ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/$1 --extra-vars "os=$1"
+
+# build doc
+mkdir -p $path/doc
+ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/$1 --extra-vars "os=$1"

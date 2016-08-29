@@ -1,0 +1,11 @@
+---
+
+- hosts: omeroweb-{{ os }}
+  tasks:
+    - name: Generate omeroweb-install-{{ os }}.txt
+      template:
+        src: "omeroweb-install-doc.txt.j2"
+        dest: "./doc/omeroweb-install-{{ os }}.txt"
+
+  vars:
+    - doc: True

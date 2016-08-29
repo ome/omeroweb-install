@@ -1,0 +1,10 @@
+{% if doc %}
+## Install Redis
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+brew install redis
+brew services start redis
