@@ -10,7 +10,9 @@ OMEROVER=${OMEROVER:-{{ omero_version }}}
 ICEVER=${ICEVER:-{{ ice_version }}}
 {% endif %}
 
-virtualenv {{ omero_user_home_dir }}/omerowebvenv
+virtualenv {{ omero_user_home_dir }}/omerowebvenv {% if system_site_packages %}--system-site-packages{% endif %}
+
+
 set +u
 source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
 set -u

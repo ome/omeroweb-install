@@ -31,7 +31,6 @@ bash $path/virtualenv.sh
 bash $path/omeroweb_configure.sh
 {% endif %}
 
-{% if web_session %}
 if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/deps_web_session.sh
     {% if omero_user %}
@@ -40,7 +39,6 @@ if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/websession_configure.sh
     {% endif %}
 fi
-{% endif %}
 
 bash $path/nginx.sh
 

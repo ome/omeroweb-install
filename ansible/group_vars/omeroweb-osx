@@ -5,7 +5,7 @@ selinux: False
 daemon: False
 
 ice_version: "3.6"
-system-site-packages: False
+system_site_packages: False
 
 omero_version: "OMERO-DEV-breaking-build"
 
@@ -14,6 +14,6 @@ web_port: 8080
 web_server_conf: "nginx"
 web_server_name: "localhost"
 
-web_session: True
+web_session: False
 
 doc: False

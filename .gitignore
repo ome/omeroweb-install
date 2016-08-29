@@ -1,4 +1,6 @@
-centos7/*
-ubuntu/*
-osx/*
-doc/*
+ansible/*.retry
+omeroweb-install-*
+centos7/**
+ubuntu/**
+osx/**
+doc/**
