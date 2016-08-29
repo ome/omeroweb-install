@@ -28,7 +28,6 @@
         src: "common/websession_configure.sh.j2"
         dest: "./{{ os }}/websession_configure.sh"
         mode: a+x
-      when: web_session
 
     - name: Generate {{ os }}/deps.sh
       template:
@@ -45,7 +44,6 @@
         src: "{{ os }}/deps_web_session.sh.j2"
         dest: "./{{ os }}/deps_web_session.sh"
         mode: a+x
-      when: web_session
 
     - name: Generate {{ os }}/nginx.sh
       template:
