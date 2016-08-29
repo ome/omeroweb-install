@@ -13,6 +13,8 @@
         src: "common/create_user.sh.j2"
         dest: "./{{ os }}/create_user.sh"
         mode: a+x
+      when: omero_user|default(None) != None
+
     - name: Generate common/omeroweb_configure.sh
       template:
         src: "common/omeroweb_configure.sh.j2"
@@ -39,6 +41,7 @@
         src: "{{ os }}/deps_ice.sh.j2"
         dest: "./{{ os }}/deps_ice.sh"
         mode: a+x
+      when: "{{ ice_version }}"
     - name: Generate {{ os }}/deps_web_session.sh
       template:
         src: "{{ os }}/deps_web_session.sh.j2"
