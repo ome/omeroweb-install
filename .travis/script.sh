@@ -16,7 +16,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
         echo "Testing in VM"
         case "${OS}" in
             ubuntu)
-                /tmp/ubuntu/run
+                /tmp/omeroweb-install/ubuntu/run
                 ;;
         esac
     fi
