@@ -2,12 +2,13 @@
 
 set -e -u -x
 
+OS=${OS:-osx}
 WEBPORT=${WEBPORT:-80}
 WEBPREFIX=${WEBPREFIX:-}
 
 path=`dirname $0`
 
-bash $path/../osx/run
+bash $path/../${OS}/run
 
 sleep 5
 

@@ -8,12 +8,12 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
             ;;
         ubuntu)
             ./test/test_services.sh
-            #./linux/ubuntu/run.sh
+            #./test/test_web.sh
             ;;
     esac
 
 else
 
-    ./test/test_osx.sh
+    ./test/test_web.sh
 
 fi
