@@ -5,6 +5,8 @@ set -e -u -x
 OS=${OS:-centos7}
 OMEROVER=${OMEROVER:-latest}
 WEBSESSION=${WEBSESSION:-}
+WEBPREFIX=${WEBPREFIX:-}
+WEBPORT=${WEBPORT:-80}
 ICEVER=${ICEVER:-3.6}
 
 CNAME=omeroweb_install_test_$OS
@@ -23,10 +25,10 @@ docker inspect -f {{.State.Running}} $CNAME
 
 # Log in to OMERO.web
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
-  curl -I http://localhost:8888/webclient/login/
+  curl -I http://localhost:8888/${WEBPREFIX}/webclient/login/
 else
   DOCKER_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $CNAME)
-  curl -I http://${DOCKER_IP}/webclient/login/
+  curl -I http://${DOCKER_IP}:${WEBPORT}/${WEBPREFIX}/webclient/login/
 fi
 
 docker logs $CNAME

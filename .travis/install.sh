@@ -1,7 +1,5 @@
 #!/bin/bash
 
-./build ${OS}
-
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
     if [ "$DOCKER" = true ] ; then
@@ -23,7 +21,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
                 mv `pwd` /tmp/
                 chmod 755 -R /tmp/$current_dir
 
-                sudo /tmp/omeroweb-install-ubuntu
+                sudo /tmp/$current_dir/omeroweb-install-ubuntu
                 exit
                 ;;
         esac

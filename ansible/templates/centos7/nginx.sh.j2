@@ -24,6 +24,11 @@ mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.disabled
 mv {{ omero_user_home_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
 
 systemctl enable nginx
+
+{% if doc %}
+systemctl start nginx
+{% else %}
 if [ ! "${container:-}" = docker ]; then
     systemctl start nginx
 fi
+{% endif %}

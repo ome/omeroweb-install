@@ -18,3 +18,5 @@ else
     sudo pip install -r requirements.txt
 
 fi
+
+./build ${OS}

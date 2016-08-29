@@ -7,9 +7,12 @@ OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 OMEROVER=${OMEROVER:-{{ omero_version }}}
 WEBSESSION=${WEBSESSION:-{{ web_session }}}
 ICEVER=${ICEVER:-{{ ice_version }}}
+
 WEBPREFIX=${WEBPREFIX:-{{ web_prefix }}}
 WEBPORT=${WEBPORT:-{{ web_port }}}
 WEBSERVER_CONF=${WEBSERVER_CONF:-{{ web_server_conf }}}
+WEBSERVER_NAME=${WEBSERVER_NAME:-{{ web_server_name }}}
+
 
 path=`dirname $0`/{{ os }}
 
@@ -24,8 +27,8 @@ bash $path/deps_ice.sh
 bash $path/deps.sh
 
 {% if omero_user %}
-su - {{ omero_user }}  -c "OMERO_USER=$OMERO_USER ICEVER=$ICEVER OMEROVER=$OMEROVER bash $path/virtualenv.sh"
-su - {{ omero_user }}  -c "WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF OMERO_USER=$OMERO_USER WEBPORT=$WEBPORT bash $path/omeroweb_configure.sh"
+su - {{ omero_user }}  -c "ICEVER=$ICEVER OMEROVER=$OMEROVER bash $path/virtualenv.sh"
+su - {{ omero_user }}  -c "WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
 {% else %}
 bash $path/virtualenv.sh
 bash $path/omeroweb_configure.sh
@@ -34,7 +37,7 @@ bash $path/omeroweb_configure.sh
 if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/deps_web_session.sh
     {% if omero_user %}
-    su - {{ omero_user }}  -c "OMERO_USER=$OMERO_USER bash $path/websession_configure.sh"
+    su - {{ omero_user }}  -c "bash $path/websession_configure.sh"
     {% else %}
     bash $path/websession_configure.sh
     {% endif %}

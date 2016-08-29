@@ -58,10 +58,19 @@ custom build::
 Testing in DOCKER
 -----------------
 
+| Env var        | default | optional                | example                  |
+|----------------|---------|-------------------------|--------------------------|
+| ICEVER         | 3.6     | 3.5|3.6                 |                          |
+| OMEROVER       | latest  |                         | OMERO-DEV-breaking-build |
+| WEBPORT        | 80      |                         | 8080                     |
+| WEBPREFIX      |         |                         | /omero                   |
+| WEBSERVER_NAME |         |                         | omero.example.com        |
+| WEBSERVER_CONF | nginx   | nginx|nginx-development |                          |
+| WEBSESSION     | False   | True|False              |                          |
+
+
 for OS [centos7, ubuntu]::
 
-    export OS=OS
-    export OMEROVER=OMEROVER
     ./test/docker-build.sh
     ./test/test_services.sh 
 

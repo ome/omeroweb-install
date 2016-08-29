@@ -5,10 +5,10 @@
 
 set -e -u -x
 
-OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 WEBPREFIX=${WEBPREFIX:-{{ web_prefix }}}
 WEBPORT=${WEBPORT:-{{ web_port }}}
 WEBSERVER_CONF=${WEBSERVER_CONF:-{{ web_server_conf }}}
+WEBSERVER_NAME=${WEBSERVER_NAME:-{{ web_server_name }}}
 {% endif %}
 
 set +u
@@ -16,11 +16,11 @@ source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
 set -u
 
 if [[ $WEBPREFIX = *[!\ ]* ]]; then
-    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.prefix "{{ web_prefix }}"
-    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.static_url "{{ web_prefix }}/static/"
+    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.prefix "${WEBPREFIX}"
+    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.static_url "${WEBPREFIX}/static/"
 fi
 
 {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.application_server wsgi-tcp
-{{ omero_user_home_dir }}/OMERO.py/bin/omero web config "{{ web_server_conf }}" --http "{{ web_port }}" --servername "{{ web_server_name }}" > {{ omero_user_home_dir }}/nginx.conf.tmp
+{{ omero_user_home_dir }}/OMERO.py/bin/omero web config "${WEBSERVER_CONF}" --http "${WEBPORT}" --servername "${WEBSERVER_NAME}" > {{ omero_user_home_dir }}/nginx.conf.tmp
 
 cat {{ omero_user_home_dir }}/nginx.conf.tmp

@@ -8,6 +8,8 @@ OMEROVER=${OMEROVER:-latest}
 WEBPORT=${WEBPORT:-}
 WEBPREFIX=${WEBPREFIX:-}
 WEBSESSION=${WEBSESSION:-}
+WEBSERVER_CONF=${WEBSERVER_CONF:-}
+WEBSERVER_NAME=${WEBSERVER_NAME:-}
 
 CACHE=${CACHE:---no-cache}
 
@@ -28,4 +30,6 @@ docker build -t ${IMAGE} \
     --build-arg WEBPORT=${WEBPORT} \
     --build-arg WEBPREFIX=${WEBPREFIX} \
     --build-arg WEBSESSION=${WEBSESSION} \
+    --build-arg WEBSERVER_CONF=${WEBSERVER_CONF} \
+    --build-arg WEBSERVER_NAME=${WEBSERVER_NAME} \
     ${CACHE} $path -f $path/Dockerfile_$OS

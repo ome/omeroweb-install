@@ -17,6 +17,10 @@ sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
 rm /etc/nginx/sites-enabled/default
 mv {{ omero_user_home_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
 
+{% if doc %}
+service nginx start
+{% else %}
 if [ ! "${container:-}" = docker ]; then
-    service nginx start
+    service nginx restart
 fi
+{% endif %}
