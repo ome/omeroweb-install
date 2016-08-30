@@ -12,27 +12,27 @@ matrix:
       dist: trusty
       language: docker
       env:
-        - DOCKER=true OS=centos7 ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - DOCKER=true OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build
     - os: linux
       dist: trusty
       language: docker
       env:
-        - DOCKER=true OS=centos7 ICE=3.5 OMEROVER=OMERO-DEV-breaking-build
+        - DOCKER=true OS=centos7 ICEVER=3.5 OMEROVER=OMERO-DEV-breaking-build
     - os: linux
       dist: trusty
       language: docker
       env:
-        - DOCKER=true OS=ubuntu ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - DOCKER=true OS=ubuntu ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build
     - os: linux
       dist: trusty
       language: python
       python: 2.7
       env:
-        - OS=ubuntu ICE=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - OS=ubuntu ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build
     - os: osx
       osx_image: xcode7.3
       env:
-        - OS=osx ICE=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPORT=8080 WEBPREFIX=/omero
+        - OS=osx ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPORT=8080 WEBPREFIX=/omero
 
 before_install:
   - python --version
