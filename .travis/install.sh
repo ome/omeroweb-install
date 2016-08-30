@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u -x
+
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
     if [ "$DOCKER" = true ] ; then
