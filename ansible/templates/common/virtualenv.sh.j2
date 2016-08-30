@@ -26,12 +26,13 @@ pip install omego
 zip=$(ls OMERO.py*.zip)
 zipname=${zip%.zip}
 rm -f $zip
-mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
+if [ ! -d "{{ omero_user_home_dir }}/OMERO.py" ]; then
+    mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
+fi
 
 {% if ice_version == '3.5' %}
 pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-nginx.txt
-pip install "numpy>=1.9"
-pip install "Pillow<3.4"
+pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-common-trial.txt
 {% else %}
 pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-trial.txt
 {% endif %}

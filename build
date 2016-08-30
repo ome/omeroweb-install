@@ -25,6 +25,12 @@ do
         --web-server-name=*)
             web_server_name="${opt#*=}"
             ;;
+        --username=*)
+            username="${opt#*=}"
+            ;;
+        --clean=*)
+            clean="${opt#*=}"
+            ;;
         *)
                 # unknown option
         ;;
@@ -54,6 +60,9 @@ fi
 if [ "$ice_version" == "3.5" ]; then
     arr=(${arr[@]} "system_site_packages" "True")
 fi
+if [ ${clean:-} = true ]; then
+    arr=(${arr[@]} "clean" "True")
+fi
 
 vars=(${arr[@]})
 len=${#arr[@]}
@@ -69,13 +78,16 @@ done
 printf "}"
 echo)"
 
-# clean
-rm -rf $path/${os}-ice${ice_version} $path/doc/omeroweb-install-${os}.txt
-
 # build
-mkdir -p $path/${os}-ice${ice_version}
-ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}"
+if [[ ${username:-} = *[!\ ]* ]]; then
+    ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}" -u ${username}
+else
+    ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}"
+fi
 
 # build doc
-mkdir -p $path/doc
-ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}"
+if [[ ${username:-} = *[!\ ]* ]]; then
+    ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}" -u ${username}
+else
+    ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}"
+fi

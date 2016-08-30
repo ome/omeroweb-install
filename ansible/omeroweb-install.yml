@@ -2,7 +2,17 @@
 
 - hosts: omeroweb-{{ prefix }}
   tasks:
-    - name: Generate omeroweb-install-{{ prefix }}.sh
+    - name: Delete {{ os }}-{{ prefix }} dir (clean {{ clean }})
+      file:
+        path: "./{{ prefix }}"
+        state: absent
+      when: clean
+    - name: Create {{ os }}-{{ prefix }} dir
+      file:
+        path: "./{{ prefix }}"
+        state: directory
+        mode: 0755
+    - name: Generate omeroweb-install-{{ prefix }}
       template:
         src: "omeroweb-install.sh.j2"
         dest: "./omeroweb-install-{{ prefix }}"

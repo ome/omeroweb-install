@@ -2,6 +2,16 @@
 
 - hosts: omeroweb-{{ prefix }}
   tasks:
+    - name: Clean doc
+      file:
+        path: "./doc/omeroweb-install-{{ prefix }}.txt"
+        state: absent
+      when: clean
+    - name: Create doc dir
+      file:
+        path: "./doc"
+        state: directory
+        mode: 0755
     - name: Generate omeroweb-install-{{ prefix }}.txt
       template:
         src: "omeroweb-install-doc.txt.j2"

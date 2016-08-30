@@ -15,7 +15,7 @@ apt-get -y install nginx
 #end-install
 sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
 rm /etc/nginx/sites-enabled/default
-mv {{ omero_user_home_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
+cp {{ omero_user_home_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
 
 {% if doc %}
 service nginx start
