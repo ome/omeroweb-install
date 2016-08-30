@@ -28,6 +28,6 @@ ARG WEBSERVER_NAME
 RUN ICEVER=$ICEVER OMEROVER=$OMEROVER \
     WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSESSION=$WEBSESSION \
     WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME \
-    /tmp/omeroweb-install-test/omeroweb-install-centos7
+    /tmp/omeroweb-install-test/omeroweb-install-centos7-ice${ICEVER}
 
 EXPOSE 22 80

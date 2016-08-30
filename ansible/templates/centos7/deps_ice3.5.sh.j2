@@ -1,0 +1,14 @@
+{% if doc %}
+## Install ZeroC IcePy {{ ice_version }} dependences
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+# ZeroC Ice 3.5
+curl -o /etc/yum.repos.d/zeroc-ice-el7.repo \
+http://download.zeroc.com/Ice/3.5/el7/zeroc-ice-el7.repo
+
+yum -y install \
+    ice-python

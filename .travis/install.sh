@@ -21,7 +21,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
                 mv `pwd` /tmp/
                 chmod 755 -R /tmp/$current_dir
 
-                sudo /tmp/$current_dir/omeroweb-install-ubuntu
+                sudo /tmp/$current_dir/omeroweb-install-ubuntu-ice${ICEVER}
                 exit
                 ;;
         esac
@@ -29,6 +29,6 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
 else
 
-    ./omeroweb-install-osx
+    ./omeroweb-install-osx-ice${ICEVER}
 
 fi

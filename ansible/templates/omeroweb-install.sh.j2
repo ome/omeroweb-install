@@ -2,32 +2,22 @@
 
 set -e -u -x
 
-OMERO_USER=${OMERO_USER:-{{ omero_user }}}
+{% include 'common/arg_vars.j2' with context %}
 
-OMEROVER=${OMEROVER:-{{ omero_version }}}
-WEBSESSION=${WEBSESSION:-{{ web_session }}}
-ICEVER=${ICEVER:-{{ ice_version }}}
-
-WEBPREFIX=${WEBPREFIX:-{{ web_prefix }}}
-WEBPORT=${WEBPORT:-{{ web_port }}}
-WEBSERVER_CONF=${WEBSERVER_CONF:-{{ web_server_conf }}}
-WEBSERVER_NAME=${WEBSERVER_NAME:-{{ web_server_name }}}
-
-
-path=`dirname $0`/{{ os }}
+path=`dirname $0`/{{ os }}-ice{{ ice_version }}
 
 {% if omero_user %}
 bash $path/create_user.sh
 {% endif %}
 
 # install ZeroC IcePy
-bash $path/deps_ice.sh
+bash $path/deps_ice{{ ice_version }}.sh
 
 # install other dependences
 bash $path/deps.sh
 
 {% if omero_user %}
-su - {{ omero_user }}  -c "ICEVER=$ICEVER OMEROVER=$OMEROVER bash $path/virtualenv.sh"
+su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/virtualenv.sh"
 su - {{ omero_user }}  -c "WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
 {% else %}
 bash $path/virtualenv.sh

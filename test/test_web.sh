@@ -8,7 +8,7 @@ WEBPREFIX=${WEBPREFIX:-}
 
 path=`dirname $0`
 
-bash $path/../${OS}/run
+bash $path/../${OS}-ice${ICEVER}/run
 
 sleep 5
 

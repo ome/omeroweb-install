@@ -29,7 +29,20 @@ Building
 
 ::
 
-    ./build (centos7|ubuntu|osx)
+    ./build --os=(centos7|ubuntu|osx)
+
+
+Additional arguments
+
+| ARG                | default | optional                | example                  |
+|--------------------|---------|-------------------------|--------------------------|
+| ice-version        | 3.6     | 3.5|3.6                 |                          |
+| omero-version      | latest  |                         | OMERO-DEV-breaking-build |
+| web-port           | 80      |                         | 8080                     |
+| web-prefix         |         |                         | /omero                   |
+| web-server-name    |         |                         | omero.example.com        |
+| web-server-config  | nginx   | nginx|nginx-development |                          |
+| web-session        | False   | True|False              |                          |
 
 
 Running
@@ -51,14 +64,7 @@ on Centos 7::
 
 optional:
 
-custom build::
-
-   export OMEROVER=OMERO-DEV-breaking-build 
-
-Testing in DOCKER
------------------
-
-| Env var        | default | optional                | example                  |
+| VAR            | default | optional                | example                  |
 |----------------|---------|-------------------------|--------------------------|
 | ICEVER         | 3.6     | 3.5|3.6                 |                          |
 | OMEROVER       | latest  |                         | OMERO-DEV-breaking-build |
@@ -67,6 +73,9 @@ Testing in DOCKER
 | WEBSERVER_NAME |         |                         | omero.example.com        |
 | WEBSERVER_CONF | nginx   | nginx|nginx-development |                          |
 | WEBSESSION     | False   | True|False              |                          |
+
+Testing in DOCKER
+-----------------
 
 
 for OS [centos7, ubuntu]::

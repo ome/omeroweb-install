@@ -1,11 +1,12 @@
 ---
 
-- hosts: omeroweb-{{ os }}
+- hosts: omeroweb-{{ prefix }}
   tasks:
-    - name: Generate omeroweb-install-{{ os }}.txt
+    - name: Generate omeroweb-install-{{ prefix }}.txt
       template:
         src: "omeroweb-install-doc.txt.j2"
-        dest: "./doc/omeroweb-install-{{ os }}.txt"
+        dest: "./doc/omeroweb-install-{{ prefix }}.txt"
 
   vars:
     - doc: True
+    - prefix: "{{ os }}-ice{{ ice_version }}"

@@ -19,4 +19,4 @@ else
 
 fi
 
-./build ${OS}
+./build --os=${OS} --omero_version=${OMEROVER:-} --ice_version=${ICEVER:-} web_prefix=${WEBPREFIX:-} web_port=${WEBPORT:-} web_server_conf=${WEBSERVER_CONF:-} web_server_name=${WEBSERVER_NAME:-}

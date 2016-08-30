@@ -9,7 +9,7 @@ WEBPREFIX=${WEBPREFIX:-}
 WEBPORT=${WEBPORT:-80}
 ICEVER=${ICEVER:-3.6}
 
-CNAME=omeroweb_install_test_$OS
+CNAME=omeroweb_install_test_${OS}_ice${ICEVER}
 
 # start docker container
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then

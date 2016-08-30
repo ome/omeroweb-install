@@ -1,0 +1,10 @@
+{% if doc %}
+## Install ZeroC IcePy {{ ice_version }}
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+# ZeroC Ice 3.5
+apt-get -y install python-zeroc-ice
