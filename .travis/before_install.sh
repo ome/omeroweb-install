@@ -4,7 +4,7 @@ set -e -u -x
 
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
-    if [ "$DOCKER" = true ] ; then
+    if [ ${DOCKER} = true ] ; then
         echo "Installing Docker"
         sudo apt-get update
         sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" docker-engine
@@ -21,4 +21,4 @@ else
 
 fi
 
-./build --os=${OS} --omero_version=${OMEROVER:-} --ice_version=${ICEVER:-} web_prefix=${WEBPREFIX:-} web_port=${WEBPORT:-} web_server_conf=${WEBSERVER_CONF:-} web_server_name=${WEBSERVER_NAME:-}
+./build --os=${OS} --omero-version=${OMEROVER:-} --ice-version=${ICEVER:-} web-prefix=${WEBPREFIX:-} web-port=${WEBPORT:-} web-server-conf=${WEBSERVER_CONF:-} web-server-name=${WEBSERVER_NAME:-}
