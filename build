@@ -13,6 +13,18 @@ do
         --ice-version=*)
             ice_version="${opt#*=}"
             ;;
+        --web-prefix=*)
+            web_prefix="${opt#*=}"
+            ;;
+        --web-port=*)
+            web_port="${opt#*=}"
+            ;;
+        --web-server-conf=*)
+            web_server_conf="${opt#*=}"
+            ;;
+        --web-server-name=*)
+            web_server_name="${opt#*=}"
+            ;;
         *)
                 # unknown option
         ;;
@@ -21,17 +33,49 @@ done
 
 path=`dirname $0`
 
-if [ "$ice_version" == "3.5" ]; then
-    system_site_packages="True"
+
+# script used from https://gist.github.com/Jimilian/c3a2d8bb6df1b8ca64d02a10d97f510b
+arr=();
+
+arr=("os" "${os}")
+arr=(${arr[@]} "ice_version" "${ice_version}")
+if [[ ${web_prefix:-} = *[!\ ]* ]]; then
+    arr=(${arr[@]} "web_prefix" "${web_prefix}")
 fi
+if [[ ${web_port:-} = *[!\ ]* ]]; then
+    arr=(${arr[@]} "web_port" "${web_port}")
+fi
+if [[ ${web_server_conf:-} = *[!\ ]* ]]; then
+    arr=(${arr[@]} "web_pserver_conf" "${web_server_conf}")
+fi
+if [[ ${web_server_name:-} = *[!\ ]* ]]; then
+    arr=(${arr[@]} "web_pserver_name" "${web_server_name}")
+fi
+if [ "$ice_version" == "3.5" ]; then
+    arr=(${arr[@]} "system_site_packages" "True")
+fi
+
+vars=(${arr[@]})
+len=${#arr[@]}
+
+extravars="$(printf "{"
+for (( i=0; i<len; i+=2 ))
+do
+    printf "\"${vars[i]}\": \"${vars[i+1]}\""
+    if [ $i -lt $((len-2)) ] ; then
+        printf ", "
+    fi
+done
+printf "}"
+echo)"
 
 # clean
 rm -rf $path/${os}-ice${ice_version} $path/doc/omeroweb-install-${os}.txt
 
 # build
 mkdir -p $path/${os}-ice${ice_version}
-ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "os=${os} ice_version=${ice_version} system_site_packages=${system_site_packages:-}" 
+ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}"
 
 # build doc
 mkdir -p $path/doc
-ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "os=${os} ice_version=${ice_version} system_site_packages=${system_site_packages:-}"
+ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/${os}-ice${ice_version} --extra-vars "${extravars}"

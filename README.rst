@@ -29,8 +29,10 @@ Building
 
 ::
 
-    ./build --os=(centos7|ubuntu|osx)
+    ./build --os=(centos7|ubuntu|osx) --ice-version=(3.6|3.5)
 
+Please note that IcePy 3.5 has to be instlled from RPM, this result in generating
+virtualenv with --system-site-packages
 
 Additional arguments
 
@@ -48,21 +50,7 @@ Additional arguments
 Running
 -------
 
-on Mac OS X::
-
-    ./omeroweb-install-osx
-    ./osx/run
-
-on Ubuntu::
-
-    ./omeroweb-install-ubuntu
-    ./ubuntu/run
-
-on Centos 7::
-
-    ./omeroweb-install-centos7
-
-optional:
+export environment variables
 
 | VAR            | default | optional                | example                  |
 |----------------|---------|-------------------------|--------------------------|
@@ -73,6 +61,27 @@ optional:
 | WEBSERVER_NAME |         |                         | omero.example.com        |
 | WEBSERVER_CONF | nginx   | nginx|nginx-development |                          |
 | WEBSESSION     | False   | True|False              |                          |
+
+
+and run
+
+on Mac OS X::
+
+    ./omeroweb-install-osx-ice3.6
+    ./osx/run
+
+on Ubuntu::
+
+    ./omeroweb-install-ubuntu-ice3.6
+    ./ubuntu/run
+
+on Centos 7::
+
+    ./omeroweb-install-centos7-ice3.6
+
+or
+
+    ./omeroweb-install-centos7-ice3.5
 
 Testing in DOCKER
 -----------------
