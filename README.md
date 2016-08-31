@@ -92,7 +92,7 @@ To run installation scripts on a remote host:
 
     $ ssh bob@hostname
     $ mv centos7-ice3.6 omeroweb-install-centos7-ice3.6 /tmp/
-    $ sudo /tmp/omeroweb-install-osx-ice3.6  ## absolute path is required
+    $ sudo /tmp/omeroweb-install-centos7-ice3.6  ## absolute path is required
 
 
 Testing in DOCKER
