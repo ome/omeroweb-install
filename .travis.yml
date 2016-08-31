@@ -10,23 +10,24 @@ matrix:
   include:
     - os: linux
       dist: trusty
-      language: docker
       env:
-        - DOCKER=true OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build DOCKER=true ANSIBLE=true
     - os: linux
       dist: trusty
-      language: docker
       env:
-        - DOCKER=true OS=centos7 ICEVER=3.5 OMEROVER=OMERO-DEV-breaking-build
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build DOCKER=true ANSIBLE=false
     - os: linux
       dist: trusty
-      language: docker
       env:
-        - DOCKER=true OS=ubuntu ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build
+        - OS=centos7 ICEVER=3.5 OMEROVER=OMERO-DEV-breaking-build DOCKER=true ANSIBLE=false
+    - os: linux
+      dist: trusty
+      env:
+        - OS=ubuntu ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build DOCKER=true ANSIBLE=false
     - os: osx
       osx_image: xcode7.3
       env:
-        - DOCKER=false OS=osx ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPORT=8080 WEBPREFIX=/omero
+        - OS=osx ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPORT=8080 WEBPREFIX=/omero DOCKER=false ANSIBLE=false 
 
 before_install:
   - python --version

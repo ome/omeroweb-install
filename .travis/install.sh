@@ -18,13 +18,14 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
         echo "Testing in VM"
         case "${OS}" in
             ubuntu)
-
-                current_dir=${PWD##*/}
-                mv `pwd` /tmp/
-                chmod 755 -R /tmp/$current_dir
-
-                sudo /tmp/$current_dir/omeroweb-install-ubuntu-ice${ICEVER}
-                exit
+                if [ "$ANSIBLE" = true ] ; then
+                    ./test/docker-build-ansible.sh
+                else
+                    current_dir=${PWD##*/}
+                    mv `pwd` /tmp/
+                    chmod 755 -R /tmp/$current_dir
+                    sudo /tmp/$current_dir/omeroweb-install-ubuntu-ice${ICEVER}
+                fi
                 ;;
         esac
     fi

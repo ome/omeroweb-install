@@ -15,8 +15,18 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
                 ;;
         esac
     else
-        echo "Testing installation only in VM"
-        echo "cron is failing with: 'cron: can't lock /var/run/crond.pid, otherpid may be 1474: Resource temporarily unavailable'"
+        echo "Testing in VM"
+        case "${OS}" in
+            ubuntu)
+                if [ "$ANSIBLE" = true ] ; then
+                    (cd test && ./test_ansible.sh)
+                else
+                    echo "Testing installation only in VM"
+                    echo "cron is failing with: 'cron: can't lock /var/run/crond.pid, otherpid may be 1474: Resource temporarily unavailable'"
+                fi
+                ;;
+        esac
+        
     fi
 else
 

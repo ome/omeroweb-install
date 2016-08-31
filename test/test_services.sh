@@ -11,9 +11,6 @@ ICEVER=${ICEVER:-3.6}
 
 CNAME=omeroweb_install_test_${OS}_ice${ICEVER}
 
-docker stop $CNAME
-docker rm $CNAME
-
 # start docker container
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
     docker run -d --privileged -p 8888:80 --name $CNAME $CNAME
