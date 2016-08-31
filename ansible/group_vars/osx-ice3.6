@@ -1,10 +1,12 @@
 # INTERNAL CONFIG DON'T CHANGE
 
 clean:
+os: osx
+ice_version: "3.6"
 
 doc: False
 doc_conf:
-  os_full_name: Ubuntu
+  os_full_name: Mac OS X
 
 default:
   web_prefix:
@@ -12,15 +14,14 @@ default:
   web_server_conf: nginx
   web_server_name: localhost
 
-omero_user: "omero"
-omero_user_home_dir: "/home/{{ omero_user }}"
+omero_user:
+omero_user_home_dir: "~"
 selinux: False
-daemon: True
+daemon: False
 
 # VARS
 
 omero_version: "OMERO-DEV-breaking-build"
-ice_version: "3.6"
 system_site_packages:
 web_session:
 

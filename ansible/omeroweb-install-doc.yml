@@ -1,6 +1,6 @@
 ---
 
-- hosts: omeroweb-{{ prefix }}
+- hosts: all
   tasks:
     - name: Clean doc
       file:
