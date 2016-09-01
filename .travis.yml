@@ -27,6 +27,10 @@ matrix:
       dist: trusty
       env:
         - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build DOCKER=true ANSIBLE=true
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true ANSIBLE=true
     # ubuntu
     - os: linux
       dist: trusty

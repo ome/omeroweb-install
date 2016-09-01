@@ -13,7 +13,7 @@ CNAME=omeroweb_install_test_${OS}_ice${ICEVER}
 
 # start docker container
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
-    docker run -d --privileged -p 8888:80 --name $CNAME $CNAME
+    docker run -d --privileged -p 8888:${WEBPORT} --name $CNAME $CNAME
 else
     docker run -d --name $CNAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /run $CNAME
 fi
