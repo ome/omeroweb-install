@@ -2,10 +2,10 @@
 
 set -e -u -x
 
-if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
+if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
 
-    if [ "$DOCKER" = true ] ; then
-        echo "Testing in Docker"
+    if ${DOCKER} ; then
+        echo "Testing in Docker!"
         case "${OS}" in
             centos7)
                 ./test/docker-build.sh
@@ -15,10 +15,10 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
                 ;;
         esac
     else
-        echo "Testing in VM"
+        echo "Testing in local system!"
         case "${OS}" in
             ubuntu)
-                if [ "$ANSIBLE" = true ] ; then
+                if ${ANSIBLE:-} ; then
                     ./test/docker-build-ansible.sh
                 else
                     current_dir=${PWD##*/}

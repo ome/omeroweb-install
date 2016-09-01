@@ -42,7 +42,7 @@ cat << EOF > ${OS}-ice${ICEVER}
 ${DOCKER_IP} ansible_port=2222 ansible_host=${DOCKER_IP} ansible_user=${OS} ansible_ssh_pass=${OS}
 EOF
 
-ansible-playbook $path/../ansible/omeroweb-install.yml -i ${OS}-ice${ICEVER} --extra-vars "web_prefix=${WEBPREFIX} web_server_name=${WEBSERVER_NAME} web_port=${WEBPORT} web_server_conf=${WEBSERVER_CONF} clean=True"
+ansible-playbook $path/../ansible/omeroweb-install.yml -i ${OS}-ice${ICEVER} --extra-vars "web_prefix=${WEBPREFIX} web_server_name=${WEBSERVER_NAME} web_port=${WEBPORT} clean=True"
 docker exec -it ${IMAGE} /bin/bash -c "su - ${OS} -c \"mv ~/${OS}-ice${ICEVER} ~/omeroweb-install-${OS}-ice${ICEVER} /tmp/\""
 docker exec -it ${IMAGE} /bin/bash -c "su - ${OS} -c \"sudo /tmp/omeroweb-install-${OS}-ice${ICEVER}\""
 
@@ -50,7 +50,7 @@ docker logs ${IMAGE}
 
 #test 
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
-    curl -I http://${DOCKER_IP}:8888/${WEBPREFIX}/webclient/login/
+    curl -I http://${DOCKER_IP}:8888${WEBPREFIX}/webclient/login/
 else
     curl -I http://${DOCKER_IP}:${WEBPORT}${WEBPREFIX}/webclient/login/
 fi

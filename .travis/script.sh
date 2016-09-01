@@ -2,9 +2,9 @@
 
 set -e -u -x
 
-if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
+if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
 
-    if [ "$DOCKER" = true ] ; then
+    if ${DOCKER} ; then
         echo "Testing in Docker"
         case "${OS}" in
             centos7)
@@ -18,7 +18,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
         echo "Testing in VM"
         case "${OS}" in
             ubuntu)
-                if [ "$ANSIBLE" = true ] ; then
+                if ${ANSIBLE:-} ; then
                     (cd test && ./test_ansible.sh)
                 else
                     echo "Testing installation only in VM"

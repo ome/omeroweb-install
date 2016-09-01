@@ -51,13 +51,12 @@ Extra vars arguments:
 | web_port           | 80      |                         | 8080                     |
 | web_prefix         |         |                         | /omero                   |
 | web_server_name    |         |                         | omero.example.com        |
-| web_server_config  | nginx   | nginx|nginx-development |                          |
 | web_session        | False   | True|False              |                          |
 | clean              | False   | True|False              |                          |
 
 example usage:
 
-    ansible-playbook ./ansible/omeroweb-install.yml -i ./hosts/centos7-ice3.6 --extra-vars "web_prefix=/omero web_server_name=10.0.51.137 web_port=80 web_server_conf=nginx"
+    ansible-playbook ./ansible/omeroweb-install.yml -i ./hosts/centos7-ice3.6 --extra-vars "web_prefix=/omero web_server_name=IP_GOES_HERE web_port=80"
 
 Running
 -------
@@ -70,7 +69,6 @@ Environment variables:
 | WEBPORT        | 80      |                         | 8080                     |
 | WEBPREFIX      |         |                         | /omero                   |
 | WEBSERVER_NAME |         |                         | omero.example.com        |
-| WEBSERVER_CONF | nginx   | nginx|nginx-development |                          |
 | WEBSESSION     | False   | True|False              |                          |
 
 
@@ -104,13 +102,16 @@ To run installation scripts on a remote host:
 Testing in DOCKER
 -----------------
 
-
 for OS [centos7, ubuntu]
 
-    ./test/docker-build.sh
-    ./test/test_services.sh 
-
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero .travis/before_install.sh
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
+ 
+ To test remote build set `ANSIBLE=true`
+Note: make sure you always set `DOCKER=true` when running local test. Otherwise it will attempt to install OMERO.web on you local machine
 Unfortunately no docker container for Mac OS X
+
 
 Copyright
 ---------

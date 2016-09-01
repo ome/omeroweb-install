@@ -2,27 +2,29 @@
 
 set -e -u -x
 
-if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
+if ${TRAVIS:-}; then
+    if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then
 
-    if [ ${DOCKER} = true ] ; then
-        echo "Installing Docker"
-        sudo apt-get update
-        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" docker-engine
-        sudo apt-get -y install shunit2
+        if ${DOCKER} ; then
+            echo "Installing Docker"
+            sudo apt-get update
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" docker-engine
+            sudo apt-get -y install shunit2
+        fi
+
+    else
+
+        brew update
+        sudo easy_install pip
+
     fi
 
+    # install ansible
     sudo pip install -r requirements.txt
-
-else
-
-    brew update
-    sudo easy_install pip
-    sudo pip install -r requirements.txt
-
 fi
 
-# process env vars
-# script used from https://gist.github.com/Jimilian/c3a2d8bb6df1b8ca64d02a10d97f510b
+# process env vars to pass to ansible --extra-vars accepts json dict
+# script from https://gist.github.com/Jimilian/c3a2d8bb6df1b8ca64d02a10d97f510b
 arr=();
 
 arr=("os" "${OS}")
@@ -43,7 +45,6 @@ if [ "${ICEVER}" == "3.5" ]; then
     arr=(${arr[@]} "system_site_packages" "True")
 fi
 
-
 vars=(${arr[@]})
 len=${#arr[@]}
 
@@ -58,8 +59,10 @@ done
 printf "}"
 echo)"
 
-path=`dirname $0`/../
+path=`dirname $0`/..
 
-# build
+# build scripts
 ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${OS}-ice${ICEVER} --extra-vars "${extravars}"
+
+# build walkthrough sphinx page
 ansible-playbook $path/ansible/omeroweb-install-doc.yml -i $path/ansible/hosts/${OS}-ice${ICEVER} --extra-vars "${extravars}"
