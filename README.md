@@ -4,7 +4,7 @@
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: Centos7, Ubuntu and Mac OS X.
+Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu and Mac OS X.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
@@ -40,7 +40,7 @@ Create your own copy of inventory, e.g. `ansible/hosts/centos7-ice3.6`  and defi
 
     ansible-playbook ./ansible/omeroweb-install.yml -i /path/to/hosts/centos7-ice3.6
 
-Please note that IcePy 3.5 has to be instlled from RPM, this result in generating
+Please note that IcePy 3.5 has to be installed from RPM, this result in generating
 virtualenv with --system-site-packages
 
 Extra vars arguments:
@@ -74,17 +74,17 @@ Environment variables:
 
 and run
 
-on Mac OS X::
+on Mac OS X:
 
     ./omeroweb-install-osx-ice3.6
     ./osx/run
 
-on Ubuntu::
+on Ubuntu:
 
     ./omeroweb-install-ubuntu-ice3.6
     ./ubuntu/run
 
-on Centos 7::
+on CentOS 7:
 
     ./omeroweb-install-centos7-ice3.6
 
@@ -102,7 +102,7 @@ To run installation scripts on a remote host:
 Testing in DOCKER
 -----------------
 
-for OS [centos7, ubuntu]
+These tests are only for CentOS 7 and Ubuntu deployment. Unfortunately no docker container for Mac OS X installation scritps
 
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero .travis/before_install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
@@ -110,8 +110,8 @@ for OS [centos7, ubuntu]
  
  To test remote build set `ANSIBLE=true`
 Note: make sure you always set `DOCKER=true` when running local test. Otherwise it will attempt to install OMERO.web on you local machine
-Unfortunately no docker container for Mac OS X
 
+Note: running tests on Mac OS X requiers Docker for Mac (Docker Tollbox is not supported)
 
 Copyright
 ---------

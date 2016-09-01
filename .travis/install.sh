@@ -4,7 +4,7 @@ set -e -u -x
 
 if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
 
-    if ${DOCKER} ; then
+    if ${DOCKER:-false} ; then
         echo "Testing in Docker!"
         case "${OS}" in
             centos7)
@@ -18,7 +18,7 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
         echo "Testing in local system!"
         case "${OS}" in
             ubuntu)
-                if ${ANSIBLE:-} ; then
+                if ${ANSIBLE:-false} ; then
                     ./test/docker-build-ansible.sh
                 else
                     current_dir=${PWD##*/}
@@ -30,7 +30,7 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
         esac
     fi
 
-else
+elif [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then
 
     ./omeroweb-install-osx-ice${ICEVER}
 
