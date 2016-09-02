@@ -104,7 +104,7 @@ Testing in DOCKER
 
 These tests are only for CentOS 7 and Ubuntu deployment. Unfortunately no docker container for Mac OS X installation scritps
 
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero .travis/before_install.sh
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
  
