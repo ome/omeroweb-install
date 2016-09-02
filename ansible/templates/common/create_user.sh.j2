@@ -1,11 +1,11 @@
 {% if doc %}
-## Create User {{ omero_user }}, homedir {{ omero_user_home_dir }}
+Create local user {{ omero_user }}, homedir `{{ omero_user_home_dir }}`::
+
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
-
 if [ -z "$(getent passwd {{ omero_user }})" ]; then
 
     useradd -m {{ omero_user }}
@@ -13,4 +13,3 @@ if [ -z "$(getent passwd {{ omero_user }})" ]; then
 fi
 
 chmod a+X {{ omero_user_home_dir }}
-

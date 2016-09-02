@@ -1,40 +1,50 @@
-OMERO.web walkthrough installation {{ os }}
-===========================================
+{% import "macros.j2" as tools with context %}
 
+OMERO.web walkthrough installation {{ os }} Ice{{ ice_version }}
+============================================
 
 {% set path = os + '/init.sh.j2' %}
 {% include path ignore missing with context %}
 
-
 {% if omero_user %}
-{% include 'common/create_user.sh.j2' ignore missing with context %}
+{% macro style() %}{% include 'common/create_user.sh.j2' ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
 {% endif %}
 
 {% set path = os + '/deps_ice' + ice_version + '.sh.j2' %}
-{% include path with context %}
-
+{% macro style() %}{% include path with context %}{% endmacro %}
+{{ style()|indent }}
 
 {% set path = os + '/deps.sh.j2' %}
-{% include path with context %}
+{% macro style() %}{% include path with context %}{% endmacro %}
+{{ style()|indent }}
 
 
+{% if web_session %}
 {% set path = os + '/deps_web_session.sh.j2' %}
-{% include path with context %}
+{% macro style() %}{% include path with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
 
 
-{% include 'common/virtualenv.sh.j2' with context %}
-
-
-{% include 'common/omeroweb_configure.sh.j2' with context %}
-
+{% macro style() %}{% include 'common/omeroweb_configure.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
 
 {% set path = os + '/nginx.sh.j2' %}
-{% include path ignore missing with context %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
 
-
+{% if selinux %}
 {% set path = os + '/selinux.sh.j2' %}
-{% include path ignore missing with context %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
 
-
+{% if daemon %}
 {% set path = os + '/daemon.sh.j2'%}
-{% include path ignore missing with context %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}

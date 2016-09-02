@@ -1,12 +1,11 @@
 {% if doc %}
-## Install ZeroC IcePy {{ ice_version }}
-## IcePy is managed by PyPi and will be installed as a part of OMERO.web requirements
+Install ZeroC IcePy {{ ice_version }}. IcePy is managed by PyPi and will be installed as a part of OMERO.web requirements::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
-{% endif %}
 
 # ZeroC Ice 3.6
+{% endif %}
 apt-get -y install db5.3-util
 apt-get -y install libssl-dev libbz2-dev libmcpp-dev libdb++-dev libdb-dev

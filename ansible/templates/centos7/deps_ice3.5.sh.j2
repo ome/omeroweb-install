@@ -1,12 +1,12 @@
 {% if doc %}
-## Install ZeroC IcePy {{ ice_version }} dependences
+Install ZeroC IcePy {{ ice_version }}. IcePy is managed by PyPi and will be installed as a part of OMERO.web requirements::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
-{% endif %}
 
 # ZeroC Ice 3.5
+{% endif %}
 curl -o /etc/yum.repos.d/zeroc-ice-el7.repo \
 http://download.zeroc.com/Ice/3.5/el7/zeroc-ice-el7.repo
 
