@@ -1,10 +1,11 @@
 {% import "macros.j2" as tools with context %}
 
-OMERO.web walkthrough installation {{ os }} Ice{{ ice_version }}
-============================================
+OMERO.web walkthrough installation
+==================================
 
 {% set path = os + '/init.sh.j2' %}
-{% include path ignore missing with context %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
 
 {% if omero_user %}
 {% macro style() %}{% include 'common/create_user.sh.j2' ignore missing with context %}{% endmacro %}
@@ -19,7 +20,6 @@ OMERO.web walkthrough installation {{ os }} Ice{{ ice_version }}
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
 
-
 {% if web_session %}
 {% set path = os + '/deps_web_session.sh.j2' %}
 {% macro style() %}{% include path with context %}{% endmacro %}
@@ -28,7 +28,6 @@ OMERO.web walkthrough installation {{ os }} Ice{{ ice_version }}
 
 {% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
-
 
 {% macro style() %}{% include 'common/omeroweb_configure.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
