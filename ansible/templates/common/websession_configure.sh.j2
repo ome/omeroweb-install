@@ -7,9 +7,13 @@ set -e -u -x
 
 {% endif %}
 
+{% if doc %}
+source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+{% else %}
 set +u
 source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
 set -u
+{% endif %}
 
 pip install django-redis-cache>=1.6.5
 
