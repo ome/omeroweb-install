@@ -1,7 +1,5 @@
 {% import "macros.j2" as tools with context %}
-
-OMERO.web walkthrough installation
-==================================
+{{ doc_conf.header }}
 
 {% set path = os + '/init.sh.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
