@@ -1,3 +1,7 @@
+{% if doc %}
+For convenience in this walkthrough the main OMERO.web configuration options have been defined as environment variables. When following this walkthrough you can either use your own values, or alternatively source the following file::
+
+{% endif %}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 
 OMEROVER=${OMEROVER:-{{ omero_version }}}
