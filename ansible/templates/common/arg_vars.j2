@@ -1,7 +1,13 @@
 {% if doc %}
 For convenience in this walkthrough the main OMERO.web configuration options have been defined as environment variables. When following this walkthrough you can either use your own values, or alternatively source the following file::
 
-{% endif %}
+OMERO_USER={{ omero_user }}
+OMEROVER={{ omero_version }}
+WEBSESSION={{ web_session }}
+WEBPREFIX={{ default.web_prefix }}
+WEBPORT={{ default.web_port }}
+WEBSERVER_NAME={{ default.web_server_name }}
+{% else %}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 
 OMEROVER=${OMEROVER:-{{ omero_version }}}
@@ -11,3 +17,4 @@ WEBSESSION=${WEBSESSION:-{{ web_session }}}
 WEBPREFIX=${WEBPREFIX:-{{ default.web_prefix }}}
 WEBPORT=${WEBPORT:-{{ default.web_port }}}
 WEBSERVER_NAME=${WEBSERVER_NAME:-{{ default.web_server_name }}}
+{% endif %}
