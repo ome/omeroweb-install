@@ -12,34 +12,34 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-merge-build DOCKER=true
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest-build DOCKER=true
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.5 OMEROVER=OMERO-DEV-merge-build DOCKER=true
+        - OS=centos7 ICEVER=3.5 OMEROVER=OMERO-DEV-latest-build DOCKER=true
     # with prefix
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-merge-build WEBPREFIX=/omero DOCKER=true
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest-build WEBPREFIX=/omero DOCKER=true
     # test remote
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-merge-build DOCKER=true ANSIBLE=true
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest-build DOCKER=true ANSIBLE=true
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-merge-build WEBPREFIX=/omero DOCKER=true ANSIBLE=true
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest-build WEBPREFIX=/omero DOCKER=true ANSIBLE=true
     # ubuntu
     - os: linux
       dist: trusty
       env:
-        - OS=ubuntu ICEVER=3.6 OMEROVER=OMERO-DEV-merge-build DOCKER=true
+        - OS=ubuntu ICEVER=3.6 OMEROVER=OMERO-DEV-latest-build DOCKER=true
     - os: osx
       osx_image: xcode7.3
       env:
-        - OS=osx ICEVER=3.6 OMEROVER=OMERO-DEV-merge-build WEBPORT=8080 WEBPREFIX=/omero
+        - OS=osx ICEVER=3.6 OMEROVER=OMERO-DEV-latest-build WEBPORT=8080 WEBPREFIX=/omero
 
 before_install:
   - python --version
