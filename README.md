@@ -47,7 +47,7 @@ Extra vars arguments:
 
 | ARG                | default | optional                | example                  |
 |--------------------|---------|-------------------------|--------------------------|
-| omero_version      | latest  |                         | OMERO-DEV-breaking-build |
+| omero_version      | latest  |                         | OMERO-DEV-latest |
 | web_port           | 80      |                         |                          |
 | web_prefix         |         |                         | /omero                   |
 | web_server_name    |         |                         | omero.example.com        |
@@ -65,7 +65,7 @@ Environment variables:
 
 | VAR            | default | optional                | example                  |
 |----------------|---------|-------------------------|--------------------------|
-| OMEROVER       | latest  |                         | OMERO-DEV-breaking-build |
+| OMEROVER       | latest  |                         | OMERO-DEV-latest |
 | WEBPORT        | 80      |                         |                          |
 | WEBPREFIX      |         |                         | /omero                   |
 | WEBSERVER_NAME |         |                         | omero.example.com        |
