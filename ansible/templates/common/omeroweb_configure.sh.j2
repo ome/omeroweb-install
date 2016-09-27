@@ -1,5 +1,5 @@
 {% if doc %}
-Configure OMERO.web and generate nginx template::
+Configure OMERO.web and generate nginx template (run as {{ omero_user }})::
 {% else %}
 #!/bin/bash
 
@@ -10,9 +10,13 @@ WEBPORT=${WEBPORT:-{{ default.web_port }}}
 WEBSERVER_NAME=${WEBSERVER_NAME:-{{ default.web_server_name }}}
 {% endif %}
 
+{% if doc %}
+source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+{% else %}
 set +u
 source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
 set -u
+{% endif %}
 
 if [[ $WEBPREFIX = *[!\ ]* ]]; then
     {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.prefix "{{ web_prefix or '${WEBPREFIX}' }}"

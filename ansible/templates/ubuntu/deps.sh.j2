@@ -1,5 +1,5 @@
 {% if doc %}
-Install other dependences::
+Install other dependences (run as root)::
 {% else %}
 #!/bin/bash
 
@@ -9,7 +9,7 @@ set -e -u -x
 apt-get update
 apt-get -y install \
     git \
-    python-{dev,pip,virtualenv}
+    python-{dev,pip}
 
 # require to install Pillow
 apt-get -y install \
@@ -21,3 +21,7 @@ apt-get -y install \
     libwebp-dev \
     tcl8.6-dev \
     tk8.6-dev
+
+# install the latest version
+pip install --upgrade pip
+pip install virtualenv

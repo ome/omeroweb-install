@@ -1,7 +1,9 @@
 {% import "macros.j2" as tools with context %}
+{{ doc_conf.header }}
 
-OMERO.web walkthrough installation
-==================================
+{% set path = 'common/arg_vars.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
 
 {% set path = os + '/init.sh.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
@@ -44,6 +46,17 @@ OMERO.web walkthrough installation
 
 {% if daemon %}
 {% set path = os + '/daemon.sh.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% if os == 'centos7' %}
+{% set path = os + '/omero-web-systemd.service.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+{% if os == 'ubuntu' %}
+{% set path = os + '/omero-web-init.d.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}

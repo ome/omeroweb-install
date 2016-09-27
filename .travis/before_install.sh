@@ -28,6 +28,9 @@ arr=();
 
 arr=("os" "${OS}")
 arr=(${arr[@]} "ice_version" "${ICEVER}")
+if [[ ${OMEROVER:-} = *[!\ ]* ]]; then
+    arr=(${arr[@]} "omero_version" "${OMEROVER:-}")
+fi
 if [[ ${WEBPREFIX:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "web_prefix" "${WEBPREFIX:-}")
 fi
@@ -43,6 +46,7 @@ fi
 if [ "${ICEVER}" == "3.5" ]; then
     arr=(${arr[@]} "system_site_packages" "True")
 fi
+
 
 vars=(${arr[@]})
 len=${#arr[@]}

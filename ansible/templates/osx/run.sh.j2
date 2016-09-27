@@ -6,9 +6,13 @@ Start up services::
 set -e -u -x
 {% endif %}
 
+{% if doc %}
+source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+{% else %}
 set +u
 source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
 set -u
+{% endif %}
 
 # Start OMERO.web
 {{ omero_user_home_dir }}/OMERO.py/bin/omero web start
