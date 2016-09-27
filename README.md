@@ -104,9 +104,9 @@ Testing in DOCKER
 
 These tests are only for CentOS 7 and Ubuntu deployment. Unfortunately no docker container for Mac OS X installation scritps
 
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-breaking-build WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
+    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
  
  To test remote build set `ANSIBLE=true`
 Note: make sure you always set `DOCKER=true` when running local test. Otherwise it will attempt to install OMERO.web on you local machine
