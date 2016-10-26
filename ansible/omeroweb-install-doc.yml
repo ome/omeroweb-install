@@ -4,18 +4,18 @@
   tasks:
     - name: Clean doc
       file:
-        path: "./doc/omeroweb-install-{{ prefix }}.txt"
+        path: "{{ path }}/doc/omeroweb-install-{{ prefix }}.txt"
         state: absent
       when: clean
     - name: Create doc dir
       file:
-        path: "./doc"
+        path: "{{ path }}/doc"
         state: directory
         mode: 0755
     - name: Generate omeroweb-install-{{ prefix }}.txt
       template:
         src: "omeroweb-install-doc.txt.j2"
-        dest: "./doc/omeroweb-install-{{ prefix }}.txt"
+        dest: "{{ path }}/doc/omeroweb-install-{{ prefix }}.txt"
 
   vars:
     - doc: True
