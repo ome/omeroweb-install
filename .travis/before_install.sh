@@ -22,11 +22,14 @@ if ${TRAVIS:-} ; then
     sudo pip install -r requirements.txt
 fi
 
+path=`pwd`
+
 # process env vars to pass to ansible --extra-vars accepts json dict
 # script from https://gist.github.com/Jimilian/c3a2d8bb6df1b8ca64d02a10d97f510b
 arr=();
 
 arr=("os" "${OS}")
+arr=(${arr[@]} "path" "${path}")
 arr=(${arr[@]} "ice_version" "${ICEVER}")
 if [[ ${OMEROVER:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "omero_version" "${OMEROVER:-}")
@@ -62,7 +65,6 @@ done
 printf "}"
 echo)"
 
-path=`dirname $0`/..
 
 # build scripts
 ansible-playbook $path/ansible/omeroweb-install.yml -i $path/ansible/hosts/${OS}-ice${ICEVER} --extra-vars "${extravars}"
