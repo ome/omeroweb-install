@@ -6,6 +6,6 @@ Install other dependences::
 set -e -u -x
 {% endif %}
 
-brew install python
+brew install python {% if not doc %} || echo "Python installed?" {% endif %}
 
 pip install virtualenv
