@@ -2,7 +2,7 @@
 
 set -e -u -x
 
-if ${TRAVIS:-} ; then
+if [ ! -z ${TRAVIS:-} ] ; then
     if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then
 
         if ${DOCKER:-false} ; then
