@@ -4,102 +4,102 @@
   tasks:
     - name: Delete {{ os }}-{{ prefix }} dir (clean {{ clean }})
       file:
-        path: "./{{ prefix }}"
+        path: "{{playbook_dir}}/{{ prefix }}"
         state: absent
       when: clean
     - name: Create {{ os }}-{{ prefix }} dir
       file:
-        path: "./{{ prefix }}"
+        path: "{{playbook_dir}}/{{ prefix }}"
         state: directory
         mode: 0755
     - name: Generate omeroweb-install-{{ prefix }}
       template:
         src: "omeroweb-install.sh.j2"
-        dest: "./omeroweb-install-{{ prefix }}"
+        dest: "{{playbook_dir}}/omeroweb-install-{{ prefix }}"
         mode: a+x
 
     - name: Generate common/create_user.sh
       template:
         src: "common/create_user.sh.j2"
-        dest: "./{{ prefix }}/create_user.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/create_user.sh"
         mode: a+x
       when: omero_user|default(None) != None
 
     - name: Generate common/omeroweb_configure.sh
       template:
         src: "common/omeroweb_configure.sh.j2"
-        dest: "./{{ prefix }}/omeroweb_configure.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/omeroweb_configure.sh"
         mode: a+x
     - name: Generate common/virtualenv.sh
       template:
         src: "common/virtualenv.sh.j2"
-        dest: "./{{ prefix }}/virtualenv.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/virtualenv.sh"
         mode: a+x
     - name: Generate common/websession_configure.sh
       template:
         src: "common/websession_configure.sh.j2"
-        dest: "./{{ prefix }}/websession_configure.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/websession_configure.sh"
         mode: a+x
 
     - name: Generate {{ prefix }}/deps.sh
       template:
         src: "{{ os }}/deps.sh.j2"
-        dest: "./{{ prefix }}/deps.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/deps.sh"
         mode: a+x
     - name: Generate {{ prefix }}/deps_ice{{ ice_version }}.sh
       template:
         src: "{{ os }}/deps_ice{{ ice_version }}.sh.j2"
-        dest: "./{{ prefix }}/deps_ice{{ ice_version }}.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/deps_ice{{ ice_version }}.sh"
         mode: a+x
       when: "{{ ice_version }}"
     - name: Generate {{ prefix }}/deps_web_session.sh
       template:
         src: "{{ os }}/deps_web_session.sh.j2"
-        dest: "./{{ prefix }}/deps_web_session.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/deps_web_session.sh"
         mode: a+x
 
     - name: Generate {{ prefix }}/nginx.sh
       template:
         src: "{{ os }}/nginx.sh.j2"
-        dest: "./{{ prefix }}/nginx.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/nginx.sh"
         mode: a+x
 
     - name: Generate {{ prefix }}/selinux.sh
       template:
         src: "{{ os }}/selinux.sh.j2"
-        dest: "./{{ prefix }}/selinux.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/selinux.sh"
         mode: a+x
       when: selinux
 
     - name: Generate {{ prefix }}/daemon.sh
       template:
         src: "{{ os }}/daemon.sh.j2"
-        dest: "./{{ prefix }}/daemon.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/daemon.sh"
         mode: a+x
       when: daemon
 
     - name: Generate omero-web-systemd.service.sh (centos7)
       template:
         src: "{{ os }}/omero-web-systemd.service.j2"
-        dest: "./{{ prefix }}/omero-web-systemd.service"
+        dest: "{{playbook_dir}}/{{ prefix }}/omero-web-systemd.service"
       when: os=="centos7"
     - name: Generate omero-web-init.d (ubuntu)
       template:
         src: "{{ os }}/omero-web-init.d.j2"
-        dest: "./{{ prefix }}/omero-web-init.d"
+        dest: "{{playbook_dir}}/{{ prefix }}/omero-web-init.d"
       when: os=="ubuntu"
 
     - name: Generate run.sh (ubuntu)
       template:
         src: "{{ os }}/run.sh.j2"
-        dest: "./{{ prefix }}/run"
+        dest: "{{playbook_dir}}/{{ prefix }}/run"
         mode: a+x
       when: os=="ubuntu" or os=="osx"
 
     - name: Generate init.sh (osx)
       template:
         src: "{{ os }}/init.sh.j2"
-        dest: "./{{ prefix }}/init.sh"
+        dest: "{{playbook_dir}}/{{ prefix }}/init.sh"
         mode: a+x
       when: os=="osx"
 
