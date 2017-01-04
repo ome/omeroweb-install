@@ -14,6 +14,9 @@ especially the sections on requirements and installation, before using these scr
 
 The Linux and OS X scripts should automatically download all required files.
 
+The scripts will only work locally due to the usage of ``{{playbook_dir}}``.
+This ensures that the generated documentation will be created in the same location
+regardless of the version of Ansible installed.
 
 Prerequisites
 -------------
