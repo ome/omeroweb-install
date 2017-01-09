@@ -1,6 +1,6 @@
 ansible/*.retry
-omeroweb-install-*
-centos7*/**
-ubuntu*/**
-osx*/**
-doc/**
+**/omeroweb-install-*
+**/centos7*/**
+**/ubuntu*/**
+**/osx*/**
+**/doc/**
