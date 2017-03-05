@@ -47,7 +47,7 @@ fi
 if [[ ${WEBSERVER_NAME:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "web_server_name" "${WEBSERVER_NAME:-}")
 fi
-if ${TRIAL:-true; then
+if ${TRIAL:-true}; then
     arr=(${arr[@]} "system_site_packages" "False")
 fi
 
