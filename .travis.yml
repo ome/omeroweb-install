@@ -16,7 +16,7 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.5 OMEROVER=OMERO-DEV-latest DOCKER=true
+        - OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest DOCKER=true TRIAL=true
     # with prefix
     - os: linux
       dist: trusty
