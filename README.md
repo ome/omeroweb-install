@@ -91,10 +91,6 @@ on CentOS 7:
 
     ./omeroweb-install-centos7-ice3.6
 
-or
-
-    ./omeroweb-install-centos7-ice3.5
-
 To run installation scripts on a remote host:
 
     $ ssh bob@hostname
