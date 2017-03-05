@@ -9,7 +9,7 @@ These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
 
-Read the OMERO System Administrator Documentation https://www.openmicroscopy.org/site/support/omero5.3-staging/sysadmins/index.html,
+Read the OMERO System Administrator Documentation https://www.openmicroscopy.org/site/support/omero5.3/sysadmins/index.html,
 especially the sections on requirements and installation, before using these scripts.
 
 The Linux and OS X scripts should automatically download all required files.
@@ -105,7 +105,7 @@ To run installation scripts on a remote host:
 Testing in DOCKER
 -----------------
 
-These tests are only for CentOS 7 and Ubuntu deployment. Unfortunately no docker container for Mac OS X installation scritps
+These tests are only for CentOS 7 and Ubuntu deployment. Unfortunately there is no docker container for Mac OS X installation scritps
 
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
