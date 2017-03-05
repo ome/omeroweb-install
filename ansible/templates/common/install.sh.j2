@@ -1,0 +1,28 @@
+{% if doc %}
+Install OMERO.web (run as {{ omero_user }})::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+OMEROVER=${OMEROVER:-{{ omero_version }}}
+
+{% endif %}
+
+{% if doc %}
+{{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --branch "{{ omero_version }}" py
+{% else %}
+{{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --branch "${OMEROVER}" py
+{% endif %}
+
+zip=$(ls OMERO.py*.zip)
+zipname=${zip%.zip}
+rm -f $zip
+{% if doc %}
+mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
+{% else %}
+if [ ! -d "{{ omero_user_home_dir }}/OMERO.py" ]; then
+    mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
+fi
+{% endif %}
+

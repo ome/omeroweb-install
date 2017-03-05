@@ -35,6 +35,16 @@
         src: "common/virtualenv.sh.j2"
         dest: "{{ path }}/{{ prefix }}/virtualenv.sh"
         mode: a+x
+    - name: Generate common/install.sh
+      template:
+        src: "common/install.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/install.sh"
+        mode: a+x
+    - name: Generate common/virtualenv2.sh
+      template:
+        src: "common/virtualenv2.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/virtualenv.sh"
+        mode: a+x
     - name: Generate common/websession_configure.sh
       template:
         src: "common/websession_configure.sh.j2"

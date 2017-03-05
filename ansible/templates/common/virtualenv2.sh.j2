@@ -1,0 +1,14 @@
+{% if doc %}
+Install VirtualEnv (run as root)::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+{% endif %}
+
+{% if system_site_packages %}
+{{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-nginx.txt
+{% else %}
+{{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-trial.txt
+{% endif %}

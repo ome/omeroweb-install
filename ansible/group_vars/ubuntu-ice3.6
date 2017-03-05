@@ -4,7 +4,6 @@ path: "{{ playbook_dir }}"
 clean:
 os: ubuntu
 ice_version: "3.6"
-rpm: True
 
 doc: False
 doc_conf:
@@ -16,6 +15,8 @@ default:
   web_port: 80
   web_server_name: localhost
 
+virtualenv_path: "/virtualenv/omerowebvenv"
+
 omero_user: "omero"
 omero_user_home_dir: "/home/{{ omero_user }}"
 selinux: False
@@ -24,7 +25,7 @@ daemon: True
 # VARS
 
 omero_version: "OMERO-DEV-latest"
-system_site_packages:
+system_site_packages: True
 web_session:
 
 web_prefix:

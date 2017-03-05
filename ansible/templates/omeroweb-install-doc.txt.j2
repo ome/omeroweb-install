@@ -31,6 +31,12 @@
 {% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{% macro style() %}{% include 'common/install.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% macro style() %}{% include 'common/virtualenv2.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
 {% macro style() %}{% include 'common/omeroweb_configure.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 

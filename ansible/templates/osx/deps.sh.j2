@@ -8,4 +8,4 @@ set -e -u -x
 
 brew install python {% if not doc %} || echo "Python installed?" {% endif %}
 
-pip install virtualenv
+pip install --upgrade virtualenv

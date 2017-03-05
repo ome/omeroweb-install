@@ -12,10 +12,11 @@ apt-get -y install \
     python-pip
 
 
-{% if rpm %}
+{% if system_site_packages %}
 apt-get -y install \
     python-pillow
     numpy
+
 {% else %}
 
 apt-get -y install \
@@ -34,8 +35,5 @@ apt-get -y install \
 
 # install the latest version
 pip install --upgrade pip
-pip install virtualenv
+pip install --upgrade virtualenv
 {% endif %}
-
-
-

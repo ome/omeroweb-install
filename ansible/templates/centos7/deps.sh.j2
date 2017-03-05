@@ -12,10 +12,11 @@ yum -y install git
 
 yum -y install python-pip
 
-{% if rpm %}
+{% if system_site_packages %}
 yum -y install \
     python-pillow
     numpy
+
 {% else %}
 yum -y install \
     python-devel \
@@ -25,7 +26,5 @@ yum -y install \
 
 # install the latest version
 pip install --upgrade pip
-pip install virtualenv
+pip install --upgrade virtualenv
 {% endif %}
-
-
