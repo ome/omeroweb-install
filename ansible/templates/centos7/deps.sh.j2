@@ -10,14 +10,22 @@ yum -y install epel-release
 
 yum -y install git
 
-yum -y install gcc gcc-c++ zlib-devel
+yum -y install python-pip
 
+{% if rpm %}
+yum -y install \
+    python-pillow
+    numpy
+{% else %}
 yum -y install \
     python-devel \
-    python-pip \
     libjpeg-devel \
     libtiff libtiff-devel
+    zlib-devel
 
 # install the latest version
 pip install --upgrade pip
 pip install virtualenv
+{% endif %}
+
+

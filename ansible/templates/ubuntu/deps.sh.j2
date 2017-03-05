@@ -9,7 +9,17 @@ set -e -u -x
 apt-get update
 apt-get -y install \
     git \
-    python-{dev,pip}
+    python-pip
+
+
+{% if rpm %}
+apt-get -y install \
+    python-pillow
+    numpy
+{% else %}
+
+apt-get -y install \
+    python-dev
 
 # require to install Pillow
 apt-get -y install \
@@ -25,3 +35,7 @@ apt-get -y install \
 # install the latest version
 pip install --upgrade pip
 pip install virtualenv
+{% endif %}
+
+
+
