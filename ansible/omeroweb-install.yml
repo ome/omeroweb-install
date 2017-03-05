@@ -43,7 +43,7 @@
     - name: Generate common/virtualenv2.sh
       template:
         src: "common/virtualenv2.sh.j2"
-        dest: "{{ path }}/{{ prefix }}/virtualenv.sh"
+        dest: "{{ path }}/{{ prefix }}/virtualenv2.sh"
         mode: a+x
     - name: Generate common/websession_configure.sh
       template:
