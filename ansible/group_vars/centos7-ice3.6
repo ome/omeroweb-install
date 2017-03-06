@@ -15,10 +15,10 @@ default:
   web_port: 80
   web_server_name: localhost
 
-virtualenv_path: "/virtualenv/omerowebvenv"
-
 omero_user: "omero"
 omero_user_home_dir: "/home/{{ omero_user }}"
+virtualenv_path: "{{ omero_user_home_dir }}/omerowebvenv"
+
 selinux: True
 daemon: True
 
