@@ -7,8 +7,6 @@ set -e -u -x
 {% endif %}
 
 #start-install
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:nginx/stable
 apt-get update
 apt-get -y install nginx
 

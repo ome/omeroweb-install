@@ -4,7 +4,7 @@
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04 and 14.04 and Mac OS X.
+Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04 and Mac OS X.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.

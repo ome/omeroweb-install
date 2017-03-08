@@ -15,7 +15,7 @@ source {{ virtualenv_path }}/bin/activate
 set -u
 {% endif %}
 
-pip install --upgrade django-redis>=4.4
+pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-redis.txt
 
 {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.session_engine 'django.contrib.sessions.backends.cache'
 {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.caches '{"default": {"BACKEND": "django_redis.cache.RedisCache","LOCATION": "redis://127.0.0.1:6379/0"}}'
