@@ -50,7 +50,7 @@ Extra vars arguments:
 
 | ARG                | default | optional                | example                  |
 |--------------------|---------|-------------------------|--------------------------|
-| omero_version      | latest  |                         | OMERO-DEV-latest |
+| omero_version      | latest  |                         | OMERO-DEV-latest         |
 | web_port           | 80      |                         |                          |
 | web_prefix         |         |                         | /omero                   |
 | web_server_name    |         |                         | omero.example.com        |
