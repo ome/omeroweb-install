@@ -7,7 +7,7 @@ ice_version: "3.6"
 
 doc: False
 doc_conf:
-  header: "TRIAL: OMERO.web walkthrough installation CentOS 7 and IcePy 3.6\n================================================================\n"
+  header: "OMERO.web walkthrough installation CentOS 7 and IcePy 3.6\n=========================================================\n"
   os_full_name: Centos7
 
 default:
@@ -17,13 +17,15 @@ default:
 
 omero_user: "omero"
 omero_user_home_dir: "/home/{{ omero_user }}"
+virtualenv_path: "{{ omero_user_home_dir }}/omerowebvenv"
+
 selinux: True
 daemon: True
 
 # VARS
 
 omero_version: "OMERO-DEV-latest"
-system_site_packages:
+system_site_packages: True
 web_session:
 
 web_prefix:

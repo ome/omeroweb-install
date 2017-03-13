@@ -7,10 +7,10 @@ set -e -u -x
 {% endif %}
 
 {% if doc %}
-source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+source {{ virtualenv_path }}/bin/activate
 {% else %}
 set +u
-source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
+source {{ virtualenv_path }}/bin/activate
 set -u
 {% endif %}
 

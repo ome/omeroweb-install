@@ -1,5 +1,5 @@
 {% if doc %}
-Install other dependences (run as root)::
+Install other dependencies (run as root)::
 {% else %}
 #!/bin/bash
 
@@ -10,14 +10,21 @@ yum -y install epel-release
 
 yum -y install git
 
-yum -y install gcc gcc-c++ zlib-devel
+yum -y install python-pip
 
+{% if system_site_packages %}
+yum -y install \
+    python-pillow \
+    numpy
+
+{% else %}
 yum -y install \
     python-devel \
-    python-pip \
     libjpeg-devel \
     libtiff libtiff-devel
+    zlib-devel
+{% endif %}
 
 # install the latest version
 pip install --upgrade pip
-pip install virtualenv
+pip install --upgrade virtualenv

@@ -13,14 +13,22 @@ bash $path/create_user.sh
 # install ZeroC IcePy
 bash $path/deps_ice{{ ice_version }}.sh
 
-# install other dependences
+# install other dependencies
 bash $path/deps.sh
 
+bash $path/virtualenv.sh
+
 {% if omero_user %}
-su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/virtualenv.sh"
+su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
+{% else %}
+bash $path/install.sh
+{% endif %}
+
+bash $path/virtualenv2.sh
+
+{% if omero_user %}
 su - {{ omero_user }}  -c "WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
 {% else %}
-bash $path/virtualenv.sh
 bash $path/omeroweb_configure.sh
 {% endif %}
 

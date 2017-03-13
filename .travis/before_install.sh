@@ -47,8 +47,8 @@ fi
 if [[ ${WEBSERVER_NAME:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "web_server_name" "${WEBSERVER_NAME:-}")
 fi
-if [ "${ICEVER}" == "3.5" ]; then
-    arr=(${arr[@]} "system_site_packages" "True")
+if ${TRIAL:-true}; then
+    arr=(${arr[@]} "system_site_packages" "False")
 fi
 
 

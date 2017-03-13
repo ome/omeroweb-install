@@ -9,5 +9,10 @@ set -e -u -x
 {% endif %}
 
 yum -y install \
+    gcc \
+    gcc-c++ \
+    python-devel
+
+yum -y install \
     libdb-utils \
     openssl-devel bzip2-devel expat-devel

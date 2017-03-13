@@ -1,45 +1,12 @@
 {% if doc %}
-Install and generate VirtualEnv (run as {{ omero_user }})::
+Install VirtualEnv - optional (run as root)::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 
-OMEROVER=${OMEROVER:-{{ omero_version }}}
-
 {% endif %}
 
-virtualenv {{ omero_user_home_dir }}/omerowebvenv {% if system_site_packages %}--system-site-packages{% endif %}
+virtualenv {{ virtualenv_path }} {% if system_site_packages %}--system-site-packages{% endif %}
 
-{% if doc %}
-source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
-{% else %}
-set +u
-source {{ omero_user_home_dir }}/omerowebvenv/bin/activate
-set -u
-{% endif %}
-
-pip install omego
-{% if doc %}
-{{ omero_user_home_dir }}/omerowebvenv/bin/omego download --ice "{{ ice_version }}" --branch "{{ omero_version }}" py
-{% else %}
-{{ omero_user_home_dir }}/omerowebvenv/bin/omego download --ice "{{ ice_version }}" --branch "${OMEROVER}" py
-{% endif %}
-
-zip=$(ls OMERO.py*.zip)
-zipname=${zip%.zip}
-rm -f $zip
-{% if doc %}
-mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
-{% else %}
-if [ ! -d "{{ omero_user_home_dir }}/OMERO.py" ]; then
-    mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
-fi
-{% endif %}
-
-{% if ice_version == '3.5' %}
-pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-nginx.txt
-pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-common-trial.txt
-{% else %}
-pip install -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-trial.txt
-{% endif %}
+{{ virtualenv_path }}/bin/pip install --upgrade omego

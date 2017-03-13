@@ -31,7 +31,7 @@ prog=omero-web
 OMERO_PY=${OMERO_PY:-{{ omero_user_home_dir }}/OMERO.py}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 OMERO=${OMERO_PY}/bin/omero
-VENVDIR=${VENVDIR:-{{ omero_user_home_dir }}/omerowebvenv}
+VENVDIR=${VENVDIR:-{{ virtualenv_path }}}
 
 start() {
     echo -n $"Starting $prog:"

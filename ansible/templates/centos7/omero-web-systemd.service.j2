@@ -12,7 +12,7 @@ Type=forking
 PIDFile={{ omero_user_home_dir }}/OMERO.py/var/django.pid
 Restart=on-failure
 RestartSec=10
-Environment="VENVDIR={{ omero_user_home_dir }}/omerowebvenv" "BINDIR={{ omero_user_home_dir }}/OMERO.py/bin"
+Environment="VENVDIR={{ virtualenv_path }}" "BINDIR={{ omero_user_home_dir }}/OMERO.py/bin"
 ExecStart=/usr/bin/bash -c "source $VENVDIR/bin/activate; $BINDIR/omero web start"
 ExecStop=/usr/bin/bash -c "source $VENVDIR/bin/activate; $BINDIR/omero web stop"
 
