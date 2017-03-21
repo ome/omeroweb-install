@@ -10,7 +10,7 @@ OMEROVER=${OMEROVER:-{{ omero_version }}}
 {% endif %}
 
 {% if doc %}
-curl -o OMERO.py.zip https://downloads.openmicroscopy.org/latest/omero/py.zip
+curl -o OMERO.py.zip https://downloads.openmicroscopy.org/latest/omero5.3/py.zip
 {% else %}
 {{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --branch "${OMEROVER}" py
 {% endif %}
