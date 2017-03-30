@@ -10,7 +10,9 @@ set -e -u -x
 service redis start
 {% endif %}
 
+{% if not doc %}
 #service crond start # Doesn't work in Docker
+{% endif %}
 cron
 service nginx start
 service omero-web start
