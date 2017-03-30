@@ -16,4 +16,6 @@ service redis start
 cron
 service nginx start
 service omero-web start
+{% if not doc %}
 exec bash
+{% endif %}
