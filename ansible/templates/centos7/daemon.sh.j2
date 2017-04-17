@@ -7,6 +7,7 @@ set -e -u -x
 {% endif %}
 
 {% if doc %}
+Create a file omero-web-systemd.service. See example file below.
 cp omero-web-systemd.service /etc/systemd/system/omero-web.service
 {% else %}
 cp `dirname $0`/omero-web-systemd.service /etc/systemd/system/omero-web.service

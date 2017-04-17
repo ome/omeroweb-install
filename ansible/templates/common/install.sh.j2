@@ -10,16 +10,17 @@ OMEROVER=${OMEROVER:-{{ omero_version }}}
 {% endif %}
 
 {% if doc %}
-curl -o OMERO.py.zip https://downloads.openmicroscopy.org/latest/omero5.3/py.zip
+cd {{ omero_user_home_dir }}
+curl -o OMERO.py.zip -L https://downloads.openmicroscopy.org/latest/omero5.3/py.zip
+unzip -q OMERO.py*
 {% else %}
 {{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --branch "${OMEROVER}" py
 {% endif %}
 
 zip=$(ls OMERO.py*.zip)
-zipname=${zip%.zip}
 rm -f $zip
 {% if doc %}
-mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
+ln -s OMERO.py-* OMERO.py
 {% else %}
 if [ ! -d "{{ omero_user_home_dir }}/OMERO.py" ]; then
     mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py

@@ -66,3 +66,9 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
+
+{% if os == 'ubuntu' or os == 'osx' %}
+{% set path = os + '/run.sh.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}

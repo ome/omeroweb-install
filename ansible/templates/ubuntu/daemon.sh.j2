@@ -7,7 +7,8 @@ set -e -u -x
 {% endif %}
 
 {% if doc %}
-cp {{ os }}/omero-web-init.d /etc/init.d/omero-web
+Create a file omero-web-init.d. See example file below.
+cp omero-web-init.d /etc/init.d/omero-web
 {% else %}
 cp `dirname $0`/omero-web-init.d /etc/init.d/omero-web
 {% endif %}
@@ -16,9 +17,7 @@ chmod a+x /etc/init.d/omero-web
 update-rc.d -f omero-web remove
 update-rc.d -f omero-web defaults 98 02
 
-{% if doc %}
-{{ os }}/run
-{% else %}
+{% if not doc %}
 if [ ! "${container:-}" = docker ]; then
     `dirname $0`/run
 fi
