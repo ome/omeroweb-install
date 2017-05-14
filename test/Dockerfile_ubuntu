@@ -3,13 +3,13 @@
 FROM ubuntu:16.04
 MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
-RUN update-locale LANG=C.UTF-8
+# RUN update-locale LANG=C.UTF-8
+ENV LANG C.UTF-8
 
 ADD ./omeroweb-install-test.zip /tmp
 RUN apt-get update && apt-get -y install unzip cron
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
-RUN update-locale LANG=C.UTF-8
 
 # This is so that scripts can detect whether they're in docker
 RUN echo 'export container=docker' > /etc/profile.d/docker.sh
