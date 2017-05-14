@@ -17,7 +17,9 @@ set +u
 source {{ virtualenv_path }}/bin/activate
 set -u
 {% endif %}
-
+{% if doc %}
+# By default no value is set for WEBPREFIX but for example it can be set to /omero
+{% endif %}
 if [[ $WEBPREFIX = *[!\ ]* ]]; then
     {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.prefix "{{ web_prefix or '${WEBPREFIX}' }}"
     {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.static_url "{{ web_prefix or '${WEBPREFIX}' }}/static/"
