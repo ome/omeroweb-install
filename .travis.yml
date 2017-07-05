@@ -45,10 +45,6 @@ matrix:
       dist: trusty
       env:
         - OS=debian ICEVER=3.6 OMEROVER=latest DOCKER=true
-    - os: osx
-      osx_image: xcode7.3
-      env:
-        - OS=osx ICEVER=3.6 OMEROVER=latest WEBPORT=8080 WEBPREFIX=/omero
 
 before_install:
   - python --version
