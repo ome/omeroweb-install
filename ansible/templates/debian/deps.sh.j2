@@ -1,0 +1,34 @@
+{% if doc %}
+Install other dependencies (run as root)::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+apt-get update
+apt-get -y install \
+    python-pip
+
+
+{% if system_site_packages %}
+apt-get -y install \
+    python-pillow \
+    python-numpy
+
+{% else %}
+
+apt-get -y install \
+    python-dev
+
+# require to install Pillow
+apt-get -y install \
+    libtiff5-dev \
+    libjpeg8-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libwebp-dev \
+    tcl8.6-dev \
+    tk8.6-dev
+{% endif %}
