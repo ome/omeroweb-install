@@ -25,9 +25,9 @@ ARG WEBSERVER_NAME
 RUN ICEVER=$ICEVER OMEROVER=$OMEROVER \
     WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSESSION=$WEBSESSION \
     WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME \
-    /tmp/omeroweb-install-test/omeroweb-install-ubuntu-ice${ICEVER}
+    /tmp/omeroweb-install-test/omeroweb-install-debian-ice${ICEVER}
 
 EXPOSE 22 80
 
-ENV RUNPATH="/tmp/omeroweb-install-test/ubuntu-ice${ICEVER}/run"
+ENV RUNPATH="/tmp/omeroweb-install-test/debian-ice${ICEVER}/run"
 CMD ["sh", "-c", "-e", "$RUNPATH"]
