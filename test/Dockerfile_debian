@@ -1,0 +1,33 @@
+# Dockerfile for testing the OMERO Linux installation instructions
+# Not intended for production use
+FROM debian:stretch
+MAINTAINER ome-devel@lists.openmicroscopy.org.uk
+
+RUN apt-get update && apt-get -y install locales
+RUN update-locale LANG=C.UTF-8
+
+ADD ./omeroweb-install-test.zip /tmp
+RUN apt-get update && apt-get -y install unzip cron
+RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
+
+
+# This is so that scripts can detect whether they're in docker
+RUN echo 'export container=docker' > /etc/profile.d/docker.sh
+
+ARG ICEVER=3.6
+ARG OMEROVER=latest
+ARG WEBPORT=80
+ARG WEBPREFIX
+ARG WEBSESSION
+ARG WEBSERVER_CONF
+ARG WEBSERVER_NAME
+
+RUN ICEVER=$ICEVER OMEROVER=$OMEROVER \
+    WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSESSION=$WEBSESSION \
+    WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME \
+    /tmp/omeroweb-install-test/omeroweb-install-ubuntu-ice${ICEVER}
+
+EXPOSE 22 80
+
+ENV RUNPATH="/tmp/omeroweb-install-test/ubuntu-ice${ICEVER}/run"
+CMD ["sh", "-c", "-e", "$RUNPATH"]
