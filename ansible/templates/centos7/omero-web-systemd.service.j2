@@ -14,9 +14,9 @@ Type=forking
 PIDFile={{ omero_user_home_dir }}/OMERO.py/var/django.pid
 Restart=no
 RestartSec=10
-Environment="PATH={{ virtualenv_path }}/venv/bin:/bin:/usr/bin" "WEBBINDIR={{ omero_user_home_dir }}/OMERO.py/bin"
-ExecStart={{ virtualenv_path }}/venv/python $WEBBINDIR/omero web start
-ExecStop={{ virtualenv_path }}/venv/python $WEBBINDIR/omero web stop
+Environment="PATH={{ virtualenv_path }}/bin:/bin:/usr/bin" "WEBBINDIR={{ omero_user_home_dir }}/OMERO.py/bin"
+ExecStart={{ virtualenv_path }}/python $WEBBINDIR/omero web start
+ExecStop={{ virtualenv_path }}/python $WEBBINDIR/omero web stop
 
 [Install]
 WantedBy=multi-user.target
