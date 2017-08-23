@@ -4,12 +4,13 @@
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04 and Mac OS X.
+Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04, Debian 9
+and Mac OS X.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
 
-Read the OMERO System Administrator Documentation https://www.openmicroscopy.org/site/support/omero5.3/sysadmins/index.html,
+Read the OMERO System Administrator Documentation https://docs.openmicroscopy.org/latest/omero/sysadmins/index.html,
 especially the sections on requirements and installation, before using these scripts.
 
 The Linux and OS X scripts should automatically download all required files.

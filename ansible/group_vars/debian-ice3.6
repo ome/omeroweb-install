@@ -2,30 +2,30 @@
 
 path: "{{ playbook_dir }}"
 clean:
-os: osx
+os: debian
 ice_version: "3.6"
 
 doc: False
 doc_conf:
-  header: "OMERO.web walkthrough installation Mac OS X and IcePy 3.6\n=========================================================\n"
-  os_full_name: Mac OS X
+  header: "OMERO.web walkthrough installation Debian 9 and IcePy 3.6\n=========================================================\n"
+  os_full_name: Debian
 
 default:
   web_prefix:
   web_port: 80
   web_server_name: localhost
 
-omero_user:
-omero_user_home_dir: "~"
+omero_user: "omero"
+omero_user_home_dir: "/home/{{ omero_user }}"
 virtualenv_path: "{{ omero_user_home_dir }}/omerowebvenv"
 
 selinux: False
-daemon: False
+daemon: True
 
 # VARS
 
 omero_version: "OMERO-DEV-latest"
-system_site_packages:
+system_site_packages: True
 web_session:
 
 web_prefix:

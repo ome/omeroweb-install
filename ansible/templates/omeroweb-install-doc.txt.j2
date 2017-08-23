@@ -61,13 +61,13 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
-{% if os == 'ubuntu' %}
+{% if os == 'ubuntu' or os == 'debian' %}
 {% set path = os + '/omero-web-init.d.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
 
-{% if os == 'ubuntu' or os == 'osx' %}
+{% if os == 'ubuntu' or os == 'osx' or  os == 'debian' %}
 {% set path = os + '/run.sh.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}

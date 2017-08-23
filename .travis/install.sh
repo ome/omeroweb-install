@@ -13,6 +13,9 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
             ubuntu)
                 ./test/docker-build.sh
                 ;;
+            debian)
+                ./test/docker-build.sh
+                ;;
         esac
     else
         echo "Testing in local system!"
@@ -25,6 +28,16 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
                     mv `pwd` /tmp/
                     chmod 755 -R /tmp/$current_dir
                     sudo /tmp/$current_dir/omeroweb-install-ubuntu-ice${ICEVER}
+                fi
+                ;;
+            debian)
+                if ${ANSIBLE:-false} ; then
+                    ./test/docker-build-ansible.sh
+                else
+                    current_dir=${PWD##*/}
+                    mv `pwd` /tmp/
+                    chmod 755 -R /tmp/$current_dir
+                    sudo /tmp/$current_dir/omeroweb-install-debian-ice${ICEVER}
                 fi
                 ;;
         esac
