@@ -12,6 +12,6 @@ bash $path/../${OS}-ice${ICEVER}/run
 
 sleep 5
 
-curl -I http://localhost:${WEBPORT}${WEBPREFIX}/webclient/login/
+curl -f -I http://localhost:${WEBPORT}${WEBPREFIX}/webclient/login/
 
-curl -I http://localhost:4080${WEBPREFIX}/webclient/login/
+curl -f -I http://localhost:4080${WEBPREFIX}/webclient/login/
