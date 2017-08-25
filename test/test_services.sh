@@ -25,10 +25,10 @@ docker inspect -f {{.State.Running}} $CNAME
 
 # Log in to OMERO.web
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
-  curl -I http://localhost:8888${WEBPREFIX}/webclient/login/
+  curl -f -I http://localhost:8888${WEBPREFIX}/webclient/login/
 else
   DOCKER_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $CNAME)
-  curl -I http://${DOCKER_IP}:${WEBPORT}${WEBPREFIX}/webclient/login/
+  curl -f -I http://${DOCKER_IP}:${WEBPORT}${WEBPREFIX}/webclient/login/
 fi
 
 docker logs $CNAME
