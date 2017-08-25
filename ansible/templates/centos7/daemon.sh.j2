@@ -1,5 +1,5 @@
 {% if doc %}
-Should you wish to run OMERO.web automatically, a `systemd.service` script 
+Should you wish to run OMERO.web automatically, a `systemd.service` file 
 could be created::
 {% else %}
 #!/bin/bash
@@ -8,7 +8,7 @@ set -e -u -x
 {% endif %}
 
 {% if doc %}
-Create a file omero-web-systemd.service. See example file below.
+Create omero-web-systemd.service. See example file below.
 cp omero-web-systemd.service /etc/systemd/system/omero-web.service
 {% else %}
 cp `dirname $0`/omero-web-systemd.service /etc/systemd/system/omero-web.service

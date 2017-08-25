@@ -2,7 +2,7 @@
 
 **The following steps are run as root.**
 
-Create local user {{ omero_user }} if required, homedir :file:`{{ omero_user_home_dir }}`::
+Create a local system user {{ omero_user }} if required, create the homedir too :file:`{{ omero_user_home_dir }}`::
 
 {% else %}
 #!/bin/bash
