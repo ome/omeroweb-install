@@ -7,8 +7,10 @@ if [ ! -z ${TRAVIS:-} ] ; then
 
         if ${DOCKER:-false} ; then
             echo "Installing Docker"
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
             sudo apt-get update
-            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" docker-engine
+            sudo apt-get -y install docker-ce
         fi
 
     elif [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then
@@ -21,6 +23,9 @@ if [ ! -z ${TRAVIS:-} ] ; then
 
     # install ansible
     sudo pip install -r requirements.txt
+    # uninstall jinja2 version 2.9.x install with ansible prevent the doc to be built
+    sudo pip uninstall -y jinja2
+    sudo pip install -U 'jinja2<2.9'
 fi
 
 path=`pwd`
