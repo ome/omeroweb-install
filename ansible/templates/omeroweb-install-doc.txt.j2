@@ -1,5 +1,6 @@
 {% import "macros.j2" as tools with context %}
 {{ doc_conf.header }}
+{{ doc_conf.link_install }}
 
 {% set path = 'common/arg_vars.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
