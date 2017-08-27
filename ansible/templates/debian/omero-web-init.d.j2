@@ -37,7 +37,6 @@ start() {
     echo -n $"Starting $prog:"
     su - ${OMERO_USER} -c "source ${VENVDIR}/bin/activate ${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
     sleep 5
-    ls ${OMERO_PY}/var/log
     RETVAL=$?
     [ "$RETVAL" = 0 ]
         echo
