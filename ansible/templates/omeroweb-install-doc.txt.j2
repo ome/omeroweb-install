@@ -10,6 +10,10 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
 {% if omero_user %}
 {% macro style() %}{% include 'common/create_user.sh.j2' ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
@@ -24,12 +28,24 @@
 {{ style()|indent }}
 
 {% if web_session %}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
 {% set path = os + '/deps_web_session.sh.j2' %}
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
 
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
 {% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
 {% macro style() %}{% include 'common/install.sh.j2' with context %}{% endmacro %}
@@ -39,6 +55,10 @@
 {{ style()|indent }}
 
 {% macro style() %}{% include 'common/omeroweb_configure.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
 {% set path = os + '/nginx.sh.j2' %}
