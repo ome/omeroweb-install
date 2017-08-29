@@ -1,12 +1,10 @@
 {% if doc %}
-Install NGINX::
+Copy the generated configuration file into the NGINX configuration directory::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
-
-brew install nginx
 
 cp {{ omero_user_home_dir }}/nginx.conf.tmp /usr/local/etc/nginx/servers/omeroweb-nginx.conf
 

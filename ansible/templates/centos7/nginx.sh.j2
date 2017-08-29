@@ -1,12 +1,10 @@
 {% if doc %}
-Install NGINX::
+Copy the generated configuration file into the NGINX configuration directory, disable the default configuration and start NGINX::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
-
-yum -y install nginx
 
 sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
 if [ -f /etc/nginx/conf.d/default.conf ]; then

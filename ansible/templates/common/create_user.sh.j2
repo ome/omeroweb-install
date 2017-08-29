@@ -6,10 +6,12 @@ Create a local system user {{ omero_user }} if required, create the homedir too 
 
 set -e -u -x
 {% endif %}
+{% if doc %}
+useradd -m {{ omero_user }}
+{% else %}
 if [ -z "$(getent passwd {{ omero_user }})" ]; then
-
     useradd -m {{ omero_user }}
-
 fi
+{% endif %}
 
 chmod a+X {{ omero_user_home_dir }}

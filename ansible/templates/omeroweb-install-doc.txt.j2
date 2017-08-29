@@ -19,6 +19,13 @@
 {{ style()|indent }}
 {% endif %}
 
+{{ doc_conf.prerequisites }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% endif %}
 {% set path = os + '/deps_ice' + ice_version + '.sh.j2' %}
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
@@ -28,25 +35,32 @@
 {{ style()|indent }}
 
 {% if web_session %}
+{% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
-
+{% endif %}
 {% set path = os + '/deps_web_session.sh.j2' %}
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
 
+{{ doc_conf.virtual_env }}
+{% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
+{% endif %}
 
 {% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.web_install }}
+{% if os != 'osx' %}
 {% set path = 'common/run_as_omero.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
+{% endif %}
 
 {% macro style() %}{% include 'common/install.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
@@ -54,24 +68,48 @@
 {% macro style() %}{% include 'common/virtualenv2.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.web_configuration }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
 {% macro style() %}{% include 'common/omeroweb_configure.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{% macro style() %}{% include 'common/customization.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+{{ doc_conf.nginx_configuration }}
+{% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
+{% endif %}
 
 {% set path = os + '/nginx.sh.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
-{% if selinux %}
-{% set path = os + '/selinux.sh.j2' %}
+{{ doc_conf.web_run }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% endif %}
+{% set path = 'common/run_web.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% if daemon %}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
 
-{% if daemon %}
 {% set path = os + '/daemon.sh.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
@@ -93,3 +131,26 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
+
+{{ doc_conf.maintenance }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% set path = 'common/maintenance.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% if selinux %}
+{{ doc_conf.sel }}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = os + '/selinux.sh.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
