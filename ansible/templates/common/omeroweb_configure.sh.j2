@@ -11,6 +11,7 @@ WEBSERVER_NAME=${WEBSERVER_NAME:-{{ default.web_server_name }}}
 {% endif %}
 
 {% if doc %}
+# The following source command is not required if installed outside a virtual environment
 source {{ virtualenv_path }}/bin/activate
 {% else %}
 set +u
