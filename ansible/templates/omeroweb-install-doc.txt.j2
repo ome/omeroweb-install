@@ -57,7 +57,7 @@
 
 {{ doc_conf.web_install }}
 {% if os != 'osx' %}
-{% set path = 'common/run_as_omero.j2' %}
+{% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}

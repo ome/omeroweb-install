@@ -1,10 +1,10 @@
 {% if doc %}
 Install the OMERO.web requirements. Select one of the commands corresponding to the way you have opted to install it::
 
-# In a virtual environment with --system-site-packages on
+# option 1: in a virtual environment with --system-site-packages on
 {{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27.txt
 
-# In a virtual environment with --system-site-packages off
+# option 2: in a virtual environment with --system-site-packages off
 {{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-all.txt
 
 {% else %}
