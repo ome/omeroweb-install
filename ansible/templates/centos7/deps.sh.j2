@@ -1,12 +1,12 @@
 {% if doc %}
-Install other dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment created with ``--system-site-packages`` *on* (**option 1**), you will need to install ``python-pillow`` and ``numpy``. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, few more dependencies will be required (**option 2**)::
+Install other dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment created with ``--system-site-packages`` *on* (**option 1**), you will need to install ``python-pillow`` and ``numpy``. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, a few more dependencies will be required (**option 2**)::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
 
-# common dependencies to both options
+# dependencies common to both options
 yum -y install epel-release
 
 yum -y install python-pip
