@@ -1,4 +1,5 @@
 ansible/*.retry
+.DS_Store
 ansible/.DS_Store
 **/omeroweb-install-*
 **/centos7*/**
