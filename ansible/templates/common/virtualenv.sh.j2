@@ -5,7 +5,7 @@ Create the virtual environment. This is the preferred way to install OMERO.web::
 virtualenv {{ virtualenv_path }} --system-site-packages
 
 # option 2: in a virtual environment with --system-site-packages off
-virtualenv {{ virtualenv_path }} --no-site-packages
+virtualenv {{ virtualenv_path }}
 
 {% else %}
 #!/bin/bash
