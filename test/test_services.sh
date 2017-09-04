@@ -23,6 +23,8 @@ sleep 5
 # check if container is running
 docker inspect -f {{.State.Running}} $CNAME
 
+docker logs $CNAME
+
 # Log in to OMERO.web
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
   curl -I http://localhost:8888${WEBPREFIX}/webclient/login/
@@ -31,7 +33,7 @@ else
   curl -I http://${DOCKER_IP}:${WEBPORT}${WEBPREFIX}/webclient/login/
 fi
 
-docker logs $CNAME
+
 
 # stop and cleanup
 docker stop $CNAME
