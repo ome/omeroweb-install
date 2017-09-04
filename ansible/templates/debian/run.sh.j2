@@ -13,9 +13,13 @@ service redis start
 {% if not doc %}
 #service crond start # Doesn't work in Docker
 {% endif %}
+cd /bin
+rm sh
+ln -s bash sh
+
 cron
 service nginx start
-service omero-web start
+service omero-web restart
 {% if not doc %}
 exec bash
 {% endif %}
