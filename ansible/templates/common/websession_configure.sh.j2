@@ -11,10 +11,10 @@ set -e -u -x
 {% endif %}
 
 {% if doc %}
-source {{ virtualenv_path }}/bin/activate
+. {{ virtualenv_path }}/bin/activate
 {% else %}
 set +u
-source {{ virtualenv_path }}/bin/activate
+. {{ virtualenv_path }}/bin/activate
 set -u
 {% endif %}
 
