@@ -9,42 +9,10 @@ sudo: required
 matrix:
   include:
     # centos7
-    - os: linux
-      dist: trusty
-      env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest DOCKER=true
-    - os: linux
-      dist: trusty
-      env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest DOCKER=true TRIAL=true
-    # with prefix
-    - os: linux
-      dist: trusty
-      env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest WEBPREFIX=/omero DOCKER=true
-    # test remote
-    - os: linux
-      dist: trusty
-      env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest DOCKER=true ANSIBLE=true
-    - os: linux
-      dist: trusty
-      env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest WEBPREFIX=/omero DOCKER=true ANSIBLE=true
-    # ubuntu
-    - os: linux
-      dist: trusty
-      env:
-        - OS=ubuntu ICEVER=3.6 OMEROVER=latest DOCKER=true
     - os: osx
       osx_image: xcode7.3
       env:
         - OS=osx ICEVER=3.6 OMEROVER=latest WEBPORT=8080 WEBPREFIX=/omero
-    # debian
-    - os: linux
-      dist: trusty
-      env:
-        - OS=debian ICEVER=3.6 OMEROVER=latest DOCKER=true
 
 before_install:
   - python --version
