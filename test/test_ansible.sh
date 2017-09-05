@@ -50,9 +50,9 @@ docker logs ${IMAGE}
 
 #test 
 if [[ "darwin" == "${OSTYPE//[0-9.]/}" ]]; then
-    curl -I http://${DOCKER_IP}:8888${WEBPREFIX}/webclient/login/
+    curl -f -I http://${DOCKER_IP}:8888${WEBPREFIX}/webclient/login/
 else
-    curl -I http://${DOCKER_IP}:${WEBPORT}${WEBPREFIX}/webclient/login/
+    curl -f -I http://${DOCKER_IP}:${WEBPORT}${WEBPREFIX}/webclient/login/
 fi
 
 
