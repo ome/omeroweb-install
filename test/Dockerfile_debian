@@ -30,4 +30,4 @@ RUN ICEVER=$ICEVER OMEROVER=$OMEROVER \
 EXPOSE 22 80
 
 ENV RUNPATH="/tmp/omeroweb-install-test/debian-ice${ICEVER}/run"
-CMD ["sh", "-c", "-e", "$RUNPATH"]
+CMD ["/bin/bash", "-c", "-e", "$RUNPATH"]
