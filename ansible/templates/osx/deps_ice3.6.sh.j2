@@ -1,0 +1,9 @@
+{% if doc %}
+Install ZeroC IcePy version 3.6. The default version available is 3.7 so we must use
+tap::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+brew install zeroc-ice/tap/ice@3.6
