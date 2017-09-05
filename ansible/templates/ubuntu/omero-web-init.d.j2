@@ -4,8 +4,8 @@
 {% endif %}
 #!/bin/bash
 #
-# /etc/init.d/omero
-# Subsystem file for "omero" server
+# /etc/init.d/omero-web
+# Subsystem file for "omero" web
 #
 ### BEGIN INIT INFO
 # Provides:             omero-web
@@ -18,7 +18,7 @@
 #
 ### Redhat
 # chkconfig: - 98 02
-# description: Init script for OMERO.web
+# description: init file for OMERO.web
 ###
 
 RETVAL=0
@@ -35,9 +35,8 @@ VENVDIR=${VENVDIR:-{{ virtualenv_path }}}
 
 start() {
     echo -n $"Starting $prog:"
-    su - ${OMERO_USER} -c "source $VENVDIR/bin/activate; ${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
+    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate; ${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
     sleep 5
-    ls $OMERO_PY/var/log
     RETVAL=$?
     [ "$RETVAL" = 0 ]
         echo
@@ -45,7 +44,7 @@ start() {
 
 stop() {
     echo -n $"Stopping $prog:"
-    su - ${OMERO_USER} -c "source $VENVDIR/bin/activate; ${OMERO} web stop" &> /dev/null && echo -n ' OMERO.web'
+    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate; ${OMERO} web stop" &> /dev/null && echo -n ' OMERO.web'
     RETVAL=$?
     [ "$RETVAL" = 0 ]
         echo
@@ -53,7 +52,7 @@ stop() {
 
 status() {
     echo -n $"Status $prog:"
-    su - ${OMERO_USER} -c "source $VENVDIR/bin/activate; ${OMERO} web status"
+    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate; ${OMERO} web status"
     RETVAL=$?
 }
 

@@ -15,7 +15,7 @@ service redis start
 {% endif %}
 cron
 service nginx start
-service omero-web start
+service omero-web restart
 {% if not doc %}
 exec bash
 {% endif %}
