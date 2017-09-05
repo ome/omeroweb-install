@@ -1,5 +1,5 @@
 {% if doc %}
-Install OMERO.web (run as {{ omero_user }})::
+Install OMERO.web using OMERO.py::
 {% else %}
 #!/bin/bash
 
@@ -11,7 +11,7 @@ OMEROVER=${OMEROVER:-{{ omero_version }}}
 
 {% if doc %}
 cd {{ omero_user_home_dir }}
-curl -o OMERO.py.zip -L https://downloads.openmicroscopy.org/latest/omero5.3/py.zip
+curl -o OMERO.py.zip -L https://downloads.openmicroscopy.org/latest/omero/py.zip
 unzip -q OMERO.py*
 {% else %}
 {{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --branch "${OMEROVER}" py

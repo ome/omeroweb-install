@@ -1,14 +1,21 @@
 {% if doc %}
-Install in the virtualenv created previously (run as root)::
+Install the OMERO.web requirements. Select one of the commands corresponding to the way you have opted to install it::
+
+# option 1: in a virtual environment with --system-site-packages on
+{{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27.txt
+
+# option 2: in a virtual environment with --system-site-packages off
+{{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-all.txt
+
 {% else %}
 #!/bin/bash
 
 set -e -u -x
-
-{% endif %}
-
 {% if system_site_packages %}
 {{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27.txt
 {% else %}
 {{ virtualenv_path }}/bin/pip install --upgrade -r {{ omero_user_home_dir }}/OMERO.py/share/web/requirements-py27-all.txt
 {% endif %}
+{% endif %}
+
+

@@ -1,15 +1,38 @@
 {% if doc %}
-Install other dependencies (run as root)::
+Install other dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment created with ``--system-site-packages`` *on* (**option 1**), you will need to install ``python-pillow`` and ``numpy``. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, a few more dependencies will be required (**option 2**)::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
 
+# dependencies common to both options
 yum -y install epel-release
+
+yum -y install unzip
 
 yum -y install python-pip
 
+yum -y install nginx
+
+# install the latest version
+pip install --upgrade pip
+pip install --upgrade virtualenv
+
+{% if doc %}
+# To install OMERO.web using option 1
+yum -y install \
+    python-pillow \
+    numpy
+
+# To install OMERO.web using option 2
+yum -y install \
+    python-devel \
+    libjpeg-devel \
+    libtiff libtiff-devel \
+    zlib-devel
+
+{% else %}
 {% if system_site_packages %}
 yum -y install \
     python-pillow \
@@ -19,10 +42,7 @@ yum -y install \
 yum -y install \
     python-devel \
     libjpeg-devel \
-    libtiff libtiff-devel
+    libtiff libtiff-devel \
     zlib-devel
 {% endif %}
-
-# install the latest version
-pip install --upgrade pip
-pip install --upgrade virtualenv
+{% endif %}

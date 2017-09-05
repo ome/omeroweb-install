@@ -1,16 +1,40 @@
 {% if doc %}
-Install other dependencies (run as root)::
+Install other dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment created with ``--system-site-packages`` *on* (**option 1**), you will need to install ``python-pillow`` and ``python-numpy``. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, a few more dependencies will be required (**option 2**)::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
 
+# dependencies common to both options
 apt-get update
+
+apt-get -y install unzip
+ 
 apt-get -y install \
     python-pip \
     python-virtualenv
 
+apt-get -y install nginx
+
+{% if doc %}
+# To install OMERO.web using option 1
+apt-get -y install \
+    python-pillow \
+    python-numpy
+
+# To install OMERO.web using option 2
+# require to install Pillow
+apt-get -y install \
+    libtiff5-dev \
+    libjpeg8-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libwebp-dev \
+    tcl8.6-dev \
+    tk8.6-dev
+{% else %}
 
 {% if system_site_packages %}
 apt-get -y install \
@@ -32,4 +56,6 @@ apt-get -y install \
     libwebp-dev \
     tcl8.6-dev \
     tk8.6-dev
+{% endif %}
+
 {% endif %}

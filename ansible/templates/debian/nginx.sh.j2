@@ -1,16 +1,11 @@
 {% if doc %}
-Install NGINX (run as root)::
+Copy the generated configuration file into the NGINX configuration directory, disable the default configuration and start NGINX::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
 
-#start-install
-apt-get update
-apt-get -y install nginx
-
-#end-install
 sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
 mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.disabled
 if [ -f /etc/nginx/sites-enabled/default ]; then

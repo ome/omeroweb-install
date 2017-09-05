@@ -1,5 +1,5 @@
 {% if doc %}
-Daemon (run as root)::
+Should you wish to run OMERO.web automatically, a `init.d` file could be created::
 {% else %}
 #!/bin/bash
 
@@ -7,7 +7,7 @@ set -e -u -x
 {% endif %}
 
 {% if doc %}
-Create a file omero-web-init.d. See example file below.
+Create omero-web-init.d. See example file below.
 cp omero-web-init.d /etc/init.d/omero-web
 {% else %}
 cp `dirname $0`/omero-web-init.d /etc/init.d/omero-web
