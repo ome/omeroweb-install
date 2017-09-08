@@ -7,5 +7,13 @@ set -e -u -x
 
 {% endif %}
 
+{% if doc %}
+. {{ virtualenv_path }}/bin/activate
+{% else %}
+set +u
+. {{ virtualenv_path }}/bin/activate
+set -u
+{% endif %}
+
 {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.session_engine 'django.contrib.sessions.backends.cache'
 {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.caches '{"default": {"BACKEND": "django_redis.cache.RedisCache","LOCATION": "redis://127.0.0.1:6379/0"}}'
