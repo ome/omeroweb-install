@@ -16,3 +16,6 @@ yum -y install \
 yum -y install \
     libdb-utils \
     openssl-devel bzip2-devel expat-devel
+
+# reset the locale changed by installing gcc
+localedef -i en_US -f UTF-8 en_US.UTF-8
