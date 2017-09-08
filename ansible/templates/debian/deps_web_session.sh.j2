@@ -1,0 +1,17 @@
+{% if doc %}
+Enable and start Redis::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+systemctl enable redis-server.service
+
+{% if doc %}
+systemctl start redis-server.service
+{% else %}
+if [ ! "${container:-}" = docker ]; then
+    systemctl start redis-server.service
+fi
+{% endif %}

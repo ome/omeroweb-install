@@ -1,12 +1,10 @@
 {% if doc %}
-Install Redis::
+Enable and Start Redis::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 {% endif %}
-
-yum -y install redis python-redis
 
 systemctl enable redis.service
 

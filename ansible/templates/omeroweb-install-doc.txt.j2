@@ -34,17 +34,6 @@
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
 
-{% if web_session %}
-{% if os != 'osx' %}
-{% set path = 'common/run_as_root.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
-{% set path = os + '/deps_web_session.sh.j2' %}
-{% macro style() %}{% include path with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
-
 {{ doc_conf.virtual_env }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
@@ -95,6 +84,27 @@
 {% set path = os + '/nginx.sh.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
+
+{% if web_session %}
+{{ doc_conf.redis_configuration }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% set path = os + '/deps_web_session.sh.j2' %}
+{% macro style() %}{% include path with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/websession_configure.sh.j2' %}
+{% macro style() %}{% include path with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
 
 {{ doc_conf.web_run }}
 {% if os != 'osx' %}
