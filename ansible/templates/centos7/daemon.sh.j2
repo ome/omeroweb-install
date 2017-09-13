@@ -1,5 +1,5 @@
 {% if doc %}
-Should you wish to run OMERO.web automatically, a `systemd.service` file could be created. See example file below::
+Copy the `systemd.service` file, then enable and start the service::
 {% else %}
 #!/bin/bash
 
@@ -23,6 +23,8 @@ fi
 systemctl enable omero-web.service
 
 {% if doc %}
+systemctl stop omero-web.service
+
 systemctl start omero-web.service
 {% else %}
 if [ ! "${container:-}" = docker ]; then
