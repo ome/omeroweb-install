@@ -15,14 +15,6 @@
 {{ style()|indent }}
 {% endif %}
 
-{% set path = 'common/run_as_omero.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-
-{% set path = 'common/arg_vars.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-
 {% set path = os + '/init.sh.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
@@ -87,6 +79,10 @@
 {{ style()|indent }}
 {% endif %}
 
+{% set path = 'common/arg_vars.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
 {% macro style() %}{% include 'common/omeroweb_configure.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
@@ -109,6 +105,7 @@
 {% set path = 'common/run_as_omero.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
+
 
 {% endif %}
 {% set path = 'common/run_web.j2'%}

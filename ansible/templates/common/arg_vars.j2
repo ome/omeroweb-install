@@ -1,8 +1,8 @@
 {% if doc %}
-For convenience the main OMERO.web configuration options have been defined as environment variables. When following this walkthrough you can either use your own values, or alternatively use the following ones::
+For convenience the main OMERO.web configuration options have been defined as environment variables. You can either use your own values, or alternatively use the following ones::
 
-export OMERO_USER={{ omero_user }}
 {% if not doc %}
+OMERO_USER={{ omero_user }}
 OMEROVER={{ omero_version }}
 {% endif %}
 {% if web_session %}
