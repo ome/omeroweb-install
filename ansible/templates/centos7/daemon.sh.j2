@@ -23,6 +23,8 @@ fi
 systemctl enable omero-web.service
 
 {% if doc %}
+systemctl stop omero-web.service
+
 systemctl start omero-web.service
 {% else %}
 if [ ! "${container:-}" = docker ]; then
