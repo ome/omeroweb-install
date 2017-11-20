@@ -61,7 +61,6 @@
         src: "{{ os }}/deps_ice{{ ice_version }}.sh.j2"
         dest: "{{ path }}/{{ prefix }}/deps_ice{{ ice_version }}.sh"
         mode: a+x
-      when: "{{ ice_version }}"
     - name: Generate {{ prefix }}/deps_web_session.sh
       template:
         src: "{{ os }}/deps_web_session.sh.j2"
