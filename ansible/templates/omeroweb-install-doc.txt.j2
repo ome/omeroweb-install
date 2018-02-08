@@ -95,7 +95,7 @@
 {{ style()|indent }}
 
 {{ doc_conf.standalone_web }}
-{% macro style() %}{% include 'common/whitenoise.j2' with context %}{% endmacro %}
+{% macro style() %}{% include 'common/whitenoise.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
 {{ doc_conf.nginx_configuration }}

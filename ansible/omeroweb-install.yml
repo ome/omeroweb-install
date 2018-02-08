@@ -50,6 +50,11 @@
         src: "common/websession_configure.sh.j2"
         dest: "{{ path }}/{{ prefix }}/websession_configure.sh"
         mode: a+x
+    - name: Generate common/whitenoise.sh
+      template:
+        src: "common/whitenoise.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/whitenoise.sh"
+        mode: a+x
 
     - name: Generate {{ prefix }}/deps.sh
       template:

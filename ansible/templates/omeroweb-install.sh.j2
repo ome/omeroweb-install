@@ -41,6 +41,8 @@ if [[ $WEBSESSION = *[!\ ]* ]]; then
     {% endif %}
 fi
 
+bash $path/whitenoise.sh
+
 bash $path/nginx.sh
 
 {% if selinux %}
