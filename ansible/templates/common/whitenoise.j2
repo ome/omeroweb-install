@@ -1,0 +1,24 @@
+{% if doc %}
+**The following steps are run as the {{ omero_user }} system user.**
+
+Install and configure `WhiteNoise <http://whitenoise.evans.io/>`_ and restart OMERO.web::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+{% endif %}
+
+{% if doc %}
+. {{ virtualenv_path }}/bin/activate
+{% else %}
+set +u
+. {{ virtualenv_path }}/bin/activate
+set -u
+{% endif %}
+
+pip install --upgrade 'whitenoise<4'
+
+{{ omero_user_home_dir }}/OMERO.py/bin/omero config append -- omero.web.middleware '{"index": 0, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'"
+
+{{ omero_user_home_dir }}/OMERO.py/bin/omero web restart
