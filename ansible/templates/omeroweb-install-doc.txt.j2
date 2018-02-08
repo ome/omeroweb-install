@@ -90,6 +90,14 @@
 {% macro style() %}{% include 'common/customization.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.gunicorn_configuration }}
+{% macro style() %}{% include 'common/gunicorn.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+{{ doc_conf.standalone_web }}
+{% macro style() %}{% include 'common/whitenoise.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
 {{ doc_conf.nginx_configuration }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
