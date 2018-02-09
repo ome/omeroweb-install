@@ -1,0 +1,20 @@
+{% if doc %}
+**The following steps are run as root.**
+
+Install `WhiteNoise <http://whitenoise.evans.io/>`_::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+{% endif %}
+
+{% if doc %}
+. {{ virtualenv_path }}/bin/activate
+{% else %}
+set +u
+. {{ virtualenv_path }}/bin/activate
+set -u
+{% endif %}
+
+pip install --upgrade 'whitenoise<4'

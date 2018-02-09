@@ -41,7 +41,9 @@ if [[ $WEBSESSION = *[!\ ]* ]]; then
     {% endif %}
 fi
 
-su - {{ omero_user }}  -c "bash $path/whitenoise.sh"
+bash $path/install_whitenoise.sh
+
+su - {{ omero_user }}  -c "bash $path/whitenoise_configuration.sh"
 
 bash $path/nginx.sh
 
