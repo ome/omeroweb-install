@@ -124,15 +124,6 @@
 {{ style()|indent }}
 
 {{ doc_conf.web_run }}
-{% if os != 'osx' %}
-{% set path = 'common/run_as_omero.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-
-{% endif %}
-{% set path = 'common/run_web.j2'%}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
 
 {% if daemon %}
 {% if os != 'osx' %}
