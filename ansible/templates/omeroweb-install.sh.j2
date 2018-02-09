@@ -16,7 +16,11 @@ bash $path/deps_ice{{ ice_version }}.sh
 # install other dependencies
 bash $path/deps.sh
 
+{% if omero_user %}
+su - {{ omero_user }}  -c "bash $path/virtualenv.sh"
+{% else %}
 bash $path/virtualenv.sh
+{% endif %}
 
 {% if omero_user %}
 su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
@@ -24,7 +28,11 @@ su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
 bash $path/install.sh
 {% endif %}
 
+{% if omero_user %}
+su - {{ omero_user }}  -c "bash $path/virtualenv2.sh"
+{% else %}
 bash $path/virtualenv2.sh
+{% endif %}
 
 {% if omero_user %}
 su - {{ omero_user }}  -c "WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
@@ -41,7 +49,11 @@ if [[ $WEBSESSION = *[!\ ]* ]]; then
     {% endif %}
 fi
 
+{% if omero_user %}
+su - {{ omero_user }}  -c "bash $path/install_whitenoise.sh"
+{% else %}
 bash $path/install_whitenoise.sh
+{% endif %}
 
 su - {{ omero_user }}  -c "bash $path/whitenoise_configuration.sh"
 
