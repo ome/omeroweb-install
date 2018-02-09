@@ -17,8 +17,6 @@ set +u
 set -u
 {% endif %}
 
-pip install --upgrade 'whitenoise<4'
-
 {{ omero_user_home_dir }}/OMERO.py/bin/omero config append -- omero.web.middleware '{"index": 0, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'
 
 {{ omero_user_home_dir }}/OMERO.py/bin/omero web start
