@@ -21,28 +21,16 @@ pip install --upgrade virtualenv
 
 {% if doc %}
 # To install OMERO.web using option 1
-yum -y install \
-    python-pillow \
-    numpy
+yum -y install python-pillow numpy
 
 # To install OMERO.web using option 2
-yum -y install \
-    python-devel \
-    libjpeg-devel \
-    libtiff libtiff-devel \
-    zlib-devel
+yum -y install python-devel libjpeg-devel libtiff libtiff-devel zlib-devel
 
 {% else %}
 {% if system_site_packages %}
-yum -y install \
-    python-pillow \
-    numpy
+yum -y install python-pillow numpy
 
 {% else %}
-yum -y install \
-    python-devel \
-    libjpeg-devel \
-    libtiff libtiff-devel \
-    zlib-devel
+yum -y install python-devel libjpeg-devel libtiff libtiff-devel zlib-devel
 {% endif %}
 {% endif %}
