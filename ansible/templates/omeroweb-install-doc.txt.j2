@@ -99,6 +99,17 @@
 {% macro style() %}{% include 'common/gunicorn.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.nginx_configuration }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% set path = os + '/nginx.sh.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
 {{ doc_conf.standalone_web }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_omero.j2' %}
@@ -112,16 +123,6 @@
 {% macro style() %}{% include 'common/whitenoise_configuration.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
-{{ doc_conf.nginx_configuration }}
-{% if os != 'osx' %}
-{% set path = 'common/run_as_root.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
-
-{% set path = os + '/nginx.sh.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
 
 {{ doc_conf.web_run }}
 
