@@ -4,6 +4,9 @@ Install other dependencies. The number of dependencies to install depends on the
 #!/bin/bash
 
 set -e -u -x
+echo 'APT::Install-Recommends 0;' > /etc/apt/apt.conf.d/01norecommends \
+ && echo 'APT::Install-Suggests 0;' >> /etc/apt/apt.conf.d/01norecommends
+
 {% endif %}
 
 # dependencies common to both options
@@ -12,13 +15,16 @@ apt-get update
 apt-get -y install unzip
 
 apt-get -y install \
-    python-pip
+    python-pip \
+    python-virtualenv
+
+# to be installed if recommended/suggested is false
+apt-get -y install virtualenv
 
 apt-get -y install nginx
 
 # install the latest version
 pip install --upgrade pip
-pip install --upgrade virtualenv
 
 {% if doc %}
 # To install OMERO.web using option 1
