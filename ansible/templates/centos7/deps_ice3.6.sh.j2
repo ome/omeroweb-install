@@ -8,14 +8,9 @@ set -e -u -x
 # ZeroC Ice 3.6
 {% endif %}
 
-yum -y install \
-    gcc \
-    gcc-c++ \
-    python-devel
+yum -y install gcc gcc-c++ python-devel
 
-yum -y install \
-    libdb-utils \
-    openssl-devel bzip2-devel expat-devel
+yum -y install libdb-utils openssl-devel bzip2-devel
 
 # reset the locale changed by installing gcc
 localedef -i en_US -f UTF-8 en_US.UTF-8

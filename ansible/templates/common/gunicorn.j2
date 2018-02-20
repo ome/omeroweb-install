@@ -1,0 +1,16 @@
+{% if doc %}
+Additional settings can be configured by changing the following properties:
+
+- :property:`omero.web.application_server.max_requests` to 500
+
+- :property:`omero.web.wsgi_workers` to (2 x NUM_CORES) + 1
+
+  .. note::
+      **Do not** scale the number of workers to the number of clients
+      you expect to have. OMERO.web should only need 4-12 worker
+      processes to handle many requests per second.
+
+- :property:`omero.web.wsgi_args` Additional arguments. For more details
+  check `Gunicorn Documentation <http://docs.gunicorn.org/en/stable/settings.html>`_.
+
+{% endif %}

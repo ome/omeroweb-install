@@ -48,7 +48,7 @@
 
 {{ doc_conf.virtual_env }}
 {% if os != 'osx' %}
-{% set path = 'common/run_as_root.j2' %}
+{% set path = 'common/run_as_omero.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
@@ -66,7 +66,6 @@
 {% macro style() %}{% include 'common/install.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
-{% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
@@ -90,6 +89,16 @@
 {% macro style() %}{% include 'common/customization.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.gunicorn_configuration }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% macro style() %}{% include 'common/gunicorn.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
 {{ doc_conf.nginx_configuration }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
@@ -101,17 +110,21 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
-{{ doc_conf.web_run }}
+{{ doc_conf.standalone_web }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_omero.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
-
-
 {% endif %}
-{% set path = 'common/run_web.j2'%}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+
+{% macro style() %}{% include 'common/install_whitenoise.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
+
+{% macro style() %}{% include 'common/whitenoise_configuration.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+
+{{ doc_conf.web_run }}
 
 {% if daemon %}
 {% if os != 'osx' %}
