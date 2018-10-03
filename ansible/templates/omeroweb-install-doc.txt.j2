@@ -72,6 +72,17 @@
 {% macro style() %}{% include 'common/virtualenv2.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.webapps_install }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% macro style() %}{% include 'common/webapps_install.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+
+
 {{ doc_conf.web_configuration }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_omero.j2' %}
