@@ -107,14 +107,14 @@
       template:
         src: "{{ os }}/omero-web-init.d.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-init.d"
-      when: (os | search("ubuntu")) or os=="debian"
+      when: (os | search("ubuntu")) or (os | search("debian"))
 
     - name: Generate run.sh (ubuntu/debian/osx)
       template:
         src: "{{ os }}/run.sh.j2"
         dest: "{{ path }}/{{ prefix }}/run"
         mode: a+x
-      when: (os | search("ubuntu")) or os=="osx" or os=="debian"
+      when: (os | search("ubuntu")) or os=="osx" or (os | search("debian"))
 
     - name: Generate init.sh (osx)
       template:

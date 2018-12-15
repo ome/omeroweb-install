@@ -40,7 +40,7 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - OS=debian ICEVER=3.6 OMEROVER=latest DOCKER=true
+        - OS=debian9 ICEVER=3.6 OMEROVER=latest DOCKER=true
 
 before_install:
   - python --version
