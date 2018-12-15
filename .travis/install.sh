@@ -6,17 +6,7 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
 
     if ${DOCKER:-false} ; then
         echo "Testing in Docker!"
-        case "${OS}" in
-            centos7)
-                ./test/docker-build.sh
-                ;;
-            ubuntu)
-                ./test/docker-build.sh
-                ;;
-            debian)
-                ./test/docker-build.sh
-                ;;
-        esac
+        ./test/docker-build.sh
     else
         echo "Testing in local system!"
         case "${OS}" in
