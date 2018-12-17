@@ -100,7 +100,7 @@ To run installation scripts on a remote host:
 Testing in DOCKER
 -----------------
 
-These tests are only for CentOS 7, Ubuntu, Debian deployment. Unfortunately there is no docker container for Mac OS X installation scritps
+These tests are only for CentOS 7, Ubuntu, and Debian deployments. Unfortunately there is no docker container for Mac OS X installation scripts
 
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
