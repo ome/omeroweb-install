@@ -3,6 +3,7 @@ ansible/*.retry
 ansible/.DS_Store
 **/omeroweb-install-*
 **/centos7*/**
-**/ubuntu*/**
+**/ubuntu1604-*/**
+**/debian9-*/**
 **/osx*/**
 **/doc/**

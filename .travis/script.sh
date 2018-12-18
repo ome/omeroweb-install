@@ -6,37 +6,17 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
 
     if ${DOCKER:-false} ; then
         echo "Testing in Docker"
-        case "${OS}" in
-            centos7)
-                ./test/test_services.sh
-                ;;
-            ubuntu)
-                ./test/test_services.sh
-                ;;
-            debian)
-                ./test/test_services.sh
-                ;;
-        esac
+        ./test/test_services.sh
     else
         echo "Testing in VM"
-        case "${OS}" in
-            ubuntu)
-                if ${ANSIBLE:-false} ; then
-                    (cd test && ./test_ansible.sh)
-                else
-                    echo "Testing installation only in VM"
-                    echo "cron is failing with: 'cron: can't lock /var/run/crond.pid, otherpid may be 1474: Resource temporarily unavailable'"
-                fi
-                ;;
-            debian)
-                if ${ANSIBLE:-false} ; then
-                    (cd test && ./test_ansible.sh)
-                else
-                    echo "Testing installation only in VM"
-                    echo "cron is failing with: 'cron: can't lock /var/run/crond.pid, otherpid may be 1474: Resource temporarily unavailable'"
-                fi
-                ;;
-        esac
+        if [[ ! ${OS} = "centos7" ]];  then
+            if ${ANSIBLE:-false} ; then
+                (cd test && ./test_ansible.sh)
+            else
+                echo "Testing installation only in VM"
+                echo "cron is failing with: 'cron: can't lock /var/run/crond.pid, otherpid may be 1474: Resource temporarily unavailable'"
+            fi
+        fi
     fi
 
 elif [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then

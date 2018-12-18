@@ -44,8 +44,6 @@ Create your own copy of inventory, e.g. `ansible/hosts/centos7-ice3.6`  and defi
 
     ansible-playbook ./ansible/omeroweb-install.yml -i /path/to/hosts/centos7-ice3.6
 
-Please note that IcePy 3.5 has to be installed from RPM, this result in generating
-virtualenv with --system-site-packages
 
 Extra vars arguments:
 
@@ -83,9 +81,9 @@ on Mac OS X:
     ./omeroweb-install-osx-ice3.6
     ./osx/run
 
-on Ubuntu:
+on Ubuntu 16.04:
 
-    ./omeroweb-install-ubuntu-ice3.6
+    ./omeroweb-install-ubuntu1604-ice3.6
     ./ubuntu/run
 
 on CentOS 7:
@@ -102,13 +100,13 @@ To run installation scripts on a remote host:
 Testing in DOCKER
 -----------------
 
-These tests are only for CentOS 7 and Ubuntu deployment. Unfortunately there is no docker container for Mac OS X installation scritps
+These tests are only for CentOS 7, Ubuntu, and Debian deployments. Unfortunately there is no docker container for Mac OS X installation scripts
 
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
     OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
  
- To test remote build set `ANSIBLE=true`
+To test remote build set `ANSIBLE=true`
 Note: make sure you always set `DOCKER=true` when running local test. Otherwise it will attempt to install OMERO.web on you local machine
 
 Note: running tests on Mac OS X requires Docker for Mac (Docker Tollbox is not supported)
@@ -116,4 +114,4 @@ Note: running tests on Mac OS X requires Docker for Mac (Docker Tollbox is not s
 Copyright
 ---------
 
-2016, The Open Microscopy Environment
+2016-2018, The Open Microscopy Environment
