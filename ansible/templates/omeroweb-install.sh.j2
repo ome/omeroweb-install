@@ -10,9 +10,6 @@ path=`dirname $0`/{{ os }}-ice{{ ice_version }}
 bash $path/create_user.sh
 {% endif %}
 
-# install ZeroC IcePy
-bash $path/deps_ice{{ ice_version }}.sh
-
 # install other dependencies
 bash $path/deps.sh
 
@@ -26,6 +23,13 @@ bash $path/virtualenv.sh
 su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
 {% else %}
 bash $path/install.sh
+{% endif %}
+
+# install ZeroC IcePy
+{% if omero_user %}
+su - {{ omero_user }}  -c "bash $path/deps_ice{{ ice_version }}.sh"
+{% else %}
+bash $path/deps_ice{{ ice_version }}.sh
 {% endif %}
 
 {% if omero_user %}

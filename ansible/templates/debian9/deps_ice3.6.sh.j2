@@ -1,5 +1,5 @@
 {% if doc %}
-Install ZeroC IcePy {{ ice_version }}. IcePy is managed by PyPI_, a package management system used to install and manage software packages written in Python. IcePy and will be installed as part of the OMERO.web requirements::
+Install ZeroC IcePy {{ ice_version }}::
 {% else %}
 #!/bin/bash
 
@@ -8,7 +8,5 @@ set -e -u -x
 # ZeroC Ice 3.6
 {% endif %}
 
-# to be installed if recommended/suggested is false
-apt-get -y install build-essential python-dev
-
-apt-get -y install libssl-dev libbz2-dev libmcpp-dev libdb++-dev libdb-dev libdb-java
+# option 1 and option 2
+{{ virtualenv_path }}/bin/pip install --upgrade https://github.com/ome/zeroc-ice-py-debian9/releases/download/0.1.0/zeroc_ice-3.6.4-cp27-cp27mu-linux_x86_64.whl
