@@ -36,6 +36,10 @@ matrix:
       dist: trusty
       env:
         - OS=ubuntu1604 ICEVER=3.6 OMEROVER=latest DOCKER=true
+    - os: linux
+      dist: trusty
+      env:
+        - OS=ubuntu1804 ICEVER=3.7 OMEROVER=latest DOCKER=true
     # debian
     - os: linux
       dist: trusty
