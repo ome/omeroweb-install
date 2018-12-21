@@ -1,0 +1,46 @@
+# INTERNAL CONFIG DON'T CHANGE
+
+path: "{{ playbook_dir }}"
+clean:
+os: ubuntu1804
+ice_version: "3.7"
+
+doc: False
+doc_conf:
+  note: ".. walkthroughs are generated using ansible, see \n.. https://github.com/ome/omeroweb-install\n"
+  header: "OMERO.web installation separately from OMERO.server on Ubuntu 18.04 and IcePy 3.7\n=================================================================================\n"
+  link_install: "Please first read :doc:`../../server-ubuntu1804-ice37`.\n"
+  os_full_name: Ubuntu1804
+  prerequisites: "Installing prerequisites\n------------------------\n"
+  virtual_env: "Creating a virtual environment\n------------------------------\n"
+  web_install: "Installing OMERO.web\n--------------------\n"
+  webapps_install: "Installing OMERO.web apps\n-------------------------\n"
+  web_configuration: "Configuring OMERO.web\n---------------------\n"
+  gunicorn_configuration: "Configuring Gunicorn\n--------------------\n"
+  standalone_web: "Running OMERO.web\n-----------------\n"
+  nginx_configuration: "Configuring NGINX\n-----------------\n"
+  sel: "SELinux\n-------\n"
+  web_run: "Automatically running OMERO.web\n-------------------------------\n"
+  maintenance: "Maintenance\n-----------\n"
+
+default:
+  web_prefix:
+  web_port: 80
+  web_server_name: localhost
+
+omero_user: "omero"
+omero_user_home_dir: "/home/{{ omero_user }}"
+virtualenv_path: "{{ omero_user_home_dir }}/omerowebvenv"
+
+selinux: False
+daemon: True
+
+# VARS
+
+omero_version: "OMERO-DEV-latest"
+system_site_packages: True
+web_session:
+
+web_prefix:
+web_port:
+web_server_name:
