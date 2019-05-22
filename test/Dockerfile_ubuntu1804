@@ -14,7 +14,7 @@ RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 # This is so that scripts can detect whether they're in docker
 RUN echo 'export container=docker' > /etc/profile.d/docker.sh
 
-ARG ICEVER=3.7
+ARG ICEVER=3.6
 ARG OMEROVER=latest
 ARG WEBPORT=80
 ARG WEBPREFIX
