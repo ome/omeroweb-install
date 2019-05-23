@@ -9,9 +9,6 @@ echo 'APT::Install-Recommends 0;' > /etc/apt/apt.conf.d/01norecommends \
 
 {% endif %}
 
-# Install IcePy {{ ice_version }}
-apt-get -y install python-zeroc-ice
-
 # dependencies common to both options
 apt-get update
 
