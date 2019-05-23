@@ -4,6 +4,7 @@ ansible/.DS_Store
 **/omeroweb-install-*
 **/centos7*/**
 **/ubuntu1604-*/**
+**/ubuntu1804-*/**
 **/debian9-*/**
 **/osx*/**
 **/doc/**
