@@ -1,0 +1,21 @@
+{% if doc %}
+Start up services::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+{% if web_session %}
+service redis start
+{% endif %}
+
+{% if not doc %}
+#service crond start # Doesn't work in Docker
+{% endif %}
+cron
+service nginx start
+service omero-web restart
+{% if not doc %}
+exec bash
+{% endif %}

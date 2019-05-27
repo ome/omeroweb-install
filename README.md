@@ -109,9 +109,9 @@ These tests are only for CentOS 7, Ubuntu, and Debian deployments. Unfortunately
 To test remote build set `ANSIBLE=true`
 Note: make sure you always set `DOCKER=true` when running local test. Otherwise it will attempt to install OMERO.web on you local machine
 
-Note: running tests on Mac OS X requires Docker for Mac (Docker Tollbox is not supported)
+Note: running tests on Mac OS X requires Docker for Mac (Docker Toolbox is not supported)
 
 Copyright
 ---------
 
-2016-2018, The Open Microscopy Environment
+2016-2019, The Open Microscopy Environment
