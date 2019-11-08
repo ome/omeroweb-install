@@ -14,5 +14,5 @@ set -e -u -x
 
 virtualenv {{ virtualenv_path }} {% if system_site_packages %}--system-site-packages{% endif %}
 
-{{ virtualenv_path }}/bin/pip install --upgrade omego
+{{ virtualenv_path }}/bin/pip install --upgrade omego==0.7.0.dev1
 {% endif %}

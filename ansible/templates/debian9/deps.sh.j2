@@ -14,7 +14,7 @@ apt-get update
 
 apt-get -y install unzip
  
-apt-get -y install python-{pip,virtualenv,jinja2}
+apt-get -y install python3-{pip,dev,virtualenv,jinja2}
 
 # to be installed if recommended/suggested is false
 apt-get -y install virtualenv
@@ -23,7 +23,7 @@ apt-get -y install nginx
 
 {% if doc %}
 # To install OMERO.web using option 1
-apt-get -y install python-pillow python-numpy
+apt-get -y install python3-pillow python3-numpy
 
 # To install OMERO.web using option 2
 # require to install Pillow
@@ -33,11 +33,9 @@ apt-get -y install tcl8.6-dev tk8.6-dev
 {% else %}
 
 {% if system_site_packages %}
-apt-get -y install python-pillow python-numpy
+apt-get -y install python3-pillow python3-numpy
 
 {% else %}
-
-apt-get -y install python-dev
 
 # require to install Pillow
 apt-get -y install libtiff5-dev libjpeg8-dev zlib1g-dev
@@ -46,3 +44,5 @@ apt-get -y install libwebp-dev tcl8.6-dev tk8.6-dev
 {% endif %}
 
 {% endif %}
+
+ln -s /usr/bin/python3 /usr/local/bin/python
