@@ -14,7 +14,7 @@ cd {{ omero_user_home_dir }}
 curl -o OMERO.py.zip -L https://downloads.openmicroscopy.org/latest/omero5/py.zip
 unzip -q OMERO.py*
 {% else %}
-{{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --branch "${OMEROVER}" py
+{{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --ci merge-ci --branch "${OMEROVER}" py
 {% endif %}
 
 zip=$(ls OMERO.py*.zip)
