@@ -7,7 +7,7 @@ MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 ENV LANG C.UTF-8
 
 ADD ./omeroweb-install-test.zip /tmp
-RUN apt-get update && apt-get -y install unzip cron
+RUN apt-get update && apt-get -y install unzip cron git
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 

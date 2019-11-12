@@ -11,7 +11,7 @@ RUN userdel -r omero && \
 	echo 'root:omero' | chpasswd
 
 ADD ./omeroweb-install-test.zip /tmp
-RUN yum -y install initscripts unzip
+RUN yum -y install initscripts unzip git
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 # This is so that scripts can detect whether they're in docker
