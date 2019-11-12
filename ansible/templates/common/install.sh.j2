@@ -1,5 +1,5 @@
 {% if doc %}
-Install OMERO.web using OMERO.py::
+Install OMERO.web::
 {% else %}
 #!/bin/bash
 
@@ -9,21 +9,7 @@ OMEROVER=${OMEROVER:-{{ omero_version }}}
 
 {% endif %}
 
-{% if doc %}
 cd {{ omero_user_home_dir }}
-curl -o OMERO.py.zip -L https://downloads.openmicroscopy.org/latest/omero5/py.zip
-unzip -q OMERO.py*
-{% else %}
-{{ virtualenv_path }}/bin/omego download --ice "{{ ice_version }}" --ci merge-ci --branch "${OMEROVER}" py
-{% endif %}
+. {{ virtualenv_path }}/bin/activate
 
-zip=$(ls OMERO.py*.zip)
-rm -f $zip
-{% if doc %}
-ln -s OMERO.py-* OMERO.py
-{% else %}
-if [ ! -d "{{ omero_user_home_dir }}/OMERO.py" ]; then
-    mv $(find . -name 'OMERO.py*' -type d) {{ omero_user_home_dir }}/OMERO.py
-fi
-{% endif %}
-
+pip install "git+git://github.com/snoopycrimecop/omero-web@merge_ci#egg=omero-web"

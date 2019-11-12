@@ -33,12 +33,6 @@ bash $path/deps_ice{{ ice_version }}.sh
 {% endif %}
 
 {% if omero_user %}
-su - {{ omero_user }}  -c "bash $path/virtualenv2.sh"
-{% else %}
-bash $path/virtualenv2.sh
-{% endif %}
-
-{% if omero_user %}
 su - {{ omero_user }}  -c "WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
 {% else %}
 bash $path/omeroweb_configure.sh
