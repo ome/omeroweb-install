@@ -19,17 +19,17 @@ su - {{ omero_user }}  -c "bash $path/virtualenv.sh"
 bash $path/virtualenv.sh
 {% endif %}
 
-{% if omero_user %}
-su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
-{% else %}
-bash $path/install.sh
-{% endif %}
-
 # install ZeroC IcePy
 {% if omero_user %}
 su - {{ omero_user }}  -c "bash $path/deps_ice{{ ice_version }}.sh"
 {% else %}
 bash $path/deps_ice{{ ice_version }}.sh
+{% endif %}
+
+{% if omero_user %}
+su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
+{% else %}
+bash $path/install.sh
 {% endif %}
 
 {% if omero_user %}
