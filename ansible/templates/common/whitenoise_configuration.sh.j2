@@ -15,10 +15,10 @@ set +u
 set -u
 {% endif %}
 
-{{ omero_user_home_dir }}/OMERO.py/bin/omero config append -- omero.web.middleware '{"index": 0, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'
+omero config append -- omero.web.middleware '{"index": 0, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'
 
-{{ omero_user_home_dir }}/OMERO.py/bin/omero web start
+omero web start
 
 # Test installation e.g. curl -sL localhost:4080
 
-{{ omero_user_home_dir }}/OMERO.py/bin/omero web stop
+omero web stop
