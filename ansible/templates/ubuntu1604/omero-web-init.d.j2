@@ -27,15 +27,14 @@ prog=omero-web
 # Read configuration variable file if it is present
 [ -r /etc/default/$prog ] && . /etc/default/$prog
 
-
-OMERO_PY=${OMERO_PY:-{{ omero_user_home_dir }}/OMERO.py}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
-OMERO=${OMERO_PY}/bin/omero
+OMERO={{ virtualenv_path }}/bin/omero
+OMERODIR={{ omero_user_home_dir }}/omero
 VENVDIR=${VENVDIR:-{{ virtualenv_path }}}
 
 start() {
     echo -n $"Starting $prog:"
-    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate; ${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
+    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate;OMERODIR=${OMERODIR} ${OMERO} web start" &> /dev/null && echo -n ' OMERO.web'
     sleep 5
     RETVAL=$?
     [ "$RETVAL" = 0 ]
@@ -44,7 +43,7 @@ start() {
 
 stop() {
     echo -n $"Stopping $prog:"
-    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate; ${OMERO} web stop" &> /dev/null && echo -n ' OMERO.web'
+    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate;OMERODIR=${OMERODIR} ${OMERO} web stop" &> /dev/null && echo -n ' OMERO.web'
     RETVAL=$?
     [ "$RETVAL" = 0 ]
         echo
@@ -52,7 +51,7 @@ stop() {
 
 status() {
     echo -n $"Status $prog:"
-    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate; ${OMERO} web status"
+    su - ${OMERO_USER} -c ". ${VENVDIR}/bin/activate;OMERODIR=${OMERODIR} ${OMERO} web status"
     RETVAL=$?
 }
 
