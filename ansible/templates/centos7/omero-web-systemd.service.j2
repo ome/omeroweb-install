@@ -11,12 +11,12 @@ After=network.service
 [Service]
 User=omero
 Type=forking
-PIDFile={{ omero_user_home_dir }}/OMERO.py/var/django.pid
+PIDFile={{ omero_user_home_dir }}/omero/var/django.pid
 Restart=no
 RestartSec=10
-Environment="PATH={{ virtualenv_path }}/bin:/bin:/usr/bin"
-ExecStart={{ virtualenv_path }}/bin/python {{ omero_user_home_dir }}/OMERO.py/bin/omero web start
-ExecStop={{ virtualenv_path }}/bin/python {{ omero_user_home_dir }}/OMERO.py/bin/omero web stop
+Environment="OMERODIR={{ omero_user_home_dir }}/omero"
+ExecStart={{ virtualenv_path }}/bin/omero web start
+ExecStop={{ virtualenv_path }}/bin/omero web stop
 
 [Install]
 WantedBy=multi-user.target

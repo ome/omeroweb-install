@@ -33,7 +33,7 @@ bash $path/install.sh
 {% endif %}
 
 {% if omero_user %}
-su - {{ omero_user }}  -c "WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
 {% else %}
 bash $path/omeroweb_configure.sh
 {% endif %}
@@ -41,19 +41,19 @@ bash $path/omeroweb_configure.sh
 if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/deps_web_session.sh
     {% if omero_user %}
-    su - {{ omero_user }}  -c "bash $path/websession_configure.sh"
+    su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/websession_configure.sh"
     {% else %}
     bash $path/websession_configure.sh
     {% endif %}
 fi
 
 {% if omero_user %}
-su - {{ omero_user }}  -c "bash $path/install_whitenoise.sh"
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/install_whitenoise.sh"
 {% else %}
 bash $path/install_whitenoise.sh
 {% endif %}
 
-su - {{ omero_user }}  -c "bash $path/whitenoise_configuration.sh"
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/whitenoise_configuration.sh"
 
 bash $path/nginx.sh
 
