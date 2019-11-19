@@ -3,7 +3,7 @@ For convenience the main OMERO.web configuration options have been defined as en
 
 {% if not doc %}
 OMERO_USER={{ omero_user }}
-OMERODIR={{ omero_user_home_dir }}
+OMERODIR={{ omero_user_home_dir }}/omero
 
 OMEROVER={{ omero_version }}
 {% endif %}
@@ -17,7 +17,7 @@ export WEBPORT={{ default.web_port }}
 export WEBSERVER_NAME={{ default.web_server_name }}
 {% else %}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
-OMERODIR={{ omero_user_home_dir }}
+OMERODIR={{ omero_user_home_dir }}/omero
 
 OMEROVER=${OMEROVER:-{{ omero_version }}}
 

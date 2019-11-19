@@ -6,8 +6,11 @@ Install OMERO.web::
 set -e -u -x
 
 OMEROVER=${OMEROVER:-{{ omero_version }}}
+export OMERODIR=$OMERODIR
+mkdir -p $OMERODIR/etc/grid
 
 {% endif %}
+
 
 cd {{ omero_user_home_dir }}
 . {{ virtualenv_path }}/bin/activate

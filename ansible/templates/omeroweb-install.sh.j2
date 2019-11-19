@@ -27,7 +27,7 @@ bash $path/deps_ice{{ ice_version }}.sh
 {% endif %}
 
 {% if omero_user %}
-su - {{ omero_user }}  -c "OMEROVER=$OMEROVER bash $path/install.sh"
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR OMEROVER=$OMEROVER bash $path/install.sh"
 {% else %}
 bash $path/install.sh
 {% endif %}
