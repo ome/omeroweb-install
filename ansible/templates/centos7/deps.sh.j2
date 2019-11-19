@@ -12,15 +12,11 @@ yum -y install epel-release
 yum -y install unzip
 
 yum -y install python3
-ln -s /usr/bin/python3 /usr/local/bin/python
 
 yum -y install python3-{pip,jinja2}
-ln -s /usr/bin/pip3 /usr/local/bin/pip
 
 yum -y install nginx
 
-# install the latest version
-pip3 install --upgrade pip
 pip3 install --upgrade virtualenv
 
 {% if doc %}
@@ -38,4 +34,3 @@ yum -y install python3-pillow numpy
 yum -y install python3-devel libjpeg-devel libtiff libtiff-devel zlib-devel
 {% endif %}
 {% endif %}
-
