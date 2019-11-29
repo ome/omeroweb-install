@@ -34,9 +34,6 @@ arr=();
 arr=("os" "${OS}")
 arr=(${arr[@]} "path" "${path}")
 arr=(${arr[@]} "ice_version" "${ICEVER}")
-if [[ ${OMEROVER:-} = *[!\ ]* ]]; then
-    arr=(${arr[@]} "omero_version" "${OMEROVER:-}")
-fi
 if [[ ${WEBPREFIX:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "web_prefix" "${WEBPREFIX:-}")
 fi

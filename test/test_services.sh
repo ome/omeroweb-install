@@ -3,7 +3,6 @@
 set -e -u -x
 
 OS=${OS:-centos7}
-OMEROVER=${OMEROVER:-latest}
 WEBSESSION=${WEBSESSION:-}
 WEBPREFIX=${WEBPREFIX:-}
 WEBPORT=${WEBPORT:-80}

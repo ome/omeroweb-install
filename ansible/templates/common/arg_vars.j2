@@ -5,7 +5,6 @@ For convenience the main OMERO.web configuration options have been defined as en
 OMERO_USER={{ omero_user }}
 OMERODIR={{ omero_user_home_dir }}/omero
 
-OMEROVER={{ omero_version }}
 {% endif %}
 {% if web_session %}
 export WEBSESSION={{ web_session }}
@@ -18,8 +17,6 @@ export WEBSERVER_NAME={{ default.web_server_name }}
 {% else %}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 OMERODIR={{ omero_user_home_dir }}/omero
-
-OMEROVER=${OMEROVER:-{{ omero_version }}}
 
 WEBSESSION=${WEBSESSION:-{{ web_session }}}
 

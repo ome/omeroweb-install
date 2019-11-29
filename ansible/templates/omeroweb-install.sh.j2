@@ -19,7 +19,7 @@ bash $path/virtualenv.sh
 bash $path/deps_ice{{ ice_version }}.sh
 
 # install OMERO.web
-OMEROVER=$OMEROVER bash $path/install.sh
+bash $path/install.sh
 
 su - {{ omero_user }}  -c "OMERODIR=$OMERODIR WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
 
