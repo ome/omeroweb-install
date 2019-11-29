@@ -10,21 +10,13 @@ WEBPORT=${WEBPORT:-{{ default.web_port }}}
 WEBSERVER_NAME=${WEBSERVER_NAME:-{{ default.web_server_name }}}
 
 export OMERODIR=$OMERODIR
-
-
-{% endif %}
-
-{% if doc %}
-. {{ virtualenv_path }}/bin/activate
-{% else %}
-set +u
-. {{ virtualenv_path }}/bin/activate
-set -u
+export PATH={{ virtualenv_path }}/bin:$PATH
 
 if [[ $WEBPREFIX = *[!\ ]* ]]; then
     omero config set omero.web.prefix "{{ web_prefix or '${WEBPREFIX}' }}"
     omero config set omero.web.static_url "{{ web_prefix or '${WEBPREFIX}' }}/static/"
 fi
+
 {% endif %}
 
 omero config set omero.web.application_server wsgi-tcp
