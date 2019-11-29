@@ -7,12 +7,5 @@ set -e -u -x
 
 {% endif %}
 
-{% if doc %}
-. {{ virtualenv_path }}/bin/activate
-{% else %}
-set +u
-. {{ virtualenv_path }}/bin/activate
-set -u
-{% endif %}
 
-pip install --upgrade 'whitenoise<4'
+{{ virtualenv_path }}/bin/pip install --upgrade 'whitenoise<4'

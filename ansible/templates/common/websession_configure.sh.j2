@@ -9,15 +9,7 @@ Install Python Redis dependencies and configure OMERO.web::
 set -e -u -x
 
 export OMERODIR=$OMERODIR
-
-{% endif %}
-
-{% if doc %}
-. {{ virtualenv_path }}/bin/activate
-{% else %}
-set +u
-. {{ virtualenv_path }}/bin/activate
-set -u
+export PATH={{ virtualenv_path }}/bin:$PATH
 {% endif %}
 
 omero config set omero.web.session_engine 'django.contrib.sessions.backends.cache'

@@ -7,12 +7,10 @@ set -e -u -x
 
 OMEROVER=${OMEROVER:-{{ omero_version }}}
 export OMERODIR=$OMERODIR
+export PATH={{ virtualenv_path }}/bin:$PATH
 mkdir -p $OMERODIR/etc/grid
 
+
 {% endif %}
-
-
-cd {{ omero_user_home_dir }}
-. {{ virtualenv_path }}/bin/activate
 
 pip install "git+git://github.com/snoopycrimecop/omero-web@merge_ci#egg=omero-web"
