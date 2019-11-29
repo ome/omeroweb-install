@@ -1,5 +1,5 @@
 {% if doc %}
-Install dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment created with ``--system-site-packages`` *on* (**option 1**), you will need to install ``python-pillow`` and ``numpy``. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, a few more dependencies will be required (**option 2**)::
+Install dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, a few more dependencies will be required (**option 2**)::
 {% else %}
 #!/bin/bash
 
@@ -13,22 +13,16 @@ yum -y install unzip
 
 yum -y install python3
 
-yum -y install python3-{pip,jinja2}
-
 yum -y install nginx
-
-pip3 install --upgrade virtualenv
 
 {% if doc %}
 # To install OMERO.web using option 1
-yum -y install python3-pillow numpy
 
 # To install OMERO.web using option 2
 yum -y install python3-devel libjpeg-devel libtiff libtiff-devel zlib-devel
 
 {% else %}
 {% if system_site_packages %}
-yum -y install python3-pillow numpy
 
 {% else %}
 yum -y install python3-devel libjpeg-devel libtiff libtiff-devel zlib-devel
