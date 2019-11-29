@@ -11,6 +11,7 @@ WEBSERVER_NAME=${WEBSERVER_NAME:-{{ default.web_server_name }}}
 
 export OMERODIR=$OMERODIR
 export PATH={{ virtualenv_path }}/bin:$PATH
+mkdir -p $OMERODIR/etc/grid
 
 if [[ $WEBPREFIX = *[!\ ]* ]]; then
     omero config set omero.web.prefix "{{ web_prefix or '${WEBPREFIX}' }}"

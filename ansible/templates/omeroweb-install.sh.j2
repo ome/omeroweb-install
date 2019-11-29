@@ -13,45 +13,22 @@ bash $path/create_user.sh
 # install other dependencies
 bash $path/deps.sh
 
-{% if omero_user %}
-su - {{ omero_user }}  -c "bash $path/virtualenv.sh"
-{% else %}
 bash $path/virtualenv.sh
-{% endif %}
 
 # install ZeroC IcePy
-{% if omero_user %}
-su - {{ omero_user }}  -c "bash $path/deps_ice{{ ice_version }}.sh"
-{% else %}
 bash $path/deps_ice{{ ice_version }}.sh
-{% endif %}
 
-{% if omero_user %}
-su - {{ omero_user }}  -c "OMERODIR=$OMERODIR OMEROVER=$OMEROVER bash $path/install.sh"
-{% else %}
-bash $path/install.sh
-{% endif %}
+# install OMERO.web
+OMEROVER=$OMEROVER bash $path/install.sh
 
-{% if omero_user %}
 su - {{ omero_user }}  -c "OMERODIR=$OMERODIR WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
-{% else %}
-bash $path/omeroweb_configure.sh
-{% endif %}
 
 if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/deps_web_session.sh
-    {% if omero_user %}
     su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/websession_configure.sh"
-    {% else %}
-    bash $path/websession_configure.sh
-    {% endif %}
 fi
 
-{% if omero_user %}
-su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/install_whitenoise.sh"
-{% else %}
 bash $path/install_whitenoise.sh
-{% endif %}
 
 su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/whitenoise_configuration.sh"
 
