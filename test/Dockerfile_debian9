@@ -7,7 +7,7 @@ RUN apt-get update && apt-get -y install locales
 RUN update-locale LANG=C.UTF-8
 
 ADD ./omeroweb-install-test.zip /tmp
-RUN apt-get update && apt-get -y install unzip cron git
+RUN apt-get update && apt-get -y install unzip cron
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 
