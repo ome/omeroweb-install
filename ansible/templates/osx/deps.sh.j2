@@ -1,0 +1,12 @@
+{% if doc %}
+Install dependencies::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+brew install python {% if not doc %} || echo "Python installed?" {% endif %}
+
+brew install nginx
+pip install --upgrade virtualenv
