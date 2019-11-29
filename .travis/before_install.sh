@@ -23,9 +23,6 @@ if [ ! -z ${TRAVIS:-} ] ; then
 
     # install ansible
     sudo pip install -r requirements.txt
-    # uninstall jinja2 version 2.9.x install with ansible prevent the doc to be built
-    sudo pip uninstall -y jinja2
-    sudo pip install -U 'jinja2<2.9'
 fi
 
 path=`pwd`
