@@ -10,7 +10,7 @@ python3 -mvenv {{ virtualenv_path }}
 {% else %}
 #!/bin/bash
 
-set -e -u -x
+set -x
 
 python3 -mvenv {{ virtualenv_path }} {% if system_site_packages %}--system-site-packages{% endif %}
 
