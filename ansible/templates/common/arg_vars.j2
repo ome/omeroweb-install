@@ -12,6 +12,7 @@ export WEBSESSION={{ web_session }}
 {% if default.web_prefix %}
 export WEBPREFIX={{ default.web_prefix }}
 {% endif %}
+export OMERODIR={{ omero_user_home_dir }}/omero
 export WEBPORT={{ default.web_port }}
 export WEBSERVER_NAME={{ default.web_server_name }}
 {% else %}
