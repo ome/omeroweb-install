@@ -1,5 +1,9 @@
 {% if doc %}
 Configure OMERO.web and create the NGINX OMERO configuration file::
+
+export PATH={{ virtualenv_path }}/bin:$PATH
+mkdir -p $OMERODIR/etc/grid
+
 {% else %}
 #!/bin/bash
 
