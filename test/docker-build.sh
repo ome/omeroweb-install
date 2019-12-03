@@ -4,7 +4,6 @@ set -e -u -x
 
 OS=${OS:-centos7}
 ICEVER=${ICEVER:-3.6}
-OMEROVER=${OMEROVER:-latest}
 WEBPORT=${WEBPORT:-}
 WEBPREFIX=${WEBPREFIX:-}
 WEBSESSION=${WEBSESSION:-}
@@ -26,7 +25,6 @@ echo "Building image $IMAGE"
 
 docker build -t ${IMAGE} \
     --build-arg ICEVER=${ICEVER} \
-    --build-arg OMEROVER=${OMEROVER} \
     --build-arg WEBPORT=${WEBPORT} \
     --build-arg WEBPREFIX=${WEBPREFIX} \
     --build-arg WEBSESSION=${WEBSESSION} \

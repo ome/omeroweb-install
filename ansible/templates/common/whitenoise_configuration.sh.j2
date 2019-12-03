@@ -5,20 +5,14 @@ Configure WhiteNoise and start OMERO.web manually to test the installation::
 
 set -e -u -x
 
+export OMERODIR=$OMERODIR
+export PATH={{ virtualenv_path }}/bin:$PATH
 {% endif %}
 
-{% if doc %}
-. {{ virtualenv_path }}/bin/activate
-{% else %}
-set +u
-. {{ virtualenv_path }}/bin/activate
-set -u
-{% endif %}
+omero config append -- omero.web.middleware '{"index": 0, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'
 
-{{ omero_user_home_dir }}/OMERO.py/bin/omero config append -- omero.web.middleware '{"index": 0, "class": "whitenoise.middleware.WhiteNoiseMiddleware"}'
-
-{{ omero_user_home_dir }}/OMERO.py/bin/omero web start
+omero web start
 
 # Test installation e.g. curl -sL localhost:4080
 
-{{ omero_user_home_dir }}/OMERO.py/bin/omero web stop
+omero web stop

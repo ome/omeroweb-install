@@ -23,9 +23,6 @@ if [ ! -z ${TRAVIS:-} ] ; then
 
     # install ansible
     sudo pip install -r requirements.txt
-    # uninstall jinja2 version 2.9.x install with ansible prevent the doc to be built
-    sudo pip uninstall -y jinja2
-    sudo pip install -U 'jinja2<2.9'
 fi
 
 path=`pwd`
@@ -37,9 +34,6 @@ arr=();
 arr=("os" "${OS}")
 arr=(${arr[@]} "path" "${path}")
 arr=(${arr[@]} "ice_version" "${ICEVER}")
-if [[ ${OMEROVER:-} = *[!\ ]* ]]; then
-    arr=(${arr[@]} "omero_version" "${OMEROVER:-}")
-fi
 if [[ ${WEBPREFIX:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "web_prefix" "${WEBPREFIX:-}")
 fi
@@ -51,9 +45,6 @@ if [[ ${WEBSERVER_CONF:-} = *[!\ ]* ]]; then
 fi
 if [[ ${WEBSERVER_NAME:-} = *[!\ ]* ]]; then
     arr=(${arr[@]} "web_server_name" "${WEBSERVER_NAME:-}")
-fi
-if ${TRIAL:-true}; then
-    arr=(${arr[@]} "system_site_packages" "False")
 fi
 
 

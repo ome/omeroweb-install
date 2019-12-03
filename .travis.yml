@@ -1,4 +1,6 @@
-language: generic
+language: python
+python:
+  - "3.6"      # current default Python on Travis CI
 
 compiler:
   - gcc
@@ -12,39 +14,39 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest DOCKER=true
+        - OS=centos7 ICEVER=3.6 DOCKER=true
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest DOCKER=true TRIAL=true
+        - OS=centos7 ICEVER=3.6 DOCKER=true TRIAL=true
     # with prefix
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest WEBPREFIX=/omero DOCKER=true
+        - OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true
     # test remote
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest DOCKER=true ANSIBLE=true
+        - OS=centos7 ICEVER=3.6 DOCKER=true ANSIBLE=true
     - os: linux
       dist: trusty
       env:
-        - OS=centos7 ICEVER=3.6 OMEROVER=latest WEBPREFIX=/omero DOCKER=true ANSIBLE=true
+        - OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true ANSIBLE=true
     # ubuntu
     - os: linux
       dist: trusty
       env:
-        - OS=ubuntu1604 ICEVER=3.6 OMEROVER=latest DOCKER=true
+        - OS=ubuntu1604 ICEVER=3.6 DOCKER=true
     - os: linux
       dist: trusty
       env:
-        - OS=ubuntu1804 ICEVER=3.6 OMEROVER=latest DOCKER=true
+        - OS=ubuntu1804 ICEVER=3.6 DOCKER=true
     # debian
     - os: linux
       dist: trusty
       env:
-        - OS=debian9 ICEVER=3.6 OMEROVER=latest DOCKER=true
+        - OS=debian9 ICEVER=3.6 DOCKER=true
 
 before_install:
   - python --version

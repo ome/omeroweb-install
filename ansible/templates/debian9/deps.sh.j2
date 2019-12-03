@@ -1,5 +1,5 @@
 {% if doc %}
-Install dependencies. The number of dependencies to install depends on the way you plan to install OMERO.web. If you wish to install it in a virtual environment created with ``--system-site-packages`` *on* (**option 1**), you will need to install ``python-pillow`` and ``python-numpy``. If you wish to install it in a virtual environment with ``--system-site-packages`` *off*, a few more dependencies will be required (**option 2**)::
+Install dependencies::
 {% else %}
 #!/bin/bash
 
@@ -9,40 +9,11 @@ echo 'APT::Install-Recommends 0;' > /etc/apt/apt.conf.d/01norecommends \
 
 {% endif %}
 
-# dependencies common to both options
 apt-get update
 
 apt-get -y install unzip
  
-apt-get -y install python-{pip,virtualenv,jinja2}
-
-# to be installed if recommended/suggested is false
-apt-get -y install virtualenv
+apt-get -y install python3
+apt-get -y install python3-venv
 
 apt-get -y install nginx
-
-{% if doc %}
-# To install OMERO.web using option 1
-apt-get -y install python-pillow python-numpy
-
-# To install OMERO.web using option 2
-# require to install Pillow
-apt-get -y install libtiff5-dev libjpeg8-dev zlib1g-dev
-apt-get -y install libfreetype6-dev liblcms2-dev libwebp-dev
-apt-get -y install tcl8.6-dev tk8.6-dev
-{% else %}
-
-{% if system_site_packages %}
-apt-get -y install python-pillow python-numpy
-
-{% else %}
-
-apt-get -y install python-dev
-
-# require to install Pillow
-apt-get -y install libtiff5-dev libjpeg8-dev zlib1g-dev
-apt-get -y install libfreetype6-dev liblcms2-dev
-apt-get -y install libwebp-dev tcl8.6-dev tk8.6-dev
-{% endif %}
-
-{% endif %}

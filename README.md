@@ -4,8 +4,7 @@
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04, Debian 9
-and Mac OS X.
+Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04, 18.04 and Debian 9.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
@@ -13,7 +12,7 @@ configurations.
 Read the OMERO System Administrator Documentation https://docs.openmicroscopy.org/latest/omero/sysadmins/index.html,
 especially the sections on requirements and installation, before using these scripts.
 
-The Linux and OS X scripts should automatically download all required files.
+The Linux scripts should automatically download all required files.
 
 The scripts will only work locally due to the usage of ``{{playbook_dir}}``.
 This ensures that the generated documentation will be created in the same location
@@ -22,7 +21,7 @@ regardless of the version of Ansible installed.
 Prerequisites
 -------------
 
-    pip install ansible
+    pip install -r requirements.txt
 
 
 Building
@@ -49,7 +48,6 @@ Extra vars arguments:
 
 | ARG                | default | optional                | example                  |
 |--------------------|---------|-------------------------|--------------------------|
-| omero_version      | latest  |                         | OMERO-DEV-latest         |
 | web_port           | 80      |                         |                          |
 | web_prefix         |         |                         | /omero                   |
 | web_server_name    |         |                         | omero.example.com        |
@@ -67,28 +65,22 @@ Environment variables:
 
 | VAR            | default | optional                | example                  |
 |----------------|---------|-------------------------|--------------------------|
-| OMEROVER       | latest  |                         | OMERO-DEV-latest |
 | WEBPORT        | 80      |                         |                          |
 | WEBPREFIX      |         |                         | /omero                   |
 | WEBSERVER_NAME |         |                         | omero.example.com        |
 | WEBSESSION     | False   | True|False              |                          |
 
 
-and run
-
-on Mac OS X:
-
-    ./omeroweb-install-osx-ice3.6
-    ./osx/run
+and run for example
 
 on Ubuntu 16.04:
 
-    ./omeroweb-install-ubuntu1604-ice3.6
-    ./ubuntu/run
+    ./ansible/omeroweb-install-ubuntu1604-ice3.6
+    ./ansible/ubuntu1604-ice3.6/run
 
 on CentOS 7:
 
-    ./omeroweb-install-centos7-ice3.6
+    ./ansibleomeroweb-install-centos7-ice3.6
 
 To run installation scripts on a remote host:
 
@@ -102,9 +94,9 @@ Testing in DOCKER
 
 These tests are only for CentOS 7, Ubuntu, and Debian deployments. Unfortunately there is no docker container for Mac OS X installation scripts
 
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
-    OS=centos7 ICEVER=3.6 OMEROVER=OMERO-DEV-latest WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
+    OS=centos7 ICEVER=3.6 WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
+    OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
+    OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
  
 To test remote build set `ANSIBLE=true`
 Note: make sure you always set `DOCKER=true` when running local test. Otherwise it will attempt to install OMERO.web on you local machine

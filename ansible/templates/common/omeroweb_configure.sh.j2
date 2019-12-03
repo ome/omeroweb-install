@@ -1,5 +1,11 @@
 {% if doc %}
 Configure OMERO.web and create the NGINX OMERO configuration file::
+
+export PATH={{ virtualenv_path }}/bin:$PATH
+# The command below is not necessary if OMERODIR points to where the OMERO.server is installed
+# i.e. OMERO.server and OMERO.web are installed on the same machine.
+mkdir -p $OMERODIR/etc/grid
+
 {% else %}
 #!/bin/bash
 
@@ -8,20 +14,17 @@ set -e -u -x
 WEBPREFIX=${WEBPREFIX:-{{ default.web_prefix }}}
 WEBPORT=${WEBPORT:-{{ default.web_port }}}
 WEBSERVER_NAME=${WEBSERVER_NAME:-{{ default.web_server_name }}}
-{% endif %}
 
-{% if doc %}
-. {{ virtualenv_path }}/bin/activate
-{% else %}
-set +u
-. {{ virtualenv_path }}/bin/activate
-set -u
+export OMERODIR=$OMERODIR
+export PATH={{ virtualenv_path }}/bin:$PATH
+mkdir -p $OMERODIR/etc/grid
 
 if [[ $WEBPREFIX = *[!\ ]* ]]; then
-    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.prefix "{{ web_prefix or '${WEBPREFIX}' }}"
-    {{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.static_url "{{ web_prefix or '${WEBPREFIX}' }}/static/"
+    omero config set omero.web.prefix "{{ web_prefix or '${WEBPREFIX}' }}"
+    omero config set omero.web.static_url "{{ web_prefix or '${WEBPREFIX}' }}/static/"
 fi
+
 {% endif %}
 
-{{ omero_user_home_dir }}/OMERO.py/bin/omero config set omero.web.application_server wsgi-tcp
-{{ omero_user_home_dir }}/OMERO.py/bin/omero web config nginx --http "{{ web_port or '${WEBPORT}' }}" --servername "{{ web_server_name or '${WEBSERVER_NAME}' }}" > {{ omero_user_home_dir }}/nginx.conf.tmp
+omero config set omero.web.application_server wsgi-tcp
+omero web config nginx --http "{{ web_port or '${WEBPORT}' }}" --servername "{{ web_server_name or '${WEBSERVER_NAME}' }}" > {{ omero_user_home_dir }}/nginx.conf.tmp
