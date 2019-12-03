@@ -1,10 +1,6 @@
 {% if doc %}
-Create the virtual environment. This is the preferred way to install OMERO.web::
+Create the virtual. This is the recommended way to install OMERO.web::
 
-# option 1: in a virtual environment with --system-site-packages on
-python3 -mvenv {{ virtualenv_path }} --system-site-packages
-
-# option 2: in a virtual environment with --system-site-packages off
 python3 -mvenv {{ virtualenv_path }}
 
 {% else %}
@@ -12,6 +8,6 @@ python3 -mvenv {{ virtualenv_path }}
 
 set -x
 
-python3 -mvenv {{ virtualenv_path }} {% if system_site_packages %}--system-site-packages{% endif %}
+python3 -mvenv {{ virtualenv_path }}
 
 {% endif %}

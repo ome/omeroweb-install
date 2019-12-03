@@ -2,6 +2,8 @@
 Configure OMERO.web and create the NGINX OMERO configuration file::
 
 export PATH={{ virtualenv_path }}/bin:$PATH
+# The command below is not necessary if OMERODIR points to where the OMERO.server is installed
+# i.e. OMERO.server and OMERO.web are installed on the same machine.
 mkdir -p $OMERODIR/etc/grid
 
 {% else %}
