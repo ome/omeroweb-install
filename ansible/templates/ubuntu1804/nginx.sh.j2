@@ -6,8 +6,6 @@ Copy the generated configuration file into the NGINX configuration directory, di
 set -e -u -x
 {% endif %}
 
-export OMERODIR=$OMERODIR
-
 sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
 rm /etc/nginx/sites-enabled/default
 cp {{ omero_user_web_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
