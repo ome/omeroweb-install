@@ -11,10 +11,10 @@ After=network.service
 [Service]
 User=omero
 Type=forking
-PIDFile={{ omero_user_home_dir }}/omero/var/django.pid
+PIDFile={{ omero_user_web_dir }}/var/django.pid
 Restart=no
 RestartSec=10
-Environment="OMERODIR={{ omero_user_home_dir }}/omero"
+Environment="OMERODIR={{ omero_user_web_dir }}"
 ExecStart={{ virtualenv_path }}/bin/omero web start
 ExecStop={{ virtualenv_path }}/bin/omero web stop
 
