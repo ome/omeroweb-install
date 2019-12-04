@@ -12,9 +12,6 @@ export WEBSESSION={{ web_session }}
 {% if default.web_prefix %}
 export WEBPREFIX={{ default.web_prefix }}
 {% endif %}
-# If you are installing OMERO.web and OMERO.server on the same machine.
-# Point OMERODIR to the OMERO.server
-# export OMERODIR=/path_to_omero_server/OMERO.server
 export OMERODIR={{ omero_user_web_dir }}
 export WEBPORT={{ default.web_port }}
 export WEBSERVER_NAME={{ default.web_server_name }}
