@@ -1,5 +1,5 @@
 {% if doc %}
-If required, first create a local system user {{ omero_user }} and create the homedir too :file:`{{ omero_user_home_dir }}`::
+If required, first create a local system user {{ omero_user }} and create directory::
 
 {% else %}
 #!/bin/bash
@@ -14,4 +14,5 @@ if [ -z "$(getent passwd {{ omero_user }})" ]; then
 fi
 {% endif %}
 
-chmod a+X {{ omero_user_home_dir }}
+mkdir -p {{ omero_user_web_dir }}/etc/grid
+chown -R {{ omero_user }} {{ omero_user_web_dir }}

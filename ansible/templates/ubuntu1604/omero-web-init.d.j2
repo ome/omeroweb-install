@@ -29,7 +29,7 @@ prog=omero-web
 
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
 OMERO={{ virtualenv_path }}/bin/omero
-OMERODIR={{ omero_user_home_dir }}/omero
+OMERODIR={{ omero_user_web_dir }}
 VENVDIR=${VENVDIR:-{{ virtualenv_path }}}
 
 start() {
