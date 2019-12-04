@@ -3,7 +3,7 @@ For convenience the main OMERO.web configuration options have been defined as en
 
 {% if not doc %}
 OMERO_USER={{ omero_user }}
-OMERODIR={{ omero_user_home_dir }}/omero
+OMERODIR={{ omero_user_web_dir }}
 
 {% endif %}
 {% if web_session %}
@@ -15,12 +15,12 @@ export WEBPREFIX={{ default.web_prefix }}
 # If you are installing OMERO.web and OMERO.server on the same machine.
 # Point OMERODIR to the OMERO.server
 # export OMERODIR=/path_to_omero_server/OMERO.server
-export OMERODIR={{ omero_user_home_dir }}/omero
+export OMERODIR={{ omero_user_web_dir }}
 export WEBPORT={{ default.web_port }}
 export WEBSERVER_NAME={{ default.web_server_name }}
 {% else %}
 OMERO_USER=${OMERO_USER:-{{ omero_user }}}
-OMERODIR={{ omero_user_home_dir }}/omero
+OMERODIR={{ omero_user_web_dir }}
 
 WEBSESSION=${WEBSESSION:-{{ web_session }}}
 

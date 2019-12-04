@@ -6,12 +6,14 @@ Copy the generated configuration file into the NGINX configuration directory, di
 set -e -u -x
 {% endif %}
 
+export OMERODIR=$OMERODIR
+
 sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
 mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.disabled
 if [ -f /etc/nginx/sites-enabled/default ]; then
     rm /etc/nginx/sites-enabled/default
 fi
-cp {{ omero_user_home_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
+cp {{ omero_user_web_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
 
 {% if doc %}
 service nginx start
