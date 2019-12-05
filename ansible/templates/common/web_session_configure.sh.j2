@@ -1,16 +1,13 @@
 {% if doc %}
 
-**The following steps are run as the {{ omero_user }} system user.**
-
-Install Python Redis dependencies and configure OMERO.web::
+Configure the cache::
 {% else %}
 #!/bin/bash
 
 set -e -u -x
 
-export OMERODIR=$OMERODIR
 export PATH={{ virtualenv_path }}/bin:$PATH
 {% endif %}
 
-omero config set omero.web.session_engine 'django.contrib.sessions.backends.cache'
 omero config set omero.web.caches '{"default": {"BACKEND": "django_redis.cache.RedisCache","LOCATION": "redis://127.0.0.1:6379/0"}}'
+omero config set omero.web.session_engine 'django.contrib.sessions.backends.cache'
