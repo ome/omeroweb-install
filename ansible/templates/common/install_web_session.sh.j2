@@ -7,4 +7,4 @@ set -e -u -x
 
 {% endif %}
 
-{{ virtualenv_path }}/bin/pip install --upgrade 'django-redis>=4.10.0'
+{{ virtualenv_path }}/bin/pip install 'django-redis<4.9'
