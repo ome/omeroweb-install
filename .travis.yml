@@ -60,7 +60,10 @@ matrix:
       dist: trusty
       env:
         - OS=debian9 ICEVER=3.6 DOCKER=true
-
+    - os: linux
+      dist: trusty
+      env:
+        - OS=debian9 ICEVER=3.6 DOCKER=true WEBSESSION=true
 before_install:
   - python --version
   - ./.travis/before_install.sh
