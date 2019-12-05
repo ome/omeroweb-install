@@ -40,6 +40,11 @@
         src: "common/install.sh.j2"
         dest: "{{ path }}/{{ prefix }}/install.sh"
         mode: a+x
+    - name: Generate common/install_web_session.sh
+      template:
+        src: "common/install_web_session.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/install_web_session.sh"
+        mode: a+x
     - name: Generate common/web_session_configure.sh
       template:
         src: "common/web_session_configure.sh.j2"
