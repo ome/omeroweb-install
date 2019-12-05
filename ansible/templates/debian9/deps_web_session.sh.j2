@@ -1,0 +1,17 @@
+{% if doc %}
+*Optional*: if you wish to use the Redis cache, install Redis::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+apt-get -y install redis-server
+
+{% if doc %}
+service redis-server start
+{% else %}
+if [ ! "${container:-}" = docker ]; then
+    service redis-server restart
+fi
+{% endif %}
