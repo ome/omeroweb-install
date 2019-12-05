@@ -25,7 +25,8 @@ su - {{ omero_user }}  -c "OMERODIR=$OMERODIR WEBPORT=$WEBPORT WEBPREFIX=$WEBPRE
 
 if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/deps_web_session.sh
-    su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/websession_configure.sh"
+    bash $path/install_web_session.sh
+    su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/web_session_configure.sh"
 fi
 
 bash $path/install_whitenoise.sh
