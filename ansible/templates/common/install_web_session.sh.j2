@@ -1,0 +1,10 @@
+{% if doc %}
+*Optional*: Install `Django Redis <https://github.com/niwinz/django-redis/>`_::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+{% endif %}
+
+{{ virtualenv_path }}/bin/pip install 'django-redis<4.9'

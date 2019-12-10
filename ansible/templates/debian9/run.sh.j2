@@ -7,7 +7,7 @@ set -e -u -x
 {% endif %}
 
 {% if web_session %}
-service redis start
+service redis-server start
 {% endif %}
 
 {% if not doc %}

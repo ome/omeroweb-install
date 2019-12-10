@@ -33,6 +33,11 @@ matrix:
       dist: trusty
       env:
         - OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true ANSIBLE=true
+    # with cache
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos7 ICEVER=3.6 WEBSESSION=true DOCKER=true
     # ubuntu
     - os: linux
       dist: trusty
@@ -41,13 +46,24 @@ matrix:
     - os: linux
       dist: trusty
       env:
+        - OS=ubuntu1604 ICEVER=3.6 DOCKER=true WEBSESSION=true
+    - os: linux
+      dist: trusty
+      env:
         - OS=ubuntu1804 ICEVER=3.6 DOCKER=true
+    - os: linux
+      dist: trusty
+      env:
+        - OS=ubuntu1804 ICEVER=3.6 DOCKER=true WEBSESSION=true
     # debian
     - os: linux
       dist: trusty
       env:
         - OS=debian9 ICEVER=3.6 DOCKER=true
-
+    - os: linux
+      dist: trusty
+      env:
+        - OS=debian9 ICEVER=3.6 DOCKER=true WEBSESSION=true
 before_install:
   - python --version
   - ./.travis/before_install.sh
