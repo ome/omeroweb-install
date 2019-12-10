@@ -9,7 +9,7 @@ Requires=nginx.service
 After=network.service
 
 [Service]
-User=omero
+User={{ omero_user }}
 Type=forking
 PIDFile={{ omero_user_web_dir }}/var/django.pid
 Restart=no
