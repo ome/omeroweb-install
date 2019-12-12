@@ -1,0 +1,22 @@
+{% if doc %}
+Copy the generated configuration file into the NGINX configuration directory, disable the default configuration and start NGINX::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+sed -i.bak -re 's/( default_server.*)/; #\1/' /etc/nginx/nginx.conf
+mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.disabled
+if [ -f /etc/nginx/sites-enabled/default ]; then
+    rm /etc/nginx/sites-enabled/default
+fi
+cp {{ omero_user_web_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
+
+{% if doc %}
+service nginx start
+{% else %}
+if [ ! "${container:-}" = docker ]; then
+    service nginx restart
+fi
+{% endif %}
