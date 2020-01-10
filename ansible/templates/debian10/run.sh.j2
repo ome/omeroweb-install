@@ -14,7 +14,6 @@ service redis-server start
 #service crond start # Doesn't work in Docker
 {% endif %}
 
-cron
 service nginx start
 service omero-web restart
 {% if not doc %}
