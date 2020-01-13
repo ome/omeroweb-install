@@ -4,7 +4,7 @@
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04, 18.04 and Debian 9.
+Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04, 18.04, Debian 9 and 10.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
