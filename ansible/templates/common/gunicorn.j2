@@ -13,4 +13,14 @@
 - :property:`omero.web.wsgi_args` Additional arguments. For more details
   check `Gunicorn Documentation <https://docs.gunicorn.org/en/stable/settings.html>`_.
 
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+export PATH=/opt/omero/web/venv3/bin:$PATH
+
+omero config set omero.web.application_server.max_requests 500
+omero config set omero.web.wsgi_workers 3
+
+
 {% endif %}
