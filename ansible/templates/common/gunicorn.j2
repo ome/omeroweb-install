@@ -1,8 +1,6 @@
 {% if doc %}
  Additional settings can be configured by changing the properties below. Before changing the properties, run ``export PATH=/opt/omero/web/venv3/bin:$PATH``:
 
-- :property:`omero.web.application_server.max_requests` to 500
-
 - :property:`omero.web.wsgi_workers` to (2 x NUM_CORES) + 1
 
   .. note::
@@ -19,7 +17,6 @@
 set -e -u -x
 export PATH=/opt/omero/web/venv3/bin:$PATH
 
-omero config set omero.web.application_server.max_requests 500
 omero config set omero.web.wsgi_workers 3
 
 
