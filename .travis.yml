@@ -58,6 +58,10 @@ matrix:
     - os: linux
       dist: trusty
       env:
+        - OS=ubuntu2004 ICEVER=3.6 DOCKER=true
+    - os: linux
+      dist: trusty
+      env:
         - OS=ubuntu2004 ICEVER=3.6 DOCKER=true WEBSESSION=true
     # debian
     - os: linux
