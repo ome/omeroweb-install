@@ -5,6 +5,13 @@
 FROM centos:centos8
 MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
+# Required for systemd
+ENV container docker
+
+RUN yum install -y sudo openssh-server openssh-clients && \
+    yum clean all
+
+
 ADD ./omeroweb-install-test.zip /tmp
 RUN yum -y install initscripts unzip
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
@@ -25,3 +32,6 @@ RUN ICEVER=$ICEVER \
     /tmp/omeroweb-install-test/omeroweb-install-centos8-ice${ICEVER}
 
 EXPOSE 22 80
+
+# This will automatically start systemd
+CMD ["/usr/sbin/init"]
