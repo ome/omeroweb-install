@@ -1,0 +1,23 @@
+{% if doc %}
+Should you wish to run OMERO.web automatically, a `systemd.service` file could be created. See below an example file `omero-web-systemd.service`::
+
+{% endif %}
+[Unit]
+Description=OMERO.web
+# Not mandatory, NGINX may be running on a different server
+Requires=nginx.service
+After=network.service
+
+[Service]
+User={{ omero_user }}
+Type=forking
+PIDFile={{ omero_user_web_dir }}/var/django.pid
+Restart=no
+RestartSec=10
+Environment="PATH={{ virtualenv_path }}/bin:/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin""
+Environment="OMERODIR={{ omero_user_web_dir }}"
+ExecStart={{ virtualenv_path }}/bin/omero web start
+ExecStop={{ virtualenv_path }}/bin/omero web stop
+
+[Install]
+WantedBy=multi-user.target
