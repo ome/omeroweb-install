@@ -1,0 +1,27 @@
+# Dockerfile for testing the OMERO Linux installation instructions
+# Not intended for production use
+# Note to enable systemd this must be run with on a host with systemd
+# and additional flaks, see the omero-ssh-c7 README
+FROM centos:centos8
+MAINTAINER ome-devel@lists.openmicroscopy.org.uk
+
+ADD ./omeroweb-install-test.zip /tmp
+RUN yum -y install initscripts unzip
+RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
+
+# This is so that scripts can detect whether they're in docker
+RUN echo 'export container=docker' > /etc/profile.d/docker.sh
+
+ARG ICEVER=3.6
+ARG WEBPORT=80
+ARG WEBPREFIX
+ARG WEBSESSION
+ARG WEBSERVER_CONF
+ARG WEBSERVER_NAME
+
+RUN ICEVER=$ICEVER \
+    WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSESSION=$WEBSESSION \
+    WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME \
+    /tmp/omeroweb-install-test/omeroweb-install-centos8-ice${ICEVER}
+
+EXPOSE 22 80
