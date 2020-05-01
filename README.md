@@ -4,7 +4,7 @@
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: CentOS7, Ubuntu 16.04, 18.04, Debian 9 and 10.
+Example of OMERO.web installation scripts for Linux: CentOS7, CentOS8, Ubuntu 16.04, 18.04, 20.04, Debian 9 and 10.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
@@ -92,7 +92,7 @@ To run installation scripts on a remote host:
 Testing in DOCKER
 -----------------
 
-These tests are only for CentOS 7, Ubuntu, and Debian deployments. Unfortunately there is no docker container for Mac OS X installation scripts
+These tests are only for CentOS, Ubuntu, and Debian deployments. Unfortunately there is no docker container for Mac OS X installation scripts
 
     OS=centos7 ICEVER=3.6 WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
     OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
@@ -106,4 +106,4 @@ Note: running tests on Mac OS X requires Docker for Mac (Docker Toolbox is not s
 Copyright
 ---------
 
-2016-2019, The Open Microscopy Environment
+2016-2020, The Open Microscopy Environment
