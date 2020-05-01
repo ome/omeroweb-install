@@ -9,7 +9,7 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
         ./test/test_services.sh
     else
         echo "Testing in VM"
-        if [[ ! ${OS} = "centos7" ]];  then
+        if [[ ! ${OS} =~ "centos" ]];  then
             if ${ANSIBLE:-false} ; then
                 (cd test && ./test_ansible.sh)
             else
