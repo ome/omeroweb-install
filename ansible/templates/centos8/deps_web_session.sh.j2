@@ -6,7 +6,7 @@
 set -e -u -x
 {% endif %}
 
-yum -y install redis python-redis
+yum -y install redis python3-redis
 
 systemctl enable redis.service
 
