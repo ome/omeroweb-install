@@ -1,0 +1,33 @@
+{% if doc %}
+Copy the `systemd.service` file, then enable and start the service::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+{% if doc %}
+cp omero-web-systemd.service /etc/systemd/system/omero-web.service
+{% else %}
+cp `dirname $0`/omero-web-systemd.service /etc/systemd/system/omero-web.service
+{% endif %}
+
+{% if doc %}
+systemctl daemon-reload
+{% else %}
+if [ ! "${container:-}" = docker ]; then
+    systemctl daemon-reload
+fi
+{% endif %}
+
+systemctl enable omero-web.service
+
+{% if doc %}
+systemctl stop omero-web.service
+
+systemctl start omero-web.service
+{% else %}
+if [ ! "${container:-}" = docker ]; then
+    systemctl start omero-web.service
+fi
+{% endif %}

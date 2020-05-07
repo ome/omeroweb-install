@@ -98,11 +98,11 @@
         mode: a+x
       when: daemon
 
-    - name: Generate omero-web-systemd.service.sh (centos7)
+    - name: Generate omero-web-systemd.service.sh (centos)
       template:
         src: "{{ os }}/omero-web-systemd.service.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-systemd.service"
-      when: os=="centos7"
+      when: (os | regex_findall("centos"))
     - name: Generate omero-web-init.d (ubuntu/debian)
       template:
         src: "{{ os }}/omero-web-init.d.j2"

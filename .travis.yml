@@ -38,6 +38,34 @@ matrix:
       dist: trusty
       env:
         - OS=centos7 ICEVER=3.6 WEBSESSION=true DOCKER=true
+    # centos8
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos8 ICEVER=3.6 DOCKER=true
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos8 ICEVER=3.6 DOCKER=true TRIAL=true
+    # with prefix
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos8 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true
+    # test remote
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos8 ICEVER=3.6 DOCKER=true ANSIBLE=true
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos8 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true ANSIBLE=true
+    # with cache
+    - os: linux
+      dist: trusty
+      env:
+        - OS=centos8 ICEVER=3.6 WEBSESSION=true DOCKER=true
     # ubuntu
     - os: linux
       dist: trusty
