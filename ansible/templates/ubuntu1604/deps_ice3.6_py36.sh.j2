@@ -9,9 +9,10 @@ If using Python 3.6, run the following command instead::
 set -e -u -x
 
 # ZeroC Ice 3.6
-if [ ! "${PYTHONVER:-}" = 3.6 ]; then
+if [ "${PYTHONVER:-}" = "3.6" ]; then
     { virtualenv_path }}/bin/pip install zeroc-ice==3.6.5
 else
     {{ virtualenv_path }}/bin/pip install --upgrade https://github.com/ome/zeroc-ice-py-ubuntu1604/releases/download/0.2.0/zeroc_ice-3.6.5-cp35-cp35m-linux_x86_64.whl
 fi
+
 {% endif %}
