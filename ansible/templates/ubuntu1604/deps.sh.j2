@@ -1,5 +1,14 @@
 {% if doc %}
-Install dependencies::
+Install dependencies:
+
+apt-get update
+
+apt-get -y install unzip
+apt-get -y install nginx
+
+apt-get -y install python3
+apt-get -y install python3-venv
+
 {% else %}
 #!/bin/bash
 
@@ -7,13 +16,20 @@ set -e -u -x
 echo 'APT::Install-Recommends 0;' > /etc/apt/apt.conf.d/01norecommends \
  && echo 'APT::Install-Suggests 0;' >> /etc/apt/apt.conf.d/01norecommends
 
-{% endif %}
-
 apt-get update
 
 apt-get -y install unzip
-
-apt-get -y install python3
-apt-get -y install python3-venv
-
 apt-get -y install nginx
+
+if [ ! "${PYTHONVER:-}" = 3.6 ]; then
+    add-apt-repository ppa:deadsnakes/ppa
+    apt-get update
+    apt-get install python3.6 python3.6-venv python3.6-dev
+else
+    apt-get -y install python3
+    apt-get -y install python3-venv
+fi
+
+{% endif %}
+
+

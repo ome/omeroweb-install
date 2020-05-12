@@ -1,7 +1,7 @@
 {% if doc %}
-Install ZeroC IcePy {{ ice_version }}::
+If using Python 3.6, run the following command instead::
 
-{{ virtualenv_path }}/bin/pip install --upgrade https://github.com/ome/zeroc-ice-py-ubuntu1604/releases/download/0.2.0/zeroc_ice-3.6.5-cp35-cp35m-linux_x86_64.whl
+{{ virtualenv_path }}/bin/pip install zeroc-ice==3.6.5
 
 {% else %}
 #!/bin/bash
