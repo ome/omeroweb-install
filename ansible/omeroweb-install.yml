@@ -60,7 +60,16 @@
         src: "common/whitenoise_configuration.sh.j2"
         dest: "{{ path }}/{{ prefix }}/whitenoise_configuration.sh"
         mode: a+x
-
+    - name: Generate common/install_cors.sh
+      template:
+        src: "common/install_cors.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/install_cors.sh"
+        mode: a+x
+    - name: Generate common/cors_configuration.sh
+      template:
+        src: "common/cors_configuration.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/cors_configuration.sh"
+        mode: a+x
     - name: Generate {{ prefix }}/deps.sh
       template:
         src: "{{ os }}/deps.sh.j2"
