@@ -14,7 +14,7 @@ Type=forking
 PIDFile={{ omero_user_web_dir }}/var/django.pid
 Restart=no
 RestartSec=10
-Environment="PATH={{ virtualenv_path }}/bin:/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin""
+Environment="PATH={{ virtualenv_path }}/bin:/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
 Environment="OMERODIR={{ omero_user_web_dir }}"
 ExecStart={{ virtualenv_path }}/bin/omero web start
 ExecStop={{ virtualenv_path }}/bin/omero web stop
