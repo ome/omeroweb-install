@@ -25,6 +25,8 @@ if [ "${PYTHONVER:-}" = "3.6" ]; then
     apt-get install -y build-essential
     apt-get install -y zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev \
                        libssl-dev libreadline-dev libffi-dev
+    # dependencies required to install Ice Python binding
+    apt-get install -y libbz2-dev libxml2-dev libxslt1-dev
     cd /tmp
     wget --no-check-certificate https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tar.xz
     tar -xf Python-3.6.9.tar.xz
