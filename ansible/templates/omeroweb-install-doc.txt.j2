@@ -119,6 +119,14 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
+{% set path = 'common/nginx_production.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/nginx_production_bis.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
 {{ doc_conf.standalone_web }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
@@ -203,11 +211,67 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
+{{ doc_conf.troubleshoot }}
+{% if os != 'osx' %}
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% set path = 'common/troubleshoot.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{{ doc_conf.gunicorn_configuration_advanced }}
+{% set path = 'common/gunicorn_advanced.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% if os != 'osx' %}
+{{ doc_conf.sync_workers }}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/synch_workers_install.sh.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/synch_workers_configuration.sh.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+{% if os != 'osx' %}
+{{ doc_conf.async_workers }}
+{% set path = 'common/run_as_root.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/synch_workers_install.sh.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/run_as_omero.j2' %}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+
+{% set path = 'common/synch_workers_configuration.sh.j2'%}
+{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
+
+
 {% if selinux %}
 {{ doc_conf.sel }}
 {% set path = 'common/run_as_root.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
+
 
 {% set path = os + '/selinux.sh.j2' %}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
