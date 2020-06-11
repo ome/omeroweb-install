@@ -1,0 +1,10 @@
+{% if doc %}
+Install :pypi:`futures`::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+{% endif %}
+
+{{ virtualenv_path }}/bin/pip install futures
