@@ -252,7 +252,7 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
-{% set path = 'common/synch_workers_install.sh.j2'%}
+{% set path = 'common/asynch_workers_install.sh.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
@@ -260,7 +260,7 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
-{% set path = 'common/synch_workers_configuration.sh.j2'%}
+{% set path = 'common/asynch_workers_configuration.sh.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 {% endif %}
