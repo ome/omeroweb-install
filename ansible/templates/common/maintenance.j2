@@ -9,11 +9,11 @@ If an attempt is made to access OMERO.web whilst it is not running, the generate
       sessions documentation <topics/http/sessions/#browser-length-vs-persistent-sessions>`
       for more details. The default value is ``True``::
 
-          $ omero config set omero.web.session_expire_at_browser_close "True"
+          omero config set omero.web.session_expire_at_browser_close "True"
 
    -  The age of session cookies, in seconds. The default value is ``86400``::
 
-          $ omero config set omero.web.session_cookie_age 86400
+          omero config set omero.web.session_cookie_age 86400
 
 - Clear session:
 
@@ -24,7 +24,7 @@ If an attempt is made to access OMERO.web whilst it is not running, the generate
   :djangodoc:`Django file-based session documentation <topics/http/sessions/#using-file-based-sessions>` for more details. It is therefore the responsibility of the OMERO 
   administrator to purge the session cache using the provided management command::
       
-      $ omero web clearsessions
+      omero web clearsessions
 
   It is recommended to call this command on a regular basis, for example 
   as a :download:`daily cron job <../../omero-web-cron>`, see

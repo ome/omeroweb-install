@@ -1,5 +1,5 @@
 {% if doc %}
- Additional settings can be configured by changing the properties below. Before changing the properties, run ``export PATH=/opt/omero/web/venv3/bin:$PATH``:
+Additional settings can be configured by changing the properties below. Before changing the properties, run ``export PATH=/opt/omero/web/venv3/bin:$PATH``:
 
 - :property:`omero.web.wsgi_workers` to (2 x NUM_CORES) + 1
 
@@ -9,7 +9,9 @@
       processes to handle many requests per second.
 
 - :property:`omero.web.wsgi_args` Additional arguments. For more details
-  check `Gunicorn Documentation <https://docs.gunicorn.org/en/stable/settings.html>`_.
+  check `Gunicorn Documentation <https://docs.gunicorn.org/en/stable/settings.html>`_. For example to enable **debugging**::
+
+      omero config set omero.web.wsgi_args -- "--log-level=DEBUG --error-logfile={{ omero_user_web_dir }}/var/log/error.log"
 
 {% else %}
 #!/bin/bash
