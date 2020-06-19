@@ -1,5 +1,5 @@
 {% if doc %}
-Configure OMERO.web and create the NGINX OMERO configuration file to be included in a system-wide NGINX configuration by redirecting the output of the command ``omero web config nginx`` below into a file::
+Configure OMERO.web and create the NGINX OMERO configuration file to be included in a system-wide NGINX configuration by redirecting the output of the command ``omero web config nginx`` below into a file. If an attempt is made to access OMERO.web whilst it is not running, the generated NGINX configuration file will automatically display a maintenance page::
 
 export PATH={{ virtualenv_path }}/bin:$PATH
 
