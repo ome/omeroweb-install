@@ -22,5 +22,4 @@ fi
 
 {% endif %}
 
-omero config set omero.web.application_server wsgi-tcp
 omero web config nginx --http "{{ web_port or '${WEBPORT}' }}" --servername "{{ web_server_name or '${WEBSERVER_NAME}' }}" > {{ omero_user_web_dir }}/nginx.conf.tmp
