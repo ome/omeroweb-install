@@ -200,17 +200,6 @@
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
 
-{{ doc_conf.customize }}
-{% if os != 'osx' %}
-{% set path = 'common/run_as_omero.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
-
-{% set path = 'common/customization.j2'%}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-
 {{ doc_conf.troubleshoot }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_omero.j2' %}
