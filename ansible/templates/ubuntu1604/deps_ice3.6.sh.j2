@@ -1,5 +1,8 @@
 {% if doc %}
-Install ZeroC IcePy {{ ice_version }}::
+Install ZeroC IcePy {{ ice_version }} and cap numpy::
+
+# cap numpy < 1.19.0 which as support for python 3.6 only
+{{ virtualenv_path }}/bin/pip install "numpy<1.19.0"
 
 {{ virtualenv_path }}/bin/pip install --upgrade https://github.com/ome/zeroc-ice-py-ubuntu1604/releases/download/0.2.0/zeroc_ice-3.6.5-cp35-cp35m-linux_x86_64.whl
 
@@ -12,6 +15,8 @@ set -e -u -x
 if [ "${PYTHONVER:-}" = "3.6" ]; then
     {{ virtualenv_path }}/bin/pip install zeroc-ice==3.6.5
 else
+    # cap numpy < 1.19.0 which as support for python 3.6 only
+    {{ virtualenv_path }}/bin/pip install "numpy<1.19.0"
     {{ virtualenv_path }}/bin/pip install --upgrade https://github.com/ome/zeroc-ice-py-ubuntu1604/releases/download/0.2.0/zeroc_ice-3.6.5-cp35-cp35m-linux_x86_64.whl
 fi
 {% endif %}
