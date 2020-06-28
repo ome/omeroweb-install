@@ -73,10 +73,10 @@ Environment variables:
 
 and run for example
 
-on Ubuntu 16.04:
+on Ubuntu 18.04:
 
-    ./ansible/omeroweb-install-ubuntu1604-ice3.6
-    ./ansible/ubuntu1604-ice3.6/run
+    ./ansible/omeroweb-install-ubuntu1804-ice3.6
+    ./ansible/ubuntu1804-ice3.6/run
 
 on CentOS 7:
 
