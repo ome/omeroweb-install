@@ -9,6 +9,7 @@ WEBPREFIX=${WEBPREFIX:-}
 WEBSESSION=${WEBSESSION:-}
 WEBSERVER_CONF=${WEBSERVER_CONF:-}
 WEBSERVER_NAME=${WEBSERVER_NAME:-}
+PYTHONVER=${PYTHONVER:-}
 
 CACHE=${CACHE:---no-cache}
 
@@ -30,4 +31,5 @@ docker build -t ${IMAGE} \
     --build-arg WEBSESSION=${WEBSESSION} \
     --build-arg WEBSERVER_CONF=${WEBSERVER_CONF} \
     --build-arg WEBSERVER_NAME=${WEBSERVER_NAME} \
+    --build-arg PYTHONVER=${PYTHONVER} \
     ${CACHE} $path -f $path/Dockerfile_$OS

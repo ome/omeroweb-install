@@ -1,0 +1,13 @@
+{% if doc %}
+If you wish to install with Python 3.6, replace the two commands above by the following ones::
+
+apt-get install -y build-essential
+apt-get install -y zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev
+cd /tmp
+wget https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tar.xz
+tar -xf Python-3.6.9.tar.xz
+cd Python-3.6.9
+./configure --enable-optimizations
+make -j 1
+make altinstall
+{% endif %}

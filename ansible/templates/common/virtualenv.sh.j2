@@ -8,6 +8,9 @@ python3 -mvenv {{ virtualenv_path }}
 
 set -x
 
-python3 -mvenv {{ virtualenv_path }}
-
+if [ "${PYTHONVER:-}" = "3.6" ]; then
+    python3.6 -mvenv {{ virtualenv_path }}
+else
+    python3 -mvenv {{ virtualenv_path }}
+fi
 {% endif %}

@@ -1,5 +1,14 @@
 {% if doc %}
 Install dependencies::
+
+apt-get update
+
+apt-get -y install unzip
+apt-get -y install nginx
+
+apt-get -y install python3
+apt-get -y install python3-venv
+
 {% else %}
 #!/bin/bash
 
@@ -7,13 +16,29 @@ set -e -u -x
 echo 'APT::Install-Recommends 0;' > /etc/apt/apt.conf.d/01norecommends \
  && echo 'APT::Install-Suggests 0;' >> /etc/apt/apt.conf.d/01norecommends
 
+apt-get update
+apt-get -y install unzip
+apt-get -y install nginx
+
+if [ "${PYTHONVER:-}" = "3.6" ]; then
+    apt-get install -y wget
+    apt-get install -y build-essential
+    apt-get install -y zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev \
+                       libssl-dev libreadline-dev libffi-dev
+    # dependencies required to install Ice Python binding
+    apt-get install -y libbz2-dev libxml2-dev libxslt1-dev
+    cd /tmp
+    wget --no-check-certificate https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tar.xz
+    tar -xf Python-3.6.9.tar.xz
+    cd Python-3.6.9
+    ./configure --enable-optimizations
+    make -j 1
+    make altinstall
+else
+    apt-get -y install python3
+    apt-get -y install python3-venv
+fi
+
 {% endif %}
 
-apt-get update
 
-apt-get -y install unzip
-
-apt-get -y install python3
-apt-get -y install python3-venv
-
-apt-get -y install nginx
