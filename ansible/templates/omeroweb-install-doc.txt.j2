@@ -32,12 +32,6 @@
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
 
-{% if os == 'ubuntu1604' %}
-{% set path = os + '/deps_py36.sh.j2' %}
-{% macro style() %}{% include path with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
-
 {% if web_session %}
 
 {% set path = os + '/deps_web_session.sh.j2' %}
@@ -54,20 +48,11 @@
 
 {% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
-{% if os == 'ubuntu1604' %}
-{% macro style() %}{% include 'common/virtualenv_py36.sh.j2' with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
 
 
 {% set path = os + '/deps_ice' + ice_version + '.sh.j2' %}
 {% macro style() %}{% include path with context %}{% endmacro %}
 {{ style()|indent }}
-{% if os == 'ubuntu1604' %}
-{% set path = os + '/deps_ice' + ice_version + '_py36.sh.j2' %}
-{% macro style() %}{% include path with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
 
 
 {% macro style() %}{% include 'common/install.sh.j2' with context %}{% endmacro %}
