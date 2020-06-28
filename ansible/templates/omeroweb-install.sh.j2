@@ -29,6 +29,11 @@ if [[ $WEBSESSION = *[!\ ]* ]]; then
     su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/web_session_configure.sh"
 fi
 
+bash $path/install_cors.sh
+
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/cors_configuration.sh"
+
+
 bash $path/install_whitenoise.sh
 
 su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/whitenoise_configuration.sh"

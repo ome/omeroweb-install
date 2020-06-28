@@ -1,0 +1,17 @@
+{% if doc %}
+Configure CORS. An ``index`` is used to specify the ordering of middleware classes. It is important to add the ``CorsMiddleware`` as the first class and ``CorsPostCsrfMiddleware`` as the last. You can specify allowed origins in a whitelist, or allow all, for example::
+{% else %}
+
+#!/bin/bash
+
+set -e -u -x
+
+export OMERODIR=$OMERODIR
+export PATH={{ virtualenv_path }}/bin:$PATH
+{% endif %}
+
+omero config append omero.web.middleware '{"index": 0.5, "class": "corsheaders.middleware.CorsMiddleware"}'
+omero config append omero.web.middleware '{"index": 10, "class": "corsheaders.middleware.CorsPostCsrfMiddleware"}'
+omero config set omero.web.cors_origin_whitelist '["hostname.example.com"]'
+# or to allow all
+omero config set omero.web.cors_origin_allow_all True

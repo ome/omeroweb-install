@@ -1,3 +1,44 @@
 {% if doc %}
-For more customization, please read :ref:`customizing_your_omero_web_installation`.
+OMERO.web offers a number of configuration options. The configuration changes **will not be applied** until Gunicorn is restarted using ``omero web restart``. The Gunicorn workers are managed **separately** from other OMERO processes. You can check their status or stop them using ``omero web status`` or ``omero web stop``.
+
+-  Session engine:
+
+  -  OMERO.web offers alternative session backends to automatically delete stale data using the cache session store backend, see :djangodoc:`Django cached session documentation <topics/http/sessions/#using-cached-sessions>` for more details.
+
+  - `Redis <https://redis.io/>`_ requires `django-redis <https://github.com/jazzband/django-redis/>`_ in order to be used with OMERO.web. We assume that Redis has already been installed. To configure the cache, run::
+
+      omero config set omero.web.caches '{"default": {"BACKEND": "django_redis.cache.
+      RedisCache", "LOCATION": "redis://127.0.0.1:6379/0"}}'
+
+  -  After installing all the cache prerequisites set the following::
+
+      omero config set omero.web.session_engine django.contrib.sessions.backends.cache
+
+
+- Use a prefix:
+
+  By default OMERO.web expects to be run from the root URL of the webserver.
+  This can be changed by setting :property:`omero.web.prefix` and
+  :property:`omero.web.static_url`. For example, to make OMERO.web appear at
+  `http://example.org/omero/`::
+
+      omero config set omero.web.prefix '/omero'
+      omero config set omero.web.static_url '/omero/static/'
+
+  and regenerate your webserver configuration.
+
+All configuration options can be found on various sections of
+:ref:`web_index` developers documentation. For the full list, refer to
+:ref:`web_configuration` properties.
+
+The most popular configuration options include:
+
+-  Debug mode, see :property:`omero.web.debug`.
+
+-  Customizing OMERO clients e.g. to add your own logo to the login page
+   (:property:`omero.web.login_logo`) or use an index page as an alternative
+   landing page for users (:property:`omero.web.index_template`). See
+   :doc:`/sysadmins/customization` for further information.
+
+-  Enabling a public user see :doc:`/sysadmins/public`.
 {% endif %}

@@ -1,0 +1,11 @@
+{% if doc %}
+Cross Origin Resource Sharing allows web applications hosted at other origins to access resources from your OMERO.web installation. This can be achieved using the `django-cors-headers <https://github.com/adamchainz/django-cors-headers>`_ app with additional configuration of OMERO.web. See the `django-cors-headers <https://github.com/adamchainz/django-cors-headers>`_ page for more details on the settings::
+
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+{% endif %}
+
+{{ virtualenv_path }}/bin/pip install 'django-cors-headers<3.3'
