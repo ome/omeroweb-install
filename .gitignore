@@ -6,7 +6,6 @@ ansible/.DS_Store
 **/centos8*/**
 **/ubuntu1804-*/**
 **/ubuntu2004-*/**
-**/debian9-*/**
 **/debian10-*/**
 **/osx*/**
 **/doc/**
