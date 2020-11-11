@@ -1,0 +1,40 @@
+---
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [centos7, centos8, ubuntu1804, ubuntu2004, debian9, debian10]
+        websession: [true, false]
+        webprefix: ["", "/omero"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up
+        run: ./.travis/before_install.sh
+        env:
+          OS: ${{ matrix.os }}
+          ICEVER: 3.6
+          DOCKER: true
+          WEBSESSION: ${{ matrix.websession }}
+          WEBPREFIX: ${{ matrix.webprefix }}
+          TRAVIS_OS_NAME: linux
+          TRAVIS: true
+      - name: Install
+        run: ./.travis/install.sh
+        env:
+          OS: ${{ matrix.os }}
+          ICEVER: 3.6
+          DOCKER: true
+          WEBSESSION: ${{ matrix.websession }}
+          WEBPREFIX: ${{ matrix.webprefix }}
+          TRAVIS_OS_NAME: linux
+      - name: Script
+        run: ./.travis/script.sh
+        env:
+          TRAVIS_OS_NAME: linux
+          OS: ${{ matrix.os }}
