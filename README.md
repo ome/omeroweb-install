@@ -1,10 +1,7 @@
-[![Build Status](https://travis-ci.org/ome/omeroweb-install.svg?branch=master)](https://travis-ci.org/ome/omeroweb-install)
-
-
 OMERO.web installation scripts
 ==============================
 
-Example of OMERO.web installation scripts for Linux: CentOS7, CentOS8, Ubuntu 16.04, 18.04, 20.04, Debian 9 and 10.
+Example of OMERO.web installation scripts for Linux: CentOS7, CentOS8, Ubuntu 18.04, 20.04, Debian 9 and 10.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
 configurations.
