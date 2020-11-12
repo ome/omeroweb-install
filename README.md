@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/ome/omeroweb-install.svg?branch=master)](https://travis-ci.org/ome/omeroweb-install)
-
-
 OMERO.web installation scripts
 ==============================
 
