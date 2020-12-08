@@ -1,6 +1,8 @@
 OMERO.web installation scripts
 ==============================
 
+[![Actions Status](https://github.com/ome/omeroweb-install/workflows/Build/badge.svg)](https://github.com/ome/omeroweb-install/actions)
+
 Example of OMERO.web installation scripts for Linux: CentOS7, CentOS8, Ubuntu 18.04, 20.04, Debian 9 and 10.
 These scripts are provided to help new users with installing OMERO.web for the
 first time on a clean system, and can be used as the basis for more advanced
