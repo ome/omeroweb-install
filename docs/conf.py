@@ -34,9 +34,15 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
-    "sphinx_rtd_theme",
+    'sphinx_rtd_theme',
+    'sphinx.ext.extlinks',
 ]
 
+extlinks = {
+    'djangodoc': ('https://docs.djangoproject.com/en/1.11/%s', ''),
+    'pypi': ('https://pypi.org/project/%s', ''),
+    'openmicroscopy': ('https://www.openmicroscopy.org/omero/%s', ''),
+    }
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
