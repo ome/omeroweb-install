@@ -38,3 +38,54 @@ jobs:
         env:
           TRAVIS_OS_NAME: linux
           OS: ${{ matrix.os }}
+  docs:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set branch name
+        run: |
+          echo "branch_name="${{github.sha}}${GITHUB_REF##*/} >> $GITHUB_ENV
+          echo "original_branch_name="${GITHUB_REF##*/} >> $GITHUB_ENV
+      - name: Create doc branch
+        uses: peterjgrainger/action-create-branch@v2.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: ${{ env.branch_name }}
+      - name: Build doc
+        run: |
+          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/centos7-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/centos8-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/debian9-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/debian10-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/ubuntu2004-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/ubuntu1804-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+      - name: Commit and push changes to the newly created branch
+        run: |
+          mv ansible/doc docs
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git pull origin ${{ env.branch_name }}
+          git checkout ${{ env.branch_name }}
+          git add -f docs/omeroweb-install-*
+          git commit -m 'Update from CI'
+      - name: Open Pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update doc
+          committer: GitHub <noreply@github.com>
+          branch: ${{ env.branch_name }}
+          title: 'Update doc'
+          base: master
+          assignees: ${{ github.actor }}
+          reviewers: ${{ github.actor }}
+          body: |
+            - corresponding doc changes from [${{ env.original_branch_name }}][1]
+            [1]: https://github.com/${{ github.repository }}/tree/${{ env.original_branch_name }}
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
