@@ -39,6 +39,7 @@ jobs:
           TRAVIS_OS_NAME: linux
           OS: ${{ matrix.os }}
   docs:
+    if: github.event.pull_request.merged == true
     needs: build
     runs-on: ubuntu-latest
     steps:
