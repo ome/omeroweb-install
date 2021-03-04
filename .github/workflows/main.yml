@@ -56,15 +56,14 @@ jobs:
           branch: ${{ env.branch_name }}
       - name: Build doc
         run: |
-          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/centos7-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
-          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/centos8-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
-          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/debian9-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
-          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/debian10-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
-          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/ubuntu2004-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
-          ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/ubuntu1804-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          os=("centos7" "centos8" "debian9" "debian10" "ubuntu2004" "ubuntu1804")
+          for i in "${os[@]}"
+          do
+            ansible-playbook ./ansible/omeroweb-install-doc.yml -i ./ansible/hosts/$i-ice3.6 --extra-vars '{"clean": True, "web_session": True}'
+          done
       - name: Commit and push changes to the newly created branch
         run: |
-          mv ansible/doc docs
+          mv ansible/doc/*.rst docs
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git pull origin ${{ env.branch_name }}
