@@ -9,4 +9,4 @@ ansible/.DS_Store
 **/debian9-*/**
 **/debian10-*/**
 **/osx*/**
-**/doc/**
+**/docs/_build
