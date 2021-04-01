@@ -10,17 +10,17 @@ your data.
 There are several ways of publishing data using OMERO.web:
 
 - using a URL to launch the web-based Image viewer, as described in
-  :omerodoc:`developers/Web/ViewPort.html#launching-web-viewer`, which can be accompanied by a thumbnail. For
+  :omerodoc:`ViewPort <developers/Web/ViewPort.html#launching-web-viewer>`, which can be accompanied by a thumbnail. For
   more details of how to load the thumbnail, see
-  :omerodoc:`developers/Web/WebGateway.html#urls-from-within-omero-web`
+  :omerodoc:`WebGateway <developers/Web/WebGateway.html#urls-from-within-omero-web>`.
 
 - embedding the image viewport directly into other web pages, for more
-  details see :omerodoc:`developers/Web/ViewPort.html#embedding_web_viewport`
+  details see :omerodoc:`ViewPort <developers/Web/ViewPort.html#embedding_web_viewport>`
 
 - allowing public access to the OMERO.web data manager
 
 - writing your own app to host your public data (see
-  :omerodoc:`developers/Web/CreateApp`) and then allowing public access to the
+  :omerodoc:`CreateApp <developers/Web/CreateApp.html>`) and then allowing public access to the
   chosen URL for that app
 
 The sections below describe how you might use these features and how to

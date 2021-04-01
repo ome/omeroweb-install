@@ -12,10 +12,10 @@ OMERO.web can be deployed with:
    such as
    `NGINX <https://nginx.org/>`_ and `Gunicorn <https://docs.gunicorn.org/>`_
 -  the built-in Django lightweight development server. This type of deployment should only be used for **testing** purpose
-   only; see the :omerodoc:`developers/Web/Deployment` page.
+   only; see the :omerodoc:`Developers Deployment <developers/Web/Deployment.html>` page.
 
 If you need help configuring your firewall rules, see
-:omerodoc:`sysadmins/server-security` for more details.
+:omerodoc:`Security <sysadmins/server-security.html>` for more details.
 
 Depending upon which platform you are using, you may find a
 more specific walkthrough listed below. The guides use the example of deploying OMERO.web with

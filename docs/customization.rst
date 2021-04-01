@@ -62,7 +62,7 @@ Open With option
 
 :property:`omero.web.open_with` adds items to the 'Open with' options.
 This allows users to open selected images or other data with another
-web app or URL. See :omerodoc:`/developers/Web/LinkingFromWebclient`.
+web app or URL. See :omerodoc:`LinkingFromWebclient <developers/Web/LinkingFromWebclient.html>`.
 
 Include template in every page
 ------------------------------
