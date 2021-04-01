@@ -1,4 +1,11 @@
+name: docs-build
 channels:
   - conda-forge
+  - ome
 dependencies:
-  - ansible==2.8.*
+  - ansible
+  - pip
+  - omero-py
+  - pip:
+    - omero-web
+    - sphinx

@@ -69,7 +69,7 @@ master_doc = 'index'
 project = u'OMERO.web Installation doc'
 author = u'The Open Microscopy Environment'
 now = datetime.now()
-copyright = u'2020-%d, %s ' % (now.year, author)
+copyright = u'2016-%d, %s ' % (now.year, author)
 
 os.system('bash build.sh')
 
@@ -226,7 +226,7 @@ project_basename = project.replace(" ", "")
 base_doc = "%s Documentation" % project
 latex_documents = [
   ('index', project_basename + '.tex', base_doc,
-   u'Open Microscopy Environment', 'manual'),
+   author, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -256,7 +256,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', project_basename, base_doc,
-     [u'Open Microscopy Environment'], 1)
+     [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -270,7 +270,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', project_basename, base_doc,
-   u'Open Microscopy Environment', project_basename, 'One line description of project.',
+   author, project_basename, 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -291,9 +291,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = project
-epub_author = u'Open Microscopy Environment'
-epub_publisher = u'Open Microscopy Environment'
-epub_copyright = u'2020, Open Microscopy Environment'
+epub_author = author
+epub_publisher = author
+epub_copyright = copyright
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'guide template'
