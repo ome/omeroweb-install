@@ -1,0 +1,35 @@
+name: Conda
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+      fail-fast: false
+    steps:
+      - name: setup-conda
+        uses: s-weigand/setup-conda@v1.0.5
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Find conda base
+        id: condabase
+        run: |
+          CONDA_BASE=$(conda info --base)
+          echo "::set-output name=base::$CONDA_BASE"
+      - name: Install dependencies
+        run: |
+          conda env create -f docs/environment.yml
+        shell: bash
+      - name: Build the docs
+        run: |
+          CONDA_BASE=${{ steps.condabase.outputs.base }}
+          source $CONDA_BASE/etc/profile.d/conda.sh
+          conda activate docs-build
+          cd docs
+          make html
