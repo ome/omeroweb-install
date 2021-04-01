@@ -17,6 +17,10 @@ from datetime import datetime
 import os
 import subprocess
 import sys
+sys.path.insert(0, os.path.abspath('.'))
+
+import docs
+
 
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -39,12 +43,15 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
     'sphinx.ext.extlinks',
+    'docs',
 ]
 
 extlinks = {
     'djangodoc': ('https://docs.djangoproject.com/en/1.11/%s', ''),
     'pypi': ('https://pypi.org/project/%s', ''),
     'openmicroscopy': ('https://www.openmicroscopy.org/omero/%s', ''),
+    'omerodoc': ('https://docs.openmicroscopy.org/omero/latest/%s', ''),
+    'help': ('https://help.openmicroscopy.org/%s', ''),
     }
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

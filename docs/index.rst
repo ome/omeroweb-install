@@ -12,10 +12,10 @@ OMERO.web can be deployed with:
    such as
    `NGINX <https://nginx.org/>`_ and `Gunicorn <https://docs.gunicorn.org/>`_
 -  the built-in Django lightweight development server. This type of deployment should only be used for **testing** purpose
-   only; see the :doc:`/developers/Web/Deployment` page.
+   only; see the :omerodoc:`developers/Web/Deployment` page.
 
 If you need help configuring your firewall rules, see
-:doc:`/sysadmins/server-security` for more details.
+:omerodoc:`sysadmins/server-security` for more details.
 
 Depending upon which platform you are using, you may find a
 more specific walkthrough listed below. The guides use the example of deploying OMERO.web with
@@ -74,6 +74,8 @@ Walkthroughs
     walkthrough/omeroweb-install-ubuntu2004-ice3.6
     walkthrough/omeroweb-install-debian9-ice3.6
     walkthrough/omeroweb-install-debian10-ice3.6
+    public
+    customization
 
 .. note:: Support for Apache deployment has been dropped in 5.3.0.
     
