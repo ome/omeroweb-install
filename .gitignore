@@ -11,4 +11,6 @@ ansible/.DS_Store
 **/osx*/**
 **/doc/**
 **/docs/_build
+**/docs/walkthrough
+**/docs/*.conf
 *.pyc
