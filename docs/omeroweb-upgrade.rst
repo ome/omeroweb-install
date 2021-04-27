@@ -5,9 +5,9 @@ The OME team is committed to providing frequent, project-wide upgrades with
 security fixes, bug fixes and new functionality. We try to make the schedule for
 these releases as public as possible. You may want to take a look at the `Trello
 boards <https://trello.com/b/4EXb35xQ/getting-started>`_ for exactly what will
-go into a release. See also :doc:`server-upgrade`.
+go into a release. See also :omerodoc:`sysadmins/server-upgrade`.
 
-See the full details of OMERO |release| features in the :doc:`/users/history`.
+See the full details of OMERO |release| features in the :omerodoc:`users/history`.
 
 This guide aims to be as definitive as possible so please do not be put off by
 the level of detail; upgrading should be a straightforward process.
@@ -23,8 +23,8 @@ Check prerequisites
 ^^^^^^^^^^^^^^^^^^^
 
 Before starting the upgrade, please ensure that you have reviewed and
-satisfied all the :doc:`system requirements <system-requirements>` with
-:doc:`correct versions <version-requirements>` for installation.
+satisfied all the :omerodoc:`system requirements <sysadmins/system-requirements>` with
+:omerodoc:`correct versions <sysadmins/version-requirements>` for installation.
 
 Upgrade
 ^^^^^^^
@@ -34,16 +34,16 @@ upgrade OMERO.web via pip:
 
 .. parsed-literal::
 
-      $ pip install --upgrade 'omero-web>=\ |version_web|'
+      $ pip install --upgrade omero-web
 
-If the ```omero-web``` upgrade *requires* an upgrade to ```omero-py``` (e.g.
+If the ``omero-web`` upgrade *requires* an upgrade to ``omero-py`` (e.g.
 for new features), this will happen automatically above.
-However, even when an ```omero-py``` upgrade is not required, there may be some
+However, even when an ``omero-py`` upgrade is not required, there may be some
 benefits to upgrading:
 
 .. parsed-literal::
 
-      $ pip install --upgrade 'omero-py>=\ |version_py|'
+      $ pip install --upgrade omero-py
 
 
 Configuration
@@ -100,7 +100,7 @@ Troubleshooting
 If you encounter errors during an OMERO.web upgrade, etc., you
 should retain as much log information as possible, including
 the output of :program:`omero web diagnostics` to the OMERO
-team via the mailing lists available on the :community:`support <>`
+team via the mailing lists available on the :openmicroscopy:`support <support>`
 page.
 
 Maintenance & Scaling
@@ -110,7 +110,7 @@ If you have not already done so, there are a number of additional
 steps that can be performed on your OMERO.web installation to improve
 its functioning. For example, you may need to set up a regular task
 to clear out any stale OMERO.web session files. More information can
-be found in the various walkthroughs available from :doc:`unix/install-web/web-deployment`.
+be found in the various walkthroughs available from :doc:`index`.
 
 Additionally, it is recommended to use a WSGI-capable server such as NGINX.
-Information can be found under :doc:`unix/install-web/web-deployment`.
+Information can be found under :doc:`index`.

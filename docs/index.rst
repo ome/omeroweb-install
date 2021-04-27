@@ -37,8 +37,27 @@ OMERO.server. Depending on the traffic and scale of the repository you should
 configure connections and speed limits on your server to avoid blocking
 resources.
 
-Walkthroughs
-------------
+To set the various OMERO.web properties, check the
+:omerodoc:`OMERO.web configuration glossary <sysadmins/config.html#web>`.
+
+Upgrading
+---------
+
+Starting with OMERO 5.6, OMERO.server and OMERO.web installations are assumed to be separate throughout documentation, each with its own virtualenv and installation directory.
+
+:doc:`omeroweb-upgrade`
+
+Optimizing OMERO as a Data Repository
+-------------------------------------
+This section explains how to customize the appearance and functionality of OMERO.web to host images for groups or public viewing.
+
+:doc:`public`
+
+:doc:`customization`
+
+
+Installation Walkthroughs
+-------------------------
 
 **Recommended:**
 
@@ -76,6 +95,7 @@ Walkthroughs
     walkthrough/omeroweb-install-debian10-ice3.6
     public
     customization
+    omeroweb-upgrade
 
 .. note:: Support for Apache deployment has been dropped in 5.3.0.
     
