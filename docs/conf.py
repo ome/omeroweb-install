@@ -49,10 +49,15 @@ extensions = [
 extlinks = {
     'djangodoc': ('https://docs.djangoproject.com/en/1.11/%s', ''),
     'pypi': ('https://pypi.org/project/%s', ''),
-    'openmicroscopy': ('https://www.openmicroscopy.org/omero/%s', ''),
+    'openmicroscopy': ('https://www.openmicroscopy.org/%s', ''),
     'omerodoc': ('https://docs.openmicroscopy.org/omero/latest/%s', ''),
     'help': ('https://help.openmicroscopy.org/%s', ''),
     }
+
+rst_epilog = """
+.. _PyPI: https://pypi.org
+.. |SSL| replace:: :abbr:`SSL (Secure Socket Layer)`
+"""
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
