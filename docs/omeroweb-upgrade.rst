@@ -5,9 +5,9 @@ The OME team is committed to providing frequent, project-wide upgrades with
 security fixes, bug fixes and new functionality. We try to make the schedule for
 these releases as public as possible. You may want to take a look at the `Trello
 boards <https://trello.com/b/4EXb35xQ/getting-started>`_ for exactly what will
-go into a release. See also :omerodoc:`sysadmins/server-upgrade`.
+go into a release. See also :omerodoc:`server-upgrade <sysadmins/server-upgrade.html>`.
 
-See the full details of OMERO |release| features in the :omerodoc:`users/history`.
+See the full details of OMERO.web features in the `CHANGELOG <https://github.com/ome/omero-web/blob/master/CHANGELOG.md>`_.
 
 This guide aims to be as definitive as possible so please do not be put off by
 the level of detail; upgrading should be a straightforward process.
@@ -23,8 +23,8 @@ Check prerequisites
 ^^^^^^^^^^^^^^^^^^^
 
 Before starting the upgrade, please ensure that you have reviewed and
-satisfied all the :omerodoc:`system requirements <sysadmins/system-requirements>` with
-:omerodoc:`correct versions <sysadmins/version-requirements>` for installation.
+satisfied all the :omerodoc:`system requirements <sysadmins/system-requirements.html>` with
+:omerodoc:`correct versions <sysadmins/version-requirements.html>` for installation.
 
 Upgrade
 ^^^^^^^
