@@ -5,7 +5,7 @@ channels:
 dependencies:
   - ansible
   - pip
-  - omero-py
+  #- omero-py
   - pip:
-    - omero-web
+    #- omero-web
     - sphinx
