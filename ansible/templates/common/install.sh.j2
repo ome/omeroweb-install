@@ -1,8 +1,9 @@
 {% if doc %}
-Install OMERO.web:
+Upgrade pip and install OMERO.web:
 
 .. parsed-literal::
 
+    /opt/omero/web//venv3/bin/pip install --upgrade pip
     /opt/omero/web//venv3/bin/pip install "omero-web>=\ |version_web|"
 
 {% else %}
@@ -10,6 +11,7 @@ Install OMERO.web:
 
 set -e -u -x
 
+{{ virtualenv_path }}/bin/pip install --upgrade pip
 {{ virtualenv_path }}/bin/pip install "omero-web>=5.6.1"
 
 {% endif %}
