@@ -6,7 +6,7 @@ Upgrade pip and install OMERO.web:
 
 set -e -u -x
 
+{% endif %}
+
 {{ virtualenv_path }}/bin/pip install --upgrade pip
 {{ virtualenv_path }}/bin/pip install omero-web
-
-{% endif %}
