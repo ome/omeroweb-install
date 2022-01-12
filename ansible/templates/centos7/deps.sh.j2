@@ -1,5 +1,5 @@
 {% if doc %}
-Install dependencies::
+Install dependencies and add scl Python 3.8 to your PATH::
 {% else %}
 #!/bin/bash
 
@@ -14,5 +14,3 @@ yum -y install nginx
 
 yum -y install centos-release-scl
 yum -y install rh-python38-python
-
-source /opt/rh/rh-python38/enable
