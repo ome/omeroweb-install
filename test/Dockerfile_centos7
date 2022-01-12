@@ -12,7 +12,6 @@ RUN userdel -r omero && \
 
 ADD ./omeroweb-install-test.zip /tmp
 RUN yum -y install initscripts unzip
-#RUN yum -y install ca-certificates
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 # This is so that scripts can detect whether they're in docker
