@@ -35,6 +35,13 @@
         src: "common/virtualenv.sh.j2"
         dest: "{{ path }}/{{ prefix }}/virtualenv.sh"
         mode: a+x
+      when: os!="centos7"
+    - name: Generate virtualenv.sh (centos7)
+      template:
+        src: "{{ os }}/virtualenv.sh.j2"
+        dest: "{{ path }}/{{ prefix }}/virtualenv.sh"
+        mode: a+x
+      when: os=="centos7"
     - name: Generate common/install.sh
       template:
         src: "common/install.sh.j2"
