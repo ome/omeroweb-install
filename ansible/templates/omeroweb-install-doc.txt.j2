@@ -129,11 +129,6 @@
 {{ style()|indent }}
 
 {{ doc_conf.standalone_web }}
-{% if os != 'osx' %}
-{% set path = 'common/run_as_root.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
 
 {% macro style() %}{% include 'common/install_whitenoise.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
