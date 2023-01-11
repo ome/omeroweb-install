@@ -1,14 +1,13 @@
 {% if doc %}
 Create the virtual environment. This is the recommended way to install OMERO.web::
 
-python3 -mvenv {{ virtualenv_path }}
+/opt/rh/rh-python38/root/usr/bin/python -mvenv {{ virtualenv_path }}
 
 {% else %}
 #!/bin/bash
 
 set -x
 
-export PATH=/opt/rh/rh-python38/root/usr/bin${PATH:+:${PATH}}
-python3 -mvenv {{ virtualenv_path }}
+/opt/rh/rh-python38/root/usr/bin/python -mvenv {{ virtualenv_path }}
 
 {% endif %}
