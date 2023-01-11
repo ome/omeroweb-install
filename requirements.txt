@@ -1,1 +1,1 @@
-ome-ansible-molecule
+ansible
