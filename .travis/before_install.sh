@@ -2,6 +2,9 @@
 
 set -e -u -x
 
+# check python version
+sudo python --version
+
 if [ ! -z ${TRAVIS:-} ] ; then
     if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then
 
