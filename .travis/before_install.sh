@@ -1,9 +1,9 @@
 #!/bin/bash
 
-set -e -u -x
+# This script installs requirements then builds the install scripts and docs with ansible.
+# If DOCKER (which is true on github workflows) then install Docker
 
-# check python version
-sudo python --version
+set -e -u -x
 
 if [ ! -z ${TRAVIS:-} ] ; then
     if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then
