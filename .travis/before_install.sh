@@ -3,6 +3,7 @@
 # This script installs requirements then builds the install scripts and docs with ansible.
 # If DOCKER (which is true on github workflows) then install Docker
 
+# set to exit if any failures, be strict on variables and print executed commands
 set -e -u -x
 
 if [ ! -z ${TRAVIS:-} ] ; then

@@ -12,7 +12,7 @@
         path: "{{ path }}/{{ prefix }}"
         state: directory
         mode: 0755
-    - name: Generate omeroweb-install-{{ prefix }}
+    - name: Generate {{ path }}/omeroweb-install-{{ prefix }}
       template:
         src: "omeroweb-install.sh.j2"
         dest: "{{ path }}/omeroweb-install-{{ prefix }}"
