@@ -93,7 +93,7 @@ Testing in DOCKER
 
 These tests are only for CentOS, Ubuntu, and Debian deployments. Unfortunately there is no docker container for Mac OS X installation scripts
 
-    OS=centos7 ICEVER=3.6 WEBPREFIX=/omero TRAVIS=False .travis/before_install.sh
+    OS=centos7 ICEVER=3.6 WEBPREFIX=/omero .travis/before_install.sh
     OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/install.sh
     OS=centos7 ICEVER=3.6 WEBPREFIX=/omero DOCKER=true TRAVIS_OS_NAME=linux .travis/script.sh 
  
