@@ -1,0 +1,11 @@
+{% if doc %}
+Install ZeroC IcePy {{ ice_version }}::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+
+# ZeroC Ice 3.6
+{% endif %}
+
+{{ virtualenv_path }}/bin/pip install https://github.com/ome/zeroc-ice-py-centos7/releases/download/0.2.1/zeroc_ice-3.6.5-cp36-cp36m-linux_x86_64.whl

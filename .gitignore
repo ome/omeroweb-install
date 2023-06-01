@@ -8,5 +8,5 @@ ansible/.DS_Store
 **/ubuntu2004-*/**
 **/debian10-*/**
 **/osx*/**
-**/rockylinux9*/**
+**/rockylinux9-*/**
 **/doc/**

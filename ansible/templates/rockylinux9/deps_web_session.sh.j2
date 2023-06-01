@@ -1,0 +1,19 @@
+{% if doc %}
+*Optional*: if you wish to use the Redis cache, install Redis::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+yum -y install redis
+
+systemctl enable redis.service
+
+{% if doc %}
+systemctl start redis.service
+{% else %}
+if [ ! "${container:-}" = docker ]; then
+    systemctl start redis.service
+fi
+{% endif %}
