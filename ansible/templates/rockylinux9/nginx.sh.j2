@@ -17,7 +17,7 @@ systemctl enable nginx
 {% if doc %}
 systemctl start nginx
 {% else %}
-if [ ! "${container:-}" = docker ]; then
+if [ ! -f /.dockerenv ]; then
     systemctl start nginx
 fi
 {% endif %}

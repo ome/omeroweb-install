@@ -4,17 +4,14 @@
 FROM rockylinux:9
 LABEL author="ome-devel@lists.openmicroscopy.org.uk"
 
-# Remove the existing omero user
-# RUN userdel -r omero && \
-# 	rm -f /etc/sudoers.d/omero && \
-# 	echo 'root:omero' | chpasswd
+RUN touch /.dockerenv
 
 ADD ./omeroweb-install-test.zip /tmp
 RUN yum -y install initscripts unzip
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 # This is so that scripts can detect whether they're in docker
-RUN echo 'export container=docker' > /etc/profile.d/docker.sh
+RUN touch /.dockerenv
 
 ARG ICEVER=3.6
 ARG WEBPORT=80
