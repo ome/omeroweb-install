@@ -1,7 +1,7 @@
 # Dockerfile for testing the OMERO Rocky Linux installation instructions
 # Not intended for production use
 # Note to enable systemd this must be run with on a host with systemd
-FROM eniocarboni/docker-rockylinux-systemd:9
+FROM rockylinux:9
 LABEL author="ome-devel@lists.openmicroscopy.org.uk"
 
 # Remove the existing omero user
