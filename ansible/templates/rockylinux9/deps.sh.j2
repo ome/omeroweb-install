@@ -1,0 +1,15 @@
+{% if doc %}
+Install dependencies::
+{% else %}
+#!/bin/bash
+
+set -e -u -x
+{% endif %}
+
+yum -y install epel-release
+
+yum -y install unzip
+
+yum -y install python3
+
+yum -y install nginx
