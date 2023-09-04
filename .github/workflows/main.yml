@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [rockylinux9]
-        websession: [true]
-        webprefix: [""]
+        os: [centos7, ubuntu1804, ubuntu2004, ubuntu2204, debian10, rockylinux9]
+        websession: [true, false]
+        webprefix: ["", "/omero"]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
