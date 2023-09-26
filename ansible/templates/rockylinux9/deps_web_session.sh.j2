@@ -6,7 +6,7 @@
 set -e -u -x
 {% endif %}
 
-yum -y install redis
+dnf -y install redis
 
 systemctl enable redis.service
 
