@@ -12,6 +12,9 @@ if [ -f /etc/nginx/conf.d/default.conf ]; then
 fi
 cp {{ omero_user_web_dir }}/nginx.conf.tmp /etc/nginx/conf.d/omeroweb.conf
 
+# comment out default server config in nginx.conf
+sed -i "/^\s\s\s\sserver/, /^\s\s\s\s}/ s|^|#|" /etc/nginx/nginx.conf
+
 systemctl enable nginx
 
 {% if doc %}
