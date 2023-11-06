@@ -21,22 +21,23 @@ bash $path/deps_ice{{ ice_version }}.sh
 # install OMERO.web
 bash $path/install.sh
 
-su - {{ omero_user }}  -c "OMERODIR=$OMERODIR WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $path/omeroweb_configure.sh"
+webconfpath=`realpath $path`
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME bash $webconfpath/omeroweb_configure.sh"
 
 if [[ $WEBSESSION = *[!\ ]* ]]; then
     bash $path/deps_web_session.sh
     bash $path/install_web_session.sh
-    su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/web_session_configure.sh"
+    su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $webconfpath/web_session_configure.sh"
 fi
 
 bash $path/install_cors.sh
 
-su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/cors_configuration.sh"
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $webconfpath/cors_configuration.sh"
 
 
 bash $path/install_whitenoise.sh
 
-su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $path/whitenoise_configuration.sh"
+su - {{ omero_user }}  -c "OMERODIR=$OMERODIR bash $webconfpath/whitenoise_configuration.sh"
 
 bash $path/nginx.sh
 

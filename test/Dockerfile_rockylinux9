@@ -7,7 +7,8 @@ LABEL author="ome-devel@lists.openmicroscopy.org.uk"
 RUN touch /.dockerenv
 
 ADD ./omeroweb-install-test.zip /tmp
-RUN yum -y install initscripts unzip
+RUN dnf clean all
+RUN dnf -y install initscripts unzip
 RUN unzip /tmp/omeroweb-install-test.zip -d /tmp
 
 # This is so that scripts can detect whether they're in docker

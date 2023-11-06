@@ -6,10 +6,14 @@ Install dependencies::
 set -e -u -x
 {% endif %}
 
-yum -y install epel-release
+{% if doc %}
+    cp nginx.repo /etc/yum.repos.d/
+{% else %}
+    cp `dirname $0`/nginx.repo /etc/yum.repos.d/
+{% endif %}
 
-yum -y install unzip
+dnf -y install unzip
 
-yum -y install python3
+dnf -y install python3
 
-yum -y install nginx
+dnf -y install nginx
