@@ -20,16 +20,6 @@ if [[ ${TRAVIS_OS_NAME:-} == 'linux' ]]; then
                     sudo /tmp/$current_dir/omeroweb-install-debian10-ice${ICEVER}
                 fi
                 ;;
-            ubuntu1804)
-                if ${ANSIBLE:-false} ; then
-                    ./test/docker-build-ansible.sh
-                else
-                    current_dir=${PWD##*/}
-                    mv `pwd` /tmp/
-                    chmod 755 -R /tmp/$current_dir
-                    sudo /tmp/$current_dir/omeroweb-install-ubuntu1804-ice${ICEVER}
-                fi
-                ;;
             ubuntu2004)
                 if ${ANSIBLE:-false} ; then
                     ./test/docker-build-ansible.sh
