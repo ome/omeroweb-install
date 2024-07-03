@@ -163,11 +163,6 @@
 {{ style()|indent }}
 {% endif %}
 
-{% if os == 'centos7' %}
-{% set path = os + '/omero-web-systemd.service.j2'%}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-{% endif %}
 {% if os.startswith('ubuntu') or os.startswith('debian') %}
 {% set path = os + '/omero-web-init.d.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}

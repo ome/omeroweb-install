@@ -113,11 +113,11 @@
         dest: "{{ path }}/{{ prefix }}/nginx.repo"
       when: (os | regex_findall("rocky"))
 
-    - name: Generate omero-web-systemd.service.sh (centos)
+    - name: Generate omero-web-systemd.service.sh (RockyLinux)
       template:
         src: "{{ os }}/omero-web-systemd.service.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-systemd.service"
-      when: (os | regex_findall("centos")) or (os | regex_findall("rocky"))
+      when: (os | regex_findall("rocky"))
     - name: Generate omero-web-init.d (ubuntu/debian)
       template:
         src: "{{ os }}/omero-web-init.d.j2"

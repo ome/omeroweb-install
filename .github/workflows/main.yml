@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [centos7, ubuntu2004, ubuntu2204, debian10, rockylinux9]
+        os: [ubuntu2004, ubuntu2204, debian10, rockylinux9]
         websession: [true, false]
         webprefix: ["", "/omero"]
     steps:
