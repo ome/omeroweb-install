@@ -2,7 +2,7 @@
 
 set -e -u -x
 
-OS=${OS:-centos7}
+OS=${OS:-rockylinux9}
 ICEVER=${ICEVER:-3.6}
 
 WEBPREFIX=${WEBPREFIX:-}
@@ -38,7 +38,7 @@ docker inspect -f {{.State.Running}} ${IMAGE}
 
 # run playbook
 cat << EOF > ${OS}-ice${ICEVER}
-[centos7-ice3.6]
+[rockylinux9-ice3.6]
 ${DOCKER_IP} ansible_port=2222 ansible_host=${DOCKER_IP} ansible_user=${OS} ansible_ssh_pass=${OS}
 EOF
 

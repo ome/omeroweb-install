@@ -2,7 +2,7 @@
 
 set -e -u -x
 
-OS=${OS:-centos7}
+OS=${OS:-rockylinux9}
 ICEVER=${ICEVER:-3.6}
 WEBPORT=${WEBPORT:-}
 WEBPREFIX=${WEBPREFIX:-}
