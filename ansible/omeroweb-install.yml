@@ -118,18 +118,18 @@
         src: "{{ os }}/omero-web-systemd.service.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-systemd.service"
       when: (os | regex_findall("rocky"))
-    - name: Generate omero-web-init.d (ubuntu/debian)
+    - name: Generate omero-web-init.d (ubuntu)
       template:
         src: "{{ os }}/omero-web-init.d.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-init.d"
-      when: (os | regex_findall("ubuntu")) or (os | regex_findall("debian"))
+      when: (os | regex_findall("ubuntu"))
 
-    - name: Generate run.sh (ubuntu/debian/osx)
+    - name: Generate run.sh (ubuntu/osx)
       template:
         src: "{{ os }}/run.sh.j2"
         dest: "{{ path }}/{{ prefix }}/run"
         mode: a+x
-      when: (os | regex_findall("ubuntu")) or os=="osx" or (os | regex_findall("debian"))
+      when: (os | regex_findall("ubuntu")) or os=="osx"
 
     - name: Generate init.sh (osx)
       template:

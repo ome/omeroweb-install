@@ -163,7 +163,7 @@
 {{ style()|indent }}
 {% endif %}
 
-{% if os.startswith('ubuntu') or os.startswith('debian') %}
+{% if os.startswith('ubuntu') %}
 {% set path = os + '/omero-web-init.d.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
@@ -174,7 +174,7 @@
 {{ style()|indent }}
 {% endif %}
 
-{% if os.startswith('ubuntu') or os == 'osx' or  os.startswith('debian') %}
+{% if os.startswith('ubuntu') or os == 'osx' %}
 {% set path = os + '/run.sh.j2'%}
 {% macro style() %}{% include path ignore missing with context %}{% endmacro %}
 {{ style()|indent }}
