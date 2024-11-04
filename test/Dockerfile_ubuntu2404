@@ -26,7 +26,7 @@ RUN ICEVER=$ICEVER \
     WEBPORT=$WEBPORT WEBPREFIX=$WEBPREFIX WEBSESSION=$WEBSESSION \
     WEBSERVER_CONF=$WEBSERVER_CONF WEBSERVER_NAME=$WEBSERVER_NAME \
     PYTHONVER=$PYTHONVER \
-    /tmp/omeroweb-install-test/omeroweb-install-ubuntu2204-ice${ICEVER}
+    /tmp/omeroweb-install-test/omeroweb-install-ubuntu2404-ice${ICEVER}
 
 EXPOSE 22 80
 
