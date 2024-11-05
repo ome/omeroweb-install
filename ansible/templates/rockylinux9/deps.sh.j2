@@ -12,6 +12,8 @@ set -e -u -x
     cp `dirname $0`/nginx.repo /etc/yum.repos.d/
 {% endif %}
 
+dnf -y install git
+
 dnf -y install unzip
 
 dnf -y install python3
