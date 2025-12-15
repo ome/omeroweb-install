@@ -6,17 +6,17 @@
       file:
         path: "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
         state: absent
-      when: clean
+      when: doc
     - name: Create doc dir
       file:
         path: "{{ path }}/doc"
         state: directory
         mode: 0755
     - name: Generate omeroweb-install-{{ prefix }}.rst
-      template:
+      ansible.builtin.template:
         src: "omeroweb-install-doc.txt.j2"
         dest: "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
 
   vars:
-    - doc: True
-    - prefix: "{{ os }}-ice{{ ice_version }}"
+    doc: True
+    prefix: "{{ os }}-ice{{ ice_version }}"

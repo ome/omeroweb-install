@@ -6,7 +6,7 @@
       file:
         path: "{{ path }}/{{ prefix }}"
         state: absent
-      when: clean
+      when: doc
     - name: Create {{ os }}-{{ prefix }} dir
       file:
         path: "{{ path }}/{{ prefix }}"
@@ -80,7 +80,7 @@
         src: "{{ os }}/deps_ice{{ ice_version }}.sh.j2"
         dest: "{{ path }}/{{ prefix }}/deps_ice{{ ice_version }}.sh"
         mode: a+x
-      when: "{{ ice_version }}"
+      when: ice_version | length > 0
     - name: Generate {{ prefix }}/deps_web_session.sh
       template:
         src: "{{ os }}/deps_web_session.sh.j2"
@@ -111,25 +111,25 @@
       template:
         src: "{{ os }}/nginx.repo"
         dest: "{{ path }}/{{ prefix }}/nginx.repo"
-      when: (os | regex_findall("rocky"))
+      when: (os | regex_findall("rocky") | length > 0)
 
     - name: Generate omero-web-systemd.service.sh (RockyLinux)
       template:
         src: "{{ os }}/omero-web-systemd.service.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-systemd.service"
-      when: (os | regex_findall("rocky"))
+      when: (os | regex_findall("rocky") | length > 0)
     - name: Generate omero-web-init.d (ubuntu)
       template:
         src: "{{ os }}/omero-web-init.d.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-init.d"
-      when: (os | regex_findall("ubuntu"))
+      when: (os | regex_findall("ubuntu") | length > 0)
 
     - name: Generate run.sh (ubuntu/osx)
       template:
         src: "{{ os }}/run.sh.j2"
         dest: "{{ path }}/{{ prefix }}/run"
         mode: a+x
-      when: (os | regex_findall("ubuntu")) or os=="osx"
+      when: (os | regex_findall("ubuntu") | length > 0) or os=="osx"
 
     - name: Generate init.sh (osx)
       template:
@@ -140,3 +140,4 @@
 
   vars:
     prefix: "{{ os }}-ice{{ ice_version }}"
+    doc: false
