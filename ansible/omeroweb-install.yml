@@ -118,6 +118,7 @@
         src: "{{ os }}/omero-web-systemd.service.j2"
         dest: "{{ path }}/{{ prefix }}/omero-web-systemd.service"
       when: (os | regex_findall("rocky") | length > 0)
+
     - name: Generate omero-web-init.d (ubuntu)
       template:
         src: "{{ os }}/omero-web-init.d.j2"
