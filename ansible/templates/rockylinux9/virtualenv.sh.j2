@@ -1,0 +1,16 @@
+{% if doc %}
+Create the virtual environment. This is the recommended way to install OMERO.web::
+
+python3.12 -mvenv {{ virtualenv_path }}
+
+{% else %}
+#!/bin/bash
+
+set -x
+
+if [ "${PYTHONVER:-}" = "3.6" ]; then
+    python3.6 -mvenv {{ virtualenv_path }}
+else
+    python3.12 -mvenv {{ virtualenv_path }}
+fi
+{% endif %}

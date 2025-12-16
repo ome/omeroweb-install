@@ -6,17 +6,44 @@
       file:
         path: "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
         state: absent
-      when: clean
+      when: doc
     - name: Create doc dir
       file:
         path: "{{ path }}/doc"
         state: directory
         mode: 0755
+
+    - name: Debug output of ls for teh file
+      become: true
+      ansible.builtin.command:
+        cat "templates/omeroweb-install-doc.txt.j2"
+        # ls templates
+      register: haproxy_status
+      ignore_errors: yes
+
+    - name: Show output
+      debug: 
+        msg: "{{ haproxy_status.stdout }}"
+
     - name: Generate omeroweb-install-{{ prefix }}.rst
-      template:
-        src: "omeroweb-install-doc.txt.j2"
+      ansible.builtin.template:
+        src: "templates/omeroweb-install-doc.txt.j2"
+        # dest: "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
         dest: "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
 
+    - name: Check what is being generated
+      become: true
+      # local_path: "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
+      ansible.builtin.command:
+        cat "{{ path }}/doc/omeroweb-install-{{ prefix }}.rst"
+        # ls templates
+      register: blah
+      ignore_errors: yes
+
+    - name: Show output
+      debug: 
+        msg: "{{ blah.stdout }}"
+
   vars:
-    - doc: True
-    - prefix: "{{ os }}-ice{{ ice_version }}"
+    doc: True
+    prefix: "{{ os }}-ice{{ ice_version }}"

@@ -103,4 +103,4 @@ Note: running tests on Mac OS X requires Docker for Mac (Docker Toolbox is not s
 Copyright
 ---------
 
-2016-2024, The Open Microscopy Environment
+2016-2025, The Open Microscopy Environment
