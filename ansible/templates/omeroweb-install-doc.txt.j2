@@ -16,10 +16,6 @@
 {{ style()|indent }}
 {% endif %}
 
-{% set path = os + '/init.sh.j2' %}
-{% macro style() %}{% include path ignore missing with context %}{% endmacro %}
-{{ style()|indent }}
-
 {{ doc_conf.prerequisites }}
 {% if os != 'osx' %}
 {% set path = 'common/run_as_root.j2' %}
@@ -46,9 +42,15 @@
 {{ style()|indent }}
 {% endif %}
 
+{% if os != 'rockylinux9' %}
 {% macro style() %}{% include 'common/virtualenv.sh.j2' with context %}{% endmacro %}
 {{ style()|indent }}
+{% endif %}
 
+{% if os == 'rockylinux9' %}
+{% macro style() %}{% include 'rockylinux9/virtualenv.sh.j2' with context %}{% endmacro %}
+{{ style()|indent }}
+{% endif %}
 
 {% set path = os + '/deps_ice' + ice_version + '.sh.j2' %}
 {% macro style() %}{% include path with context %}{% endmacro %}
