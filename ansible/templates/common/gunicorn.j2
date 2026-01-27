@@ -9,7 +9,7 @@ Additional settings can be configured by changing the properties below. Before c
       processes to handle many requests per second.
 
 - :property:`omero.web.wsgi_args` Additional arguments. For more details
-  check `Gunicorn Documentation <https://gunicorn.org/settings/>`_. For example to enable **debugging**, run the following command::
+  check `Gunicorn Documentation <https://gunicorn.org/reference/settings/>`_. For example to enable **debugging**, run the following command::
 
       omero config set omero.web.wsgi_args -- "--log-level=DEBUG --error-logfile={{ omero_user_web_dir }}/var/log/error.log"
 
