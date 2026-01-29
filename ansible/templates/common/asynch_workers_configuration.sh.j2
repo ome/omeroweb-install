@@ -1,5 +1,5 @@
 {% if doc %}
-To find out more about the maximum number of simultaneous clients, see `Gunicorn worker-connections <https://docs.gunicorn.org/en/stable/settings.html#worker-connections>`_. Additional settings can be configured by changing the following properties::
+To find out more about the maximum number of simultaneous clients, see `Gunicorn worker-connections <https://gunicorn.org/asgi/#worker-connections>`_. Additional settings can be configured by changing the following properties::
 
     omero config set omero.web.wsgi_worker_class gevent
     omero config set omero.web.wsgi_worker_connections 1000
